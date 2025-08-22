@@ -1,0 +1,783 @@
+<div class="min-h-screen bg-gray-50 relative overflow-hidden">
+  <!-- Subtle Background Elements -->
+  <div class="absolute inset-0">
+    <div class="floating-elements">
+      <div class="float-element element-1"></div>
+      <div class="float-element element-2"></div>
+      <div class="float-element element-3"></div>
+    </div>
+  </div>
+
+  <!-- Header 3D -->
+  <div class="relative z-10 bg-white shadow-lg border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <div class="admin-logo-3d">
+            <div class="logo-cube-white">
+              <div class="cube-face front">A</div>
+              <div class="cube-face back">D</div>
+              <div class="cube-face right">M</div>
+              <div class="cube-face left">I</div>
+              <div class="cube-face top">N</div>
+              <div class="cube-face bottom">!</div>
+            </div>
+          </div>
+          <div>
+            <h1 class="text-3xl font-bold text-gray-800 title-3d">Admin Dashboard</h1>
+            <p class="text-gray-600">Welcome to your management center</p>
+          </div>
+        </div>
+        
+        <div class="flex space-x-4">
+          <a href="/admin/passages/create" class="btn-3d-white btn-primary">
+            <span class="btn-content">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+              </svg>
+              New Passage
+            </span>
+          </a>
+          <a href="/admin/tests/create" class="btn-3d-white btn-success">
+            <span class="btn-content">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+              </svg>
+              New Test
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Stats Cards 3D -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+      <div class="stat-card-3d-white" data-tilt>
+        <div class="card-inner-white">
+          <div class="stat-icon-3d-white users-icon">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
+            </svg>
+          </div>
+          <div class="stat-content-white">
+            <p class="stat-label-white">Total Users</p>
+            <p class="stat-number-white counter" data-target="<%= stats.userCount %>">0</p>
+            <div class="stat-trend-white">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stat-card-3d-white" data-tilt>
+        <div class="card-inner-white">
+          <div class="stat-icon-3d-white passages-icon">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+          </div>
+          <div class="stat-content-white">
+            <p class="stat-label-white">Reading Passages</p>
+            <p class="stat-number-white counter" data-target="<%= stats.passageCount %>">0</p>
+            <div class="stat-trend-white">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stat-card-3d-white" data-tilt>
+        <div class="card-inner-white">
+          <div class="stat-icon-3d-white tests-icon">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+            </svg>
+          </div>
+          <div class="stat-content-white">
+            <p class="stat-label-white">Total Tests</p>
+            <p class="stat-number-white counter" data-target="<%= stats.testCount %>">0</p>
+            <div class="stat-trend-white">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-12">
+      <a href="/admin/passages" class="action-card-3d-white">
+        <div class="action-inner-white">
+          <div class="action-icon-white">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+          </div>
+          <div class="action-content-white">
+            <h3 class="action-title-white">Manage Passages</h3>
+            <p class="action-desc-white">Create and edit reading passages</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="/admin/tests" class="action-card-3d-white">
+        <div class="action-inner-white">
+          <div class="action-icon-white">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+            </svg>
+          </div>
+          <div class="action-content-white">
+            <h3 class="action-title-white">Manage Tests</h3>
+            <p class="action-desc-white">Create and manage tests</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <!-- Recent Users -->
+      <div class="activity-panel-3d-white">
+        <div class="panel-header-white">
+          <h3 class="panel-title-white">Recent Users</h3>
+        </div>
+        <div class="panel-content-white">
+          <% if (typeof recentUsers !== 'undefined' && recentUsers && recentUsers.length > 0) { %>
+            <div class="user-list-white">
+              <% recentUsers.slice(0, 5).forEach(function(user) { %>
+                <div class="user-item-white">
+                  <div class="user-avatar-white">
+                    <span><%= user.username ? user.username.charAt(0).toUpperCase() : 'U' %></span>
+                  </div>
+                  <div class="user-info-white">
+                    <h4 class="user-name-white"><%= user.username || 'Unknown User' %></h4>
+                    <p class="user-email-white"><%= user.email || 'No email' %></p>
+                    <p class="user-date-white">Joined <%= user.createdAt ? new Date(user.createdAt).toLocaleDateString() : 'Unknown' %></p>
+                  </div>
+                  <div class="user-status-white">
+                    <span class="status-badge-white <%= user.role === 'admin' ? 'status-active-white' : 'status-inactive-white' %>">
+                      <%= user.role === 'admin' ? 'Admin' : 'User' %>
+                    </span>
+                  </div>
+                </div>
+              <% }); %>
+            </div>
+          <% } else { %>
+            <div class="empty-state-3d-white">
+              <div class="empty-icon-white">
+                <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
+                </svg>
+              </div>
+              <h3>No Recent Users</h3>
+              <p>No users have registered recently.</p>
+            </div>
+          <% } %>
+        </div>
+      </div>
+
+      <!-- Recent Test Results -->
+      <div class="activity-panel-3d-white">
+        <div class="panel-header-white">
+          <h3 class="panel-title-white">Recent Test Results</h3>
+        </div>
+        <div class="panel-content-white">
+          <% if (typeof recentResults !== 'undefined' && recentResults && recentResults.length > 0) { %>
+            <div class="results-list-white">
+              <% recentResults.slice(0, 3).forEach(function(result) { %>
+                <div class="result-item-white">
+                  <div class="result-user-white">
+                    <div class="result-avatar-white">
+                      <span><%= result.user && result.user.username ? result.user.username.charAt(0).toUpperCase() : 'U' %></span>
+                    </div>
+                    <div class="result-info-white">
+                      <h4 class="result-name-white"><%= result.user && result.user.username ? result.user.username : 'Unknown User' %></h4>
+                      <p class="result-test-white"><%= result.test && result.test.title ? result.test.title : 'Unknown Test' %></p>
+                    </div>
+                  </div>
+                  <div class="result-score-white">
+                    <span class="score-badge-white <%= result.ieltsScore >= 8 ? 'score-high-white' : result.ieltsScore >= 6 ? 'score-medium-white' : 'score-low-white' %>">
+                     IELTS Score: <%= result.ieltsScore || 0 %>
+                    </span>
+                    <p class="result-date-white"><%= result.completedAt ? new Date(result.completedAt).toLocaleDateString() : 'Unknown' %></p>
+                  </div>
+                </div>
+              <% }); %>
+            </div>
+          <% } else { %>
+            <div class="empty-state-3d-white">
+              <div class="empty-icon-white">
+                <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                </svg>
+              </div>
+              <h3>No Recent Results</h3>
+              <p>No test results available yet.</p>
+            </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% 
+scripts = `
+<style>
+/* Base Styles */
+.floating-elements {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.float-element {
+  position: absolute;
+  background: linear-gradient(45deg, rgba(59, 130, 246, 0.1), rgba(147, 51, 234, 0.1));
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.element-1 {
+  width: 100px;
+  height: 100px;
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.element-2 {
+  width: 150px;
+  height: 150px;
+  top: 60%;
+  right: 10%;
+  animation-delay: 2s;
+}
+
+.element-3 {
+  width: 80px;
+  height: 80px;
+  bottom: 20%;
+  left: 60%;
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+/* Logo 3D */
+.admin-logo-3d {
+  perspective: 1000px;
+}
+
+.logo-cube-white {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  transform-style: preserve-3d;
+  animation: rotateCube 10s infinite linear;
+}
+
+.cube-face {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  border: 2px solid #1e40af;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 24px;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.front { transform: rotateY(0deg) translateZ(30px); }
+.back { transform: rotateY(180deg) translateZ(30px); }
+.right { transform: rotateY(90deg) translateZ(30px); }
+.left { transform: rotateY(-90deg) translateZ(30px); }
+.top { transform: rotateX(90deg) translateZ(30px); }
+.bottom { transform: rotateX(-90deg) translateZ(30px); }
+
+@keyframes rotateCube {
+  0% { transform: rotateX(0deg) rotateY(0deg); }
+  100% { transform: rotateX(360deg) rotateY(360deg); }
+}
+
+/* Title 3D */
+.title-3d {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #1f2937, #374151);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Buttons 3D */
+.btn-3d-white {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 24px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-3d-white:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #10b981, #047857);
+  color: white;
+}
+
+.btn-content {
+  display: flex;
+  align-items: center;
+}
+
+/* Stats Cards 3D */
+.stat-card-3d-white {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #f3f4f6;
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.stat-card-3d-white:hover {
+  transform: translateY(-5px) rotateX(5deg);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card-inner-white {
+  display: flex;
+  align-items: center;
+  space-x: 16px;
+}
+
+.stat-icon-3d-white {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16px;
+}
+
+.users-icon { background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: #1d4ed8; }
+.passages-icon { background: linear-gradient(135deg, #d1fae5, #a7f3d0); color: #047857; }
+.tests-icon { background: linear-gradient(135deg, #fef3c7, #fde68a); color: #d97706; }
+.results-icon { background: linear-gradient(135deg, #e0e7ff, #c7d2fe); color: #6366f1; }
+
+.stat-content-white {
+  flex: 1;
+}
+
+.stat-label-white {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+
+.stat-number-white {
+  font-size: 32px;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 4px;
+}
+
+.stat-trend-white {
+  display: flex;
+  align-items: center;
+}
+
+.trend-indicator-white {
+  font-size: 12px;
+  color: #10b981;
+  font-weight: 600;
+}
+
+/* Action Cards 3D */
+.action-card-3d-white {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #f3f4f6;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: block;
+  transform-style: preserve-3d;
+}
+
+.action-card-3d-white:hover {
+  transform: translateY(-3px) rotateX(3deg);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.action-inner-white {
+  display: flex;
+  align-items: center;
+}
+
+.action-icon-white {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #374151;
+  margin-right: 16px;
+}
+
+.action-content-white {
+  flex: 1;
+}
+
+.action-title-white {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 4px;
+}
+
+.action-desc-white {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Activity Panels 3D */
+.activity-panel-3d-white {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #f3f4f6;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.activity-panel-3d-white:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.panel-header-white {
+  padding: 20px 24px;
+  border-bottom: 1px solid #f3f4f6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.panel-title-white {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.view-all-link-white {
+  font-size: 14px;
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.view-all-link-white:hover {
+  color: #1d4ed8;
+}
+
+.panel-content-white {
+  padding: 24px;
+}
+
+/* User List */
+.user-list-white {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.user-item-white {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  background: #f9fafb;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.user-item-white:hover {
+  background: #f3f4f6;
+  transform: translateX(4px);
+}
+
+.user-avatar-white {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  margin-right: 12px;
+}
+
+.user-info-white {
+  flex: 1;
+}
+
+.user-name-white {
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 2px;
+}
+
+.user-email-white {
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 2px;
+}
+
+.user-date-white {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.status-badge-white {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.status-active-white {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status-inactive-white {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* Results List */
+.results-list-white {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.result-item-white {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: #f9fafb;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.result-item-white:hover {
+  background: #f3f4f6;
+  transform: translateX(4px);
+}
+
+.result-user-white {
+  display: flex;
+  align-items: center;
+}
+
+.result-avatar-white {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #10b981, #047857);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  margin-right: 12px;
+}
+
+.result-info-white {
+  flex: 1;
+}
+
+.result-name-white {
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.result-test-white {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.result-score-white {
+  text-align: right;
+}
+
+.score-badge-white {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  display: inline-block;
+}
+
+.score-high-white {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.score-medium-white {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.score-low-white {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.result-date-white {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+/* Empty States */
+.empty-state-3d-white {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.empty-icon-white {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 16px;
+  background: #f3f4f6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+}
+
+.empty-state-3d-white h3 {
+  color: #1f2937;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.empty-state-3d-white p {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stat-number-white {
+    font-size: 24px;
+  }
+  
+  .action-inner-white {
+    padding: 20px;
+  }
+  
+  .logo-cube-white {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .cube-face {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Counter Animation
+  function animateCounters() {
+    const counters = document.querySelectorAll('.counter');
+    counters.forEach(function(counter) {
+      const target = parseInt(counter.getAttribute('data-target'));
+      const duration = 2000;
+      const step = target / (duration / 16);
+      let current = 0;
+      
+      const timer = setInterval(function() {
+        current += step;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        counter.textContent = Math.floor(current);
+      }, 16);
+    });
+  }
+
+  // Tilt Effect
+  function addTiltEffect() {
+    const tiltElements = document.querySelectorAll('[data-tilt]');
+    
+    tiltElements.forEach(function(element) {
+      element.addEventListener('mousemove', function(e) {
+        const rect = element.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = (y - centerY) / 10;
+        const rotateY = (centerX - x) / 10;
+        
+        element.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateZ(10px)';
+      });
+      
+      element.addEventListener('mouseleave', function() {
+        element.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+      });
+    });
+  }
+
+  // Initialize animations
+  setTimeout(animateCounters, 500);
+  addTiltEffect();
+});
+</script>
+`;
+%>

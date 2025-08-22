@@ -1,0 +1,90 @@
+[{
+  "_id": {
+    "$oid": "680714809fd40d5cc7f25c59"
+  },
+  "username": "ngocmai123",
+  "email": "ngocmai@gmail.com",
+  "password": "$2b$10$xFVvKW.eGzkz8n3w3l5/u.BeoAXVe8wjQcYSo3WtB9Qa629j1Mcla",
+  "fullName": "Trầm Ngọc Mai",
+  "role": "user",
+  "isVerified": false,
+  "createdAt": {
+    "$date": "2025-04-22T04:01:04.239Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-22T04:01:04.325Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6807151a5ed6ca3abb9b18f1"
+  },
+  "username": "admin",
+  "email": "admin123@gmail.com",
+  "password": "$2b$10$e93IfxYPbKGXBuHgxUQZYO92SLSORTlJtHcDm477Wn/JmUeT5LO4.",
+  "fullName": "Trầm Ngọc Mai",
+  "role": "admin",
+  "isVerified": false,
+  "createdAt": {
+    "$date": "2025-04-22T04:03:38.624Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-22T04:03:38.768Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681f07f16781f8777afee9d1"
+  },
+  "username": "user",
+  "email": "user@gmail.com",
+  "password": "$2b$10$lWJL0Evxm/rk8W29Kx.WVeqPKht3.7q40y05TJoCAmBwQrYlFEXPq",
+  "fullName": "Trầm Ngọc Mai",
+  "role": "user",
+  "isVerified": true,
+  "createdAt": {
+    "$date": "2025-05-10T08:01:53.860Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-10T08:01:53.860Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "683bb94f0e5cc8a68d09adbc"
+  },
+  "username": "ngoc mai",
+  "email": "maitram570@gmail.com",
+  "password": "$2b$10$MGaT3n7mLLG7HWFek30hh.8No81L37szk1EzP/jwnTMQ.mtRc8bxa",
+  "fullName": "tram ngoc mai",
+  "role": "user",
+  "isVerified": true,
+  "createdAt": {
+    "$date": "2025-06-01T02:22:07.716Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-01T02:22:07.716Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "683fe04d41e4cd36604b824a"
+  },
+  "username": "thanhly123",
+  "email": "thanhly123@gmail.com",
+  "password": "$2b$10$tMnyEd.29akR2B0HLtrBme4ixiALSEDpYATAVBasFLmBJFDwH6uhq",
+  "fullName": "Nguyễn Thanh Lý",
+  "role": "user",
+  "isVerified": true,
+  "createdAt": {
+    "$date": "2025-06-04T05:57:33.688Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-04T05:57:33.688Z"
+  },
+  "__v": 0
+}]

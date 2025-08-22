@@ -1,0 +1,476 @@
+[{
+  "_id": {
+    "$oid": "68234115a4b9451d85054984"
+  },
+  "passageId": {
+    "$oid": "68232637fa55747daba91dd4"
+  },
+  "title": "test",
+  "questionType": "multiple_choice",
+  "questionText": "test trắc nghiệm",
+  "options": [
+    "a",
+    "b",
+    "c",
+    "d"
+  ],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "b",
+  "score": 1,
+  "order": 1,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-13T12:54:45.781Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-13T12:54:45.781Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68234115a4b9451d85054986"
+  },
+  "passageId": {
+    "$oid": "68232637fa55747daba91dd4"
+  },
+  "title": "",
+  "questionType": "multiple_choice",
+  "questionText": "aaa",
+  "options": [
+    "Option 1",
+    "Option 2",
+    "Option 3",
+    "Option 4",
+    "Option 5",
+    "Option 6"
+  ],
+  "multipleAnswers": true,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": [
+    "Option 1",
+    "Option 2",
+    "Option 3"
+  ],
+  "score": 1,
+  "order": 1,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-13T12:54:45.805Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-13T12:54:45.805Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68234ee34766d1c4ed56ecea"
+  },
+  "passageId": {
+    "$oid": "68234145a4b9451d8505498c"
+  },
+  "title": "",
+  "questionType": "fill_blank",
+  "questionText": "kjsanfkhanskjfhj....................",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [
+    "hi"
+  ],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": [
+    "hi"
+  ],
+  "score": 1,
+  "order": 1,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-13T13:53:39.533Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-13T13:53:39.533Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68234f2e4766d1c4ed56ecf7"
+  },
+  "passageId": {
+    "$oid": "68234145a4b9451d8505498c"
+  },
+  "title": "",
+  "questionType": "fill_blank",
+  "questionText": "sdasdasdaas(3).....(4)...........",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "multiple",
+  "blankOptions": [
+    "a",
+    "b",
+    "c"
+  ],
+  "oneWordAnswers": [],
+  "correctAnswer": {
+    "3": 0,
+    "4": 1
+  },
+  "score": 1,
+  "order": 2,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-13T13:54:54.903Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-13T13:54:54.903Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68234f564766d1c4ed56ecfd"
+  },
+  "passageId": {
+    "$oid": "68234145a4b9451d8505498c"
+  },
+  "title": "asadsad",
+  "questionType": "fill_blank",
+  "questionText": "(4).............(5)............",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "one_word_only",
+  "blankOptions": [],
+  "oneWordAnswers": [
+    "hi",
+    "hi me"
+  ],
+  "correctAnswer": [
+    "hi",
+    "hi me"
+  ],
+  "score": 1,
+  "order": 3,
+  "acceptableShortAnswers": [],
+  "wordLimits": [
+    1,
+    2
+  ],
+  "blankNumbers": [
+    5,
+    6
+  ],
+  "createdAt": {
+    "$date": "2025-05-13T13:55:34.155Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-13T13:55:34.155Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68241d17892c4c039e02f5d2"
+  },
+  "passageId": {
+    "$oid": "68241c90892c4c039e02f5ca"
+  },
+  "title": "test maching",
+  "questionType": "matching",
+  "questionText": "test maching",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "matchingOptions": {
+    "headings": [
+      "A",
+      "b",
+      "c",
+      "d",
+      "e"
+    ],
+    "paragraphs": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "_id": {
+      "$oid": "68241d17892c4c039e02f5d3"
+    }
+  },
+  "score": 1,
+  "order": 1,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-14T04:33:27.923Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-14T04:33:27.934Z"
+  },
+  "__v": 0,
+  "correctAnswer": {
+    "0": 0,
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4
+  }
+},
+{
+  "_id": {
+    "$oid": "68241d17892c4c039e02f5d6"
+  },
+  "passageId": {
+    "$oid": "68241c90892c4c039e02f5ca"
+  },
+  "title": "test maching",
+  "questionType": "matching",
+  "questionText": "test maching",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "matchingOptions": {
+    "headings": [
+      "A",
+      "b",
+      "c",
+      "d",
+      "e"
+    ],
+    "paragraphs": [
+      "1",
+      "2",
+      "3"
+    ],
+    "_id": {
+      "$oid": "68241d17892c4c039e02f5d7"
+    }
+  },
+  "score": 1,
+  "order": 1,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-14T04:33:27.953Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-14T04:33:27.955Z"
+  },
+  "__v": 0,
+  "correctAnswer": {
+    "0": 0,
+    "1": 2,
+    "2": 3,
+    "3": 3,
+    "4": 4
+  }
+},
+{
+  "_id": {
+    "$oid": "68241d17892c4c039e02f5da"
+  },
+  "passageId": {
+    "$oid": "68241c90892c4c039e02f5ca"
+  },
+  "title": "",
+  "questionType": "matching",
+  "questionText": "test maching",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "matchingOptions": {
+    "headings": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "paragraphs": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "_id": {
+      "$oid": "68241d17892c4c039e02f5db"
+    }
+  },
+  "score": 1,
+  "order": 1,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-14T04:33:27.963Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-14T04:33:27.967Z"
+  },
+  "__v": 0,
+  "correctAnswer": {
+    "0": 0,
+    "1": 0,
+    "2": 3,
+    "3": 3,
+    "4": 4
+  }
+},
+{
+  "_id": {
+    "$oid": "68242c56892c4c039e02f68b"
+  },
+  "passageId": {
+    "$oid": "68242c2c892c4c039e02f683"
+  },
+  "title": "test true false notgiven",
+  "questionType": "true_false_not_given",
+  "questionText": "test true false notgiven",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "true",
+  "score": 1,
+  "order": 1,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-14T05:38:30.622Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-14T05:38:30.622Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68242c56892c4c039e02f68d"
+  },
+  "passageId": {
+    "$oid": "68242c2c892c4c039e02f683"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "test true false notgiven",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "false",
+  "score": 1,
+  "order": 1,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-14T05:38:30.636Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-14T05:38:30.636Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68242c56892c4c039e02f68f"
+  },
+  "passageId": {
+    "$oid": "68242c2c892c4c039e02f683"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "test true false notgiven",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "not_given",
+  "score": 1,
+  "order": 1,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-14T05:38:30.645Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-14T05:38:30.645Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68242c98892c4c039e02f69b"
+  },
+  "passageId": {
+    "$oid": "68242c7b892c4c039e02f693"
+  },
+  "title": "",
+  "questionType": "short_answer",
+  "questionText": "test short answer",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": [
+    "short answer"
+  ],
+  "score": 1,
+  "order": 1,
+  "wordLimit": 2,
+  "acceptableShortAnswers": [
+    "short answer"
+  ],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-14T05:39:36.078Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-14T05:39:36.078Z"
+  },
+  "__v": 0
+}]

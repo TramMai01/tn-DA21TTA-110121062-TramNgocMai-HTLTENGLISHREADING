@@ -1,0 +1,145 @@
+<div class="max-w-4xl mx-auto px-4 py-10">
+  <div class="mb-8 text-center">
+    <h1 class="text-3xl font-bold text-gray-800 mb-2"><%= test.title %></h1>
+    <p class="text-gray-600">Prepare yourself and customize your test settings before starting</p>
+  </div>
+  <center>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
+      <div class="h-2 bg-blue-500"></div>
+      <div class="p-6">
+        <div class="flex items-center mb-4">
+          <div class="bg-blue-50 p-3 rounded-full mr-4">
+            <svg class="h-6 w-6 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+           
+          </div>
+          <h3 class="text-lg font-semibold text-gray-800">Passages</h3>
+        </div>
+        <p class="text-3xl font-bold text-gray-900"><%= test.passages.length %></p>
+        <p class="text-sm text-gray-500 mt-1">Reading passages to analyze</p>
+      </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
+      <div class="h-2 bg-indigo-500"></div>
+      <div class="p-6">
+        <div class="flex items-center mb-4">
+          <div class="bg-indigo-50 p-3 rounded-full mr-4">
+            <svg class="h-6 w-6 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-800">Questions</h3>
+        </div>
+       
+        <p class=" text-3xl font-bold text-gray-900"><%= test.totalScore %></p>
+    
+        <p class="text-sm text-gray-500 mt-1">Total questions to answer</p>
+      </div>
+    </div>
+  </div>
+</center>
+  <form action="/user/tests/<%= test._id %>/attempt" method="POST" class="bg-white rounded-xl shadow-md p-8 border border-gray-100">
+    <div class="flex items-center mb-6">
+      <div class="bg-gray-50 p-3 rounded-full mr-4">
+        <svg class="h-6 w-6 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
+      <h2 class="text-xl font-semibold text-gray-800">Time Settings</h2>
+    </div>
+    
+    <div class="space-y-5 pl-4 md:pl-16">
+      <div class="flex items-center p-4 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+        <input type="radio" id="defaultTime" name="timeOption" value="default" checked class="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded-full">
+        <label for="defaultTime" class="ml-3 block text-base text-gray-700">
+          Default time (<%= test.timeLimit %> minutes)
+        </label>
+      </div>
+      
+      <div class="flex items-center p-4 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+        <input type="radio" id="noTimeLimit" name="timeOption" value="no_limit" class="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded-full">
+        <label for="noTimeLimit" class="ml-3 block text-base text-gray-700">
+          No time limit
+        </label>
+      </div>
+      
+      <div class="flex items-center p-4 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+        <input type="radio" id="customTime" name="timeOption" value="custom" class="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded-full">
+        <label for="customTime" class="ml-3 block text-base text-gray-700">
+          Custom time:
+        </label>
+        <div class="relative ml-3">
+          <input 
+            type="number" 
+            id="customTimeValue" 
+            name="customTimeValue" 
+            min="1" 
+            max="180" 
+            value="<%= test.timeLimit %>" 
+            class="w-24 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-base" 
+            onclick="document.getElementById('customTime').checked = true; this.disabled = false;"
+          >
+          <span class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-500">min</span>
+        </div>
+      </div>
+    </div>
+    
+    <% if (!user) { %>
+      <div class="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-5">
+        <div class="flex">
+          <div class="flex-shrink-0">
+            <svg class="h-6 w-6 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="ml-3">
+            <h3 class="text-base font-medium text-amber-800">Guest Mode</h3>
+            <div class="mt-2 text-sm text-amber-700">
+              <p>You are taking this test in guest mode. Your test data will be temporarily stored and may be lost if you refresh the page.</p>
+              <div class="mt-4 flex flex-wrap gap-3">
+                <a href="/auth/login?redirect=/user/test/<%= test._id %>/start" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200">
+                  <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
+                  </svg>
+                  Login
+                </a>
+                <a href="/auth/register?redirect=/user/test/<%= test._id %>/start" class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-lg shadow-sm text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200">
+                  <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
+                  </svg>
+                  Register
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% } %>
+    
+    <div class="mt-8">
+      <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white py-3 px-6 rounded-lg transition duration-300 shadow-md flex items-center justify-center text-lg font-medium">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        Start Test
+      </button>
+    </div>
+  </form>
+  
+  <div class="mt-6 text-center">
+    <a href="/user/tests" class="inline-flex items-center text-blue-600 hover:text-blue-800 transition duration-200">
+      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+      </svg>
+      Back to test list
+    </a>
+  </div>
+</div>
+
+<%scripts = `
+<script src="/js/user/test-start.js"></script>
+`; %>

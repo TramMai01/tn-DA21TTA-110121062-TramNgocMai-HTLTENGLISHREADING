@@ -1,0 +1,204 @@
+<div class="max-w-7xl mx-auto">
+  <div class="bg-gradient-to-r from-blue-50 to-indigo-50 shadow-md rounded-b-lg">
+    <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h1 class="text-3xl font-bold text-gray-900">Test List</h1>
+          <p class="mt-2 text-gray-600">Select a test to practice your reading comprehension skills</p>
+          <% if (totalTests) { %>
+            <p class="mt-1 text-sm text-gray-500">Showing <%= ((currentPage - 1) * 3) + 1 %>-<%= Math.min(currentPage * 3, totalTests) %> of <%= totalTests %> tests</p>
+          <% } %>
+        </div>
+        <form method="get" action="/user/tests" class="mt-4 sm:mt-0 flex flex-col sm:flex-row sm:items-center">
+          <input type="hidden" name="page" value="<%= currentPage %>">
+          <label for="questionType" class="block text-sm font-medium text-gray-700 mb-1 sm:mb-0 sm:mr-2">Filter by question type:</label>
+          <select id="questionType" name="questionType" class="block w-full sm:w-64 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
+            <option value="">All</option>
+            <option value="multiple_choice" <%= (typeof questionType !== 'undefined' && questionType === 'multiple_choice') ? 'selected' : '' %>>Multiple Choice</option>
+            <option value="fill_blank" <%= (typeof questionType !== 'undefined' && questionType === 'fill_blank') ? 'selected' : '' %>>Fill in the Blank</option>
+            <option value="matching" <%= (typeof questionType !== 'undefined' && questionType === 'matching') ? 'selected' : '' %>>Matching</option>
+            <option value="true_false_not_given" <%= (typeof questionType !== 'undefined' && questionType === 'true_false_not_given') ? 'selected' : '' %>>True/False/Not Given</option>
+            <option value="short_answer" <%= (typeof questionType !== 'undefined' && questionType === 'short_answer') ? 'selected' : '' %>>Short Answer</option>
+          </select>
+          <button type="submit" class="mt-2 sm:mt-0 sm:ml-2 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition">Filter</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto py-8 sm:px-6 lg:px-8">
+    
+    <% if (tests && tests.length > 0) { %>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
+        <% tests.forEach(test => { %>
+          <div class="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div class="h-3 bg-gradient-to-r from-blue-500 to-indigo-600"></div>
+            <div class="p-6">
+              <h4 class="text-xl font-bold text-gray-800 mb-3"><%= test.title %></h4>
+              <p class="text-gray-600 mb-5 line-clamp-2"><%= test.description || 'Reading skills assessment test' %></p>
+              
+              <div class="flex flex-wrap gap-2 mb-5">
+                <span class="bg-blue-50 text-blue-700 text-xs font-medium px-2 py-1 rounded-full flex items-center">
+                  <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  </svg>
+                  <%= test.passages ? test.passages.length : 0 %> passages
+                </span>
+                <span class="bg-green-50 text-green-700 text-xs font-medium px-2 py-1 rounded-full flex items-center">
+                  <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  <%= test.timeLimit %> minutes
+                </span>
+                <span class="bg-purple-50 text-purple-700 text-xs font-medium px-2 py-1 rounded-full flex items-center">
+                  <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
+                  </svg>
+                  <%= test.totalScore %> questions
+                </span>
+              </div>
+              
+              <div class="flex space-x-3 pt-2">
+                <a href="/user/tests/<%= test._id %>/start" class="flex items-center justify-center bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white px-4 py-2 rounded-lg transition duration-300 shadow-sm">
+                  <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  Start Test
+                </a>
+              </div>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+
+      <!-- Pagination -->
+      <% if (totalPages > 1) { %>
+        <div class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6 mt-8 rounded-lg shadow-sm">
+          <div class="flex flex-1 justify-between sm:hidden">
+            <!-- Mobile pagination -->
+            <% if (currentPage > 1) { %>
+              <a href="/user/tests?page=<%= currentPage - 1 %>" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">
+                Previous
+              </a>
+            <% } else { %>
+              <span class="relative inline-flex items-center rounded-md border border-gray-300 bg-gray-100 px-4 py-2 text-sm font-medium text-gray-400 cursor-not-allowed">
+                Previous
+              </span>
+            <% } %>
+            <% if (currentPage < totalPages) { %>
+              <a href="/user/tests?page=<%= currentPage + 1 %>" class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">
+                Next
+              </a>
+            <% } else { %>
+              <span class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-gray-100 px-4 py-2 text-sm font-medium text-gray-400 cursor-not-allowed">
+                Next
+              </span>
+            <% } %>
+          </div>
+          <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+            <div>
+              <p class="text-sm text-gray-700">
+                Showing page <span class="font-medium"><%= currentPage %></span> of <span class="font-medium"><%= totalPages %></span>
+                (<span class="font-medium"><%= totalTests %></span> total tests)
+              </p>
+            </div>
+            <div>
+              <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+                <!-- Previous button -->
+                <% if (currentPage > 1) { %>
+                  <a href="/user/tests?page=<%= currentPage - 1 %>" class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
+                    <span class="sr-only">Previous</span>
+                    <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
+                    </svg>
+                  </a>
+                <% } else { %>
+                  <span class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-300 ring-1 ring-inset ring-gray-300 cursor-not-allowed">
+                    <span class="sr-only">Previous</span>
+                    <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
+                    </svg>
+                  </span>
+                <% } %>
+
+                <!-- Page numbers -->
+                <% 
+                  let startPage = Math.max(1, currentPage - 2);
+                  let endPage = Math.min(totalPages, currentPage + 2);
+                  
+                  // Đảm bảo luôn hiển thị ít nhất 5 trang nếu có thể
+                  if (endPage - startPage < 4) {
+                    if (startPage === 1) {
+                      endPage = Math.min(totalPages, startPage + 4);
+                    } else if (endPage === totalPages) {
+                      startPage = Math.max(1, endPage - 4);
+                    }
+                  }
+                %>
+
+                <% if (startPage > 1) { %>
+                  <a href="/user/tests?page=1" class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">1</a>
+                  <% if (startPage > 2) { %>
+                    <span class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300">...</span>
+                  <% } %>
+                <% } %>
+
+                <% for (let i = startPage; i <= endPage; i++) { %>
+                  <% if (i === currentPage) { %>
+                    <span aria-current="page" class="relative z-10 inline-flex items-center bg-indigo-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"><%= i %></span>
+                  <% } else { %>
+                    <a href="/user/tests?page=<%= i %>" class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"><%= i %></a>
+                  <% } %>
+                <% } %>
+
+                <% if (endPage < totalPages) { %>
+                  <% if (endPage < totalPages - 1) { %>
+                    <span class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300">...</span>
+                  <% } %>
+                  <a href="/user/tests?page=<%= totalPages %>" class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"><%= totalPages %></a>
+                <% } %>
+
+                <!-- Next button -->
+                <% if (currentPage < totalPages) { %>
+                  <a href="/user/tests?page=<%= currentPage + 1 %>" class="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
+                    <span class="sr-only">Next</span>
+                    <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+                    </svg>
+                  </a>
+                <% } else { %>
+                  <span class="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-300 ring-1 ring-inset ring-gray-300 cursor-not-allowed">
+                    <span class="sr-only">Next</span>
+                    <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+                    </svg>
+                  </span>
+                <% } %>
+              </nav>
+            </div>
+          </div>
+        </div>
+      <% } %>
+    <% } else { %>
+      <div class="text-center py-16 bg-white rounded-xl shadow-sm">
+        <div class="bg-gray-50 inline-block p-6 rounded-full mb-4">
+          <svg class="mx-auto h-16 w-16 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h3 class="mt-2 text-lg font-medium text-gray-900">No tests available</h3>
+        <p class="mt-1 text-base text-gray-500">There are currently no tests available in the system.</p>
+        <div class="mt-6">
+          <a href="/" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-50 hover:bg-blue-100">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            Return to Home
+          </a>
+        </div>
+      </div>
+    <% } %>
+  </div>
+</div> 

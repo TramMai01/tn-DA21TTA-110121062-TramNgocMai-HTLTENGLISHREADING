@@ -1,0 +1,811 @@
+[{
+  "_id": {
+    "$oid": "68318a0719d884ef50e54ac8"
+  },
+  "title": "TEST 1 CAMBRIDGE 14",
+  "timeLimit": 60,
+  "allowCustomTime": false,
+  "allowNoTimeLimit": false,
+  "passages": [
+    {
+      "passageId": {
+        "$oid": "683169265c325b3c46a10f21"
+      },
+      "questions": [
+        {
+          "$oid": "6881ae0cf7ac4ac30ef1189b"
+        },
+        {
+          "$oid": "683171385c325b3c46a10f87"
+        },
+        {
+          "$oid": "683171745c325b3c46a10f8f"
+        },
+        {
+          "$oid": "683171a45c325b3c46a10f93"
+        },
+        {
+          "$oid": "6831768719d884ef50e549fc"
+        },
+        {
+          "$oid": "6831769d19d884ef50e54a00"
+        }
+      ],
+      "_id": {
+        "$oid": "68a80e0c23a208d528cc79fe"
+      }
+    },
+    {
+      "passageId": {
+        "$oid": "683177d819d884ef50e54a0a"
+      },
+      "questions": [
+        {
+          "$oid": "6881b17df7ac4ac30ef1198d"
+        },
+        {
+          "$oid": "6831816319d884ef50e54a41"
+        },
+        {
+          "$oid": "683181f019d884ef50e54a55"
+        },
+        {
+          "$oid": "6881b5b6f7ac4ac30ef11b06"
+        }
+      ],
+      "_id": {
+        "$oid": "68a80e0c23a208d528cc79ff"
+      }
+    },
+    {
+      "passageId": {
+        "$oid": "6831849719d884ef50e54a65"
+      },
+      "questions": [
+        {
+          "$oid": "683185d719d884ef50e54a6d"
+        },
+        {
+          "$oid": "683187ef19d884ef50e54aa7"
+        },
+        {
+          "$oid": "683187fd19d884ef50e54aab"
+        },
+        {
+          "$oid": "6831880c19d884ef50e54aaf"
+        },
+        {
+          "$oid": "6831881919d884ef50e54ab3"
+        },
+        {
+          "$oid": "683189aa19d884ef50e54abb"
+        }
+      ],
+      "_id": {
+        "$oid": "68a80e0c23a208d528cc7a00"
+      }
+    }
+  ],
+  "totalScore": 40,
+  "active": true,
+  "createdBy": {
+    "$oid": "6807151a5ed6ca3abb9b18f1"
+  },
+  "createdAt": {
+    "$date": "2025-05-24T08:57:43.098Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68830e76fcda89ece93986ec"
+  },
+  "title": "TEST 2 CAMBRIDGE 14",
+  "questionTypeFilter": "all",
+  "timeLimit": 60,
+  "allowCustomTime": false,
+  "allowNoTimeLimit": false,
+  "passages": [
+    {
+      "passageId": {
+        "$oid": "6881c560115c810c9db2ff14"
+      },
+      "questions": [
+        {
+          "$oid": "6881c7cf115c810c9db2ff29"
+        },
+        {
+          "$oid": "6881c85b115c810c9db2ff2d"
+        },
+        {
+          "$oid": "6881c87c115c810c9db2ff31"
+        },
+        {
+          "$oid": "6881c8a8115c810c9db2ff35"
+        },
+        {
+          "$oid": "6881c8c2115c810c9db2ff39"
+        },
+        {
+          "$oid": "6882fbfbfcda89ece93985fb"
+        },
+        {
+          "$oid": "6882fc1afcda89ece93985ff"
+        },
+        {
+          "$oid": "6882fc39fcda89ece9398603"
+        },
+        {
+          "$oid": "6882fea3fcda89ece939860b"
+        }
+      ],
+      "_id": {
+        "$oid": "68830fd1fcda89ece9398760"
+      }
+    },
+    {
+      "passageId": {
+        "$oid": "688306bbfcda89ece939861c"
+      },
+      "questions": [
+        {
+          "$oid": "68830846fcda89ece9398658"
+        },
+        {
+          "$oid": "688309b1fcda89ece939867c"
+        }
+      ],
+      "_id": {
+        "$oid": "68830fd1fcda89ece9398761"
+      }
+    },
+    {
+      "passageId": {
+        "$oid": "68830b1ffcda89ece9398690"
+      },
+      "questions": [
+        {
+          "$oid": "68830d03fcda89ece93986c1"
+        },
+        {
+          "$oid": "68830ddafcda89ece93986c9"
+        },
+        {
+          "$oid": "68830e0efcda89ece93986cf"
+        },
+        {
+          "$oid": "68830e24fcda89ece93986d3"
+        },
+        {
+          "$oid": "68830e32fcda89ece93986d7"
+        }
+      ],
+      "_id": {
+        "$oid": "68830fd1fcda89ece9398762"
+      }
+    }
+  ],
+  "totalScore": 40,
+  "active": true,
+  "createdBy": {
+    "$oid": "6807151a5ed6ca3abb9b18f1"
+  },
+  "createdAt": {
+    "$date": "2025-07-25T04:56:22.174Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a57967c08e734dbdaad55d"
+  },
+  "title": "TEST 3 CAMBRIDGE 14",
+  "questionTypeFilter": "all",
+  "timeLimit": 60,
+  "allowCustomTime": false,
+  "allowNoTimeLimit": false,
+  "passages": [
+    {
+      "passageId": {
+        "$oid": "68a05e24d1269fccc047a660"
+      },
+      "questions": [
+        {
+          "$oid": "68a06001d1269fccc047a684"
+        },
+        {
+          "$oid": "68a060ddd1269fccc047a69e"
+        },
+        {
+          "$oid": "68a06106d1269fccc047a6a2"
+        },
+        {
+          "$oid": "68a06144d1269fccc047a6a6"
+        },
+        {
+          "$oid": "68a06417d1269fccc047a6ae"
+        }
+      ],
+      "_id": {
+        "$oid": "68a57a0ac08e734dbdaad5cd"
+      }
+    },
+    {
+      "passageId": {
+        "$oid": "68a56974c08e734dbdaad41f"
+      },
+      "questions": [
+        {
+          "$oid": "68a56bb2c08e734dbdaad46f"
+        },
+        {
+          "$oid": "68a56c31c08e734dbdaad477"
+        },
+        {
+          "$oid": "68a56dd5c08e734dbdaad490"
+        }
+      ],
+      "_id": {
+        "$oid": "68a57a0ac08e734dbdaad5ce"
+      }
+    },
+    {
+      "passageId": {
+        "$oid": "68a57133c08e734dbdaad4c5"
+      },
+      "questions": [
+        {
+          "$oid": "68a573dac08e734dbdaad51b"
+        },
+        {
+          "$oid": "68a5763cc08e734dbdaad523"
+        },
+        {
+          "$oid": "68a5765ec08e734dbdaad527"
+        },
+        {
+          "$oid": "68a57688c08e734dbdaad52b"
+        },
+        {
+          "$oid": "68a576abc08e734dbdaad52f"
+        },
+        {
+          "$oid": "68a576cbc08e734dbdaad533"
+        },
+        {
+          "$oid": "68a578f2c08e734dbdaad53b"
+        }
+      ],
+      "_id": {
+        "$oid": "68a57a0ac08e734dbdaad5cf"
+      }
+    }
+  ],
+  "totalScore": 40,
+  "active": true,
+  "createdBy": {
+    "$oid": "6807151a5ed6ca3abb9b18f1"
+  },
+  "createdAt": {
+    "$date": "2025-08-20T07:29:43.833Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a6da1d53a56bb1d41e57d0"
+  },
+  "title": "TEST 4 CAMBRIDGE 14",
+  "questionTypeFilter": "all",
+  "timeLimit": 60,
+  "allowCustomTime": false,
+  "allowNoTimeLimit": false,
+  "passages": [
+    {
+      "passageId": {
+        "$oid": "68a6c39e53a56bb1d41e5557"
+      },
+      "questions": [
+        {
+          "$oid": "68a6c5d853a56bb1d41e556b"
+        },
+        {
+          "$oid": "68a6ce4a53a56bb1d41e56c4"
+        },
+        {
+          "$oid": "68a6ce6653a56bb1d41e56c8"
+        },
+        {
+          "$oid": "68a6ce7953a56bb1d41e56cc"
+        },
+        {
+          "$oid": "68a6cea553a56bb1d41e56d0"
+        },
+        {
+          "$oid": "68a6cec353a56bb1d41e56d4"
+        }
+      ],
+      "_id": {
+        "$oid": "68a6da1d53a56bb1d41e57d1"
+      }
+    },
+    {
+      "passageId": {
+        "$oid": "68a6cfec53a56bb1d41e5701"
+      },
+      "questions": [
+        {
+          "$oid": "68a6d17a53a56bb1d41e5717"
+        },
+        {
+          "$oid": "68a6d1ca53a56bb1d41e571f"
+        },
+        {
+          "$oid": "68a6d1e153a56bb1d41e5723"
+        },
+        {
+          "$oid": "68a6d1fb53a56bb1d41e5727"
+        },
+        {
+          "$oid": "68a6d21953a56bb1d41e572b"
+        },
+        {
+          "$oid": "68a6d23a53a56bb1d41e572f"
+        },
+        {
+          "$oid": "68a6d37653a56bb1d41e5733"
+        },
+        {
+          "$oid": "68a6d3c853a56bb1d41e5737"
+        }
+      ],
+      "_id": {
+        "$oid": "68a6da1d53a56bb1d41e57d2"
+      }
+    },
+    {
+      "passageId": {
+        "$oid": "68a6d53253a56bb1d41e575f"
+      },
+      "questions": [
+        {
+          "$oid": "68a6d5ee53a56bb1d41e5777"
+        },
+        {
+          "$oid": "68a6d60653a56bb1d41e577b"
+        },
+        {
+          "$oid": "68a6d62953a56bb1d41e577f"
+        },
+        {
+          "$oid": "68a6d65253a56bb1d41e5783"
+        },
+        {
+          "$oid": "68a6d6b753a56bb1d41e578d"
+        },
+        {
+          "$oid": "68a6d6da53a56bb1d41e5791"
+        },
+        {
+          "$oid": "68a6d6e853a56bb1d41e5795"
+        },
+        {
+          "$oid": "68a6d97753a56bb1d41e5799"
+        },
+        {
+          "$oid": "68a6d9c153a56bb1d41e579f"
+        }
+      ],
+      "_id": {
+        "$oid": "68a6da1d53a56bb1d41e57d3"
+      }
+    }
+  ],
+  "totalScore": 40,
+  "active": true,
+  "createdBy": {
+    "$oid": "6807151a5ed6ca3abb9b18f1"
+  },
+  "createdAt": {
+    "$date": "2025-08-21T08:34:37.348Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a6dc1c53a56bb1d41e5826"
+  },
+  "title": "MULTIPLE CHOICE",
+  "questionTypeFilter": "multiple_choice",
+  "timeLimit": 60,
+  "allowCustomTime": false,
+  "allowNoTimeLimit": false,
+  "passages": [
+    {
+      "passageId": {
+        "$oid": "68a56974c08e734dbdaad41f"
+      },
+      "questions": [
+        {
+          "$oid": "68a56c31c08e734dbdaad477"
+        }
+      ],
+      "_id": {
+        "$oid": "68a6dc1c53a56bb1d41e5827"
+      }
+    },
+    {
+      "passageId": {
+        "$oid": "68a6cfec53a56bb1d41e5701"
+      },
+      "questions": [
+        {
+          "$oid": "68a6d37653a56bb1d41e5733"
+        },
+        {
+          "$oid": "68a6d3c853a56bb1d41e5737"
+        }
+      ],
+      "_id": {
+        "$oid": "68a6dc1c53a56bb1d41e5828"
+      }
+    },
+    {
+      "passageId": {
+        "$oid": "68a6d53253a56bb1d41e575f"
+      },
+      "questions": [
+        {
+          "$oid": "68a6d9c153a56bb1d41e579f"
+        }
+      ],
+      "_id": {
+        "$oid": "68a6dc1c53a56bb1d41e5829"
+      }
+    }
+  ],
+  "totalScore": 7,
+  "active": true,
+  "createdBy": {
+    "$oid": "6807151a5ed6ca3abb9b18f1"
+  },
+  "createdAt": {
+    "$date": "2025-08-21T08:43:08.606Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a6dd0253a56bb1d41e5b52"
+  },
+  "title": "FILL IN THE BLANK",
+  "questionTypeFilter": "fill_blank",
+  "timeLimit": 60,
+  "allowCustomTime": false,
+  "allowNoTimeLimit": false,
+  "passages": [
+    {
+      "passageId": {
+        "$oid": "68a56974c08e734dbdaad41f"
+      },
+      "questions": [
+        {
+          "$oid": "68a56dd5c08e734dbdaad490"
+        }
+      ],
+      "_id": {
+        "$oid": "68a6dd0253a56bb1d41e5b53"
+      }
+    },
+    {
+      "passageId": {
+        "$oid": "68a57133c08e734dbdaad4c5"
+      },
+      "questions": [
+        {
+          "$oid": "68a578f2c08e734dbdaad53b"
+        }
+      ],
+      "_id": {
+        "$oid": "68a6dd0253a56bb1d41e5b54"
+      }
+    },
+    {
+      "passageId": {
+        "$oid": "68a6c39e53a56bb1d41e5557"
+      },
+      "questions": [
+        {
+          "$oid": "68a6c5d853a56bb1d41e556b"
+        }
+      ],
+      "_id": {
+        "$oid": "68a6dd0253a56bb1d41e5b55"
+      }
+    },
+    {
+      "passageId": {
+        "$oid": "68a6d53253a56bb1d41e575f"
+      },
+      "questions": [
+        {
+          "$oid": "68a6d97753a56bb1d41e5799"
+        }
+      ],
+      "_id": {
+        "$oid": "68a6dd0253a56bb1d41e5b56"
+      }
+    }
+  ],
+  "totalScore": 22,
+  "active": true,
+  "createdBy": {
+    "$oid": "6807151a5ed6ca3abb9b18f1"
+  },
+  "createdAt": {
+    "$date": "2025-08-21T08:46:58.980Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a6dd7d53a56bb1d41e5ba9"
+  },
+  "title": "MATCHING",
+  "questionTypeFilter": "matching",
+  "timeLimit": 60,
+  "allowCustomTime": false,
+  "allowNoTimeLimit": false,
+  "passages": [
+    {
+      "passageId": {
+        "$oid": "68a05e24d1269fccc047a660"
+      },
+      "questions": [
+        {
+          "$oid": "68a06001d1269fccc047a684"
+        },
+        {
+          "$oid": "68a06417d1269fccc047a6ae"
+        }
+      ],
+      "_id": {
+        "$oid": "68a6dd7d53a56bb1d41e5baa"
+      }
+    },
+    {
+      "passageId": {
+        "$oid": "68a56974c08e734dbdaad41f"
+      },
+      "questions": [
+        {
+          "$oid": "68a56bb2c08e734dbdaad46f"
+        }
+      ],
+      "_id": {
+        "$oid": "68a6dd7d53a56bb1d41e5bab"
+      }
+    },
+    {
+      "passageId": {
+        "$oid": "68a57133c08e734dbdaad4c5"
+      },
+      "questions": [
+        {
+          "$oid": "68a573dac08e734dbdaad51b"
+        }
+      ],
+      "_id": {
+        "$oid": "68a6dd7d53a56bb1d41e5bac"
+      }
+    },
+    {
+      "passageId": {
+        "$oid": "68a6cfec53a56bb1d41e5701"
+      },
+      "questions": [
+        {
+          "$oid": "68a6d17a53a56bb1d41e5717"
+        }
+      ],
+      "_id": {
+        "$oid": "68a6dd7d53a56bb1d41e5bad"
+      }
+    }
+  ],
+  "totalScore": 26,
+  "active": true,
+  "createdBy": {
+    "$oid": "6807151a5ed6ca3abb9b18f1"
+  },
+  "createdAt": {
+    "$date": "2025-08-21T08:49:01.866Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a6ddfd53a56bb1d41e5bdb"
+  },
+  "title": "TRUE/FALSE/NOTGIVE",
+  "questionTypeFilter": "true_false_not_given",
+  "timeLimit": 60,
+  "allowCustomTime": false,
+  "allowNoTimeLimit": false,
+  "passages": [
+    {
+      "passageId": {
+        "$oid": "68a05e24d1269fccc047a660"
+      },
+      "questions": [
+        {
+          "$oid": "68a060ddd1269fccc047a69e"
+        },
+        {
+          "$oid": "68a06106d1269fccc047a6a2"
+        },
+        {
+          "$oid": "68a06144d1269fccc047a6a6"
+        }
+      ],
+      "_id": {
+        "$oid": "68a6ddfd53a56bb1d41e5bdc"
+      }
+    },
+    {
+      "passageId": {
+        "$oid": "68a57133c08e734dbdaad4c5"
+      },
+      "questions": [
+        {
+          "$oid": "68a5763cc08e734dbdaad523"
+        },
+        {
+          "$oid": "68a5765ec08e734dbdaad527"
+        },
+        {
+          "$oid": "68a57688c08e734dbdaad52b"
+        },
+        {
+          "$oid": "68a576abc08e734dbdaad52f"
+        },
+        {
+          "$oid": "68a576cbc08e734dbdaad533"
+        }
+      ],
+      "_id": {
+        "$oid": "68a6ddfd53a56bb1d41e5bdd"
+      }
+    },
+    {
+      "passageId": {
+        "$oid": "68a6c39e53a56bb1d41e5557"
+      },
+      "questions": [
+        {
+          "$oid": "68a6ce4a53a56bb1d41e56c4"
+        },
+        {
+          "$oid": "68a6ce6653a56bb1d41e56c8"
+        },
+        {
+          "$oid": "68a6ce7953a56bb1d41e56cc"
+        },
+        {
+          "$oid": "68a6cea553a56bb1d41e56d0"
+        },
+        {
+          "$oid": "68a6cec353a56bb1d41e56d4"
+        }
+      ],
+      "_id": {
+        "$oid": "68a6ddfd53a56bb1d41e5bde"
+      }
+    },
+    {
+      "passageId": {
+        "$oid": "68a6cfec53a56bb1d41e5701"
+      },
+      "questions": [
+        {
+          "$oid": "68a6d1ca53a56bb1d41e571f"
+        },
+        {
+          "$oid": "68a6d1e153a56bb1d41e5723"
+        },
+        {
+          "$oid": "68a6d1fb53a56bb1d41e5727"
+        },
+        {
+          "$oid": "68a6d21953a56bb1d41e572b"
+        },
+        {
+          "$oid": "68a6d23a53a56bb1d41e572f"
+        }
+      ],
+      "_id": {
+        "$oid": "68a6ddfd53a56bb1d41e5bdf"
+      }
+    },
+    {
+      "passageId": {
+        "$oid": "68a6d53253a56bb1d41e575f"
+      },
+      "questions": [
+        {
+          "$oid": "68a6d5ee53a56bb1d41e5777"
+        },
+        {
+          "$oid": "68a6d60653a56bb1d41e577b"
+        },
+        {
+          "$oid": "68a6d62953a56bb1d41e577f"
+        },
+        {
+          "$oid": "68a6d65253a56bb1d41e5783"
+        },
+        {
+          "$oid": "68a6d6b753a56bb1d41e578d"
+        },
+        {
+          "$oid": "68a6d6da53a56bb1d41e5791"
+        },
+        {
+          "$oid": "68a6d6e853a56bb1d41e5795"
+        }
+      ],
+      "_id": {
+        "$oid": "68a6ddfd53a56bb1d41e5be0"
+      }
+    }
+  ],
+  "totalScore": 25,
+  "active": true,
+  "createdBy": {
+    "$oid": "6807151a5ed6ca3abb9b18f1"
+  },
+  "createdAt": {
+    "$date": "2025-08-21T08:51:09.859Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a8126ec9c0903d99c8a0f9"
+  },
+  "title": "SHORT ANSWER",
+  "questionTypeFilter": "short_answer",
+  "timeLimit": 60,
+  "allowCustomTime": false,
+  "allowNoTimeLimit": false,
+  "passages": [
+    {
+      "passageId": {
+        "$oid": "68a80f2523a208d528cc7a78"
+      },
+      "questions": [
+        {
+          "$oid": "68a80fe923a208d528cc7a95"
+        },
+        {
+          "$oid": "68a8102e23a208d528cc7a99"
+        },
+        {
+          "$oid": "68a8105923a208d528cc7a9d"
+        }
+      ],
+      "_id": {
+        "$oid": "68a8126ec9c0903d99c8a0fa"
+      }
+    }
+  ],
+  "totalScore": 3,
+  "active": true,
+  "createdBy": {
+    "$oid": "6807151a5ed6ca3abb9b18f1"
+  },
+  "createdAt": {
+    "$date": "2025-08-22T06:47:10.500Z"
+  },
+  "__v": 0
+}]

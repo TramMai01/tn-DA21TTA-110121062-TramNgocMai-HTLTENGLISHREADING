@@ -1,0 +1,4405 @@
+[{
+  "_id": {
+    "$oid": "683171385c325b3c46a10f87"
+  },
+  "passageId": {
+    "$oid": "683169265c325b3c46a10f21"
+  },
+  "title": "Questions 9-13 \r\nDo the following statements agree with the information given in Reading Passage 1? \r\nIn boxes 9-13 on your answer sheet, write \r\nTRUE             if the statement agrees with the information \r\nFALSE            if the statement contradicts the information \r\nNOT GIVEN   if there is no information on this",
+  "questionType": "true_false_not_given",
+  "questionText": "9. Children with good self-control are known to be likely to do well at school later on.",
+  "correctAnswer": "true",
+  "score": 1,
+  "order": 2,
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-24T07:11:52.468Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:03:39.054Z"
+  },
+  "__v": 1,
+  "wordLimits": []
+},
+{
+  "_id": {
+    "$oid": "683171745c325b3c46a10f8f"
+  },
+  "passageId": {
+    "$oid": "683169265c325b3c46a10f21"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "10. The way a child plays may provide information about possible medical problems.",
+  "correctAnswer": "true",
+  "score": 1,
+  "order": 3,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-24T07:12:52.166Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-24T03:58:54.440Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "683171a45c325b3c46a10f93"
+  },
+  "passageId": {
+    "$oid": "683169265c325b3c46a10f21"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "11. Playing with dolls was found to benefit girls' writing more than boys' writing.",
+  "correctAnswer": "not_given",
+  "score": 1,
+  "order": 4,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-24T07:13:40.185Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-24T03:59:27.001Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6831768719d884ef50e549fc"
+  },
+  "passageId": {
+    "$oid": "683169265c325b3c46a10f21"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "12. Children had problems thinking up ideas when they first created the story with Lego.",
+  "correctAnswer": "false",
+  "score": 1,
+  "order": 5,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-24T07:34:31.560Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-24T03:59:36.942Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6831769d19d884ef50e54a00"
+  },
+  "passageId": {
+    "$oid": "683169265c325b3c46a10f21"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "13. People nowadays regard children's play as less significant than they did in the past.",
+  "correctAnswer": "true",
+  "score": 1,
+  "order": 6,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-24T07:34:53.964Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-24T03:59:44.757Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6831816319d884ef50e54a41"
+  },
+  "passageId": {
+    "$oid": "683177d819d884ef50e54a0a"
+  },
+  "title": "Questions 19 and 20 \r\nChoose TWO letters, A-E. \r\nWrite the correct letters in boxes 19 and 20 on your answer sheet.",
+  "questionType": "multiple_choice",
+  "questionText": "Which TWO of the following statements are made in the text about the Amsterdam \r\nbike-sharing scheme of 1999?",
+  "options": [
+    "A. It was initially opposed by a government department",
+    "B. It failed when a partner in the scheme withdrew support.",
+    "C. It aimed to be more successful than the Copenhagen scheme",
+    "D. It was made possible by a change in people's attitudes.",
+    "E. It attracted interest from a range of bike designers."
+  ],
+  "multipleAnswers": true,
+  "correctAnswer": [
+    "B. It failed when a partner in the scheme withdrew support.",
+    "D. It was made possible by a change in people's attitudes."
+  ],
+  "score": 2,
+  "order": 2,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-24T08:20:51.586Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-24T04:09:32.453Z"
+  },
+  "__v": 9
+},
+{
+  "_id": {
+    "$oid": "683181f019d884ef50e54a55"
+  },
+  "passageId": {
+    "$oid": "683177d819d884ef50e54a0a"
+  },
+  "title": "Questions 21 and 22 \r\nChoose TWO letters, A-E. \r\nWrite the correct letters in boxes 21 and 22 on your answer sheet.",
+  "questionType": "multiple_choice",
+  "questionText": "Which TWO of the following statements are made in the text about Amsterdam today?",
+  "options": [
+    "A. The majority of residents would like to prevent all cars from entering the city.",
+    "B. There is little likelihood of the city having another bike-sharing scheme.",
+    "C. More trips in the city are made by bike than by any other form of transport.",
+    "D. A bike-sharing scheme would benefit residents who use public transport.",
+    "E. The city has a reputation as a place that welcomes cyclists."
+  ],
+  "multipleAnswers": true,
+  "correctAnswer": [
+    "D. A bike-sharing scheme would benefit residents who use public transport.",
+    "E. The city has a reputation as a place that welcomes cyclists."
+  ],
+  "score": 2,
+  "order": 3,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-24T08:23:12.479Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-24T04:09:41.092Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "683185d719d884ef50e54a6d"
+  },
+  "passageId": {
+    "$oid": "6831849719d884ef50e54a65"
+  },
+  "title": "Questions 27-31 \r\nLook at the following statements (Questions 27-31) and the list of researchers below. \r\nMatch each statement with the correct researcher, A-F. \r\nWrite the correct letter, A-F, in boxes 27-31 on your answer sheet.",
+  "questionType": "matching",
+  "questionText": "NB You may use any letter more than once",
+  "matchingOptions": {
+    "headings": [
+      "A.  Pfeffer",
+      "B.  Lucas",
+      "C.  Maroudas et al.",
+      "D.  Ng and Sorensen",
+      "E.  Enz and Siguaw",
+      "F.  Deery"
+    ],
+    "paragraphs": [
+      "27. Hotel managers need to know what would encourage good staff to remain.",
+      "28. The actions of managers may make staff feel they shouldn't move to a different employer.",
+      "29. Little is done in the hospitality industry to help workers improve their skills.",
+      "30. Staff are less likely to change jobs if cooperation is encouraged.",
+      "31. Dissatisfaction with pay is not the only reason why hospitality workers change jobs."
+    ],
+    "_id": {
+      "$oid": "68a6cae553a56bb1d41e55f1"
+    }
+  },
+  "score": 5,
+  "order": 1,
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-24T08:39:51.816Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-21T07:29:41.462Z"
+  },
+  "__v": 1,
+  "correctAnswer": {
+    "type": "one_to_one",
+    "selections": {
+      "0": 4,
+      "1": 3,
+      "2": 1,
+      "3": 3,
+      "4": 2
+    }
+  },
+  "wordLimits": []
+},
+{
+  "_id": {
+    "$oid": "683187ef19d884ef50e54aa7"
+  },
+  "passageId": {
+    "$oid": "6831849719d884ef50e54a65"
+  },
+  "title": "Questions 32-35 \r\nDo the following statements agree with the claims of the writer in Reading Passage 3? \r\nIn boxes 32-35 on your answer sheet, write \r\nTrue  if the statement agrees with the claims of the writer \r\nFalse  if the statement contradicts the claims of the writer \r\nNot given  if it is impossible to say what the writer thinks about this",
+  "questionType": "true_false_not_given",
+  "questionText": "32. One reason for high staff turnover in the hospitality industry is poor morale.",
+  "correctAnswer": "true",
+  "score": 1,
+  "order": 2,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-24T08:48:47.850Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-24T04:14:45.718Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "683187fd19d884ef50e54aab"
+  },
+  "passageId": {
+    "$oid": "6831849719d884ef50e54a65"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "33. Research has shown that staff have a tendency to dislike their workplace.",
+  "correctAnswer": "false",
+  "score": 1,
+  "order": 3,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-24T08:49:01.749Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-24T04:11:22.967Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6831880c19d884ef50e54aaf"
+  },
+  "passageId": {
+    "$oid": "6831849719d884ef50e54a65"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "34. An improvement in working conditions and job security makes staff satisfied with their jobs.",
+  "correctAnswer": "false",
+  "score": 1,
+  "order": 4,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-24T08:49:16.178Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-24T04:11:38.317Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6831881919d884ef50e54ab3"
+  },
+  "passageId": {
+    "$oid": "6831849719d884ef50e54a65"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "35. Staff should be allowed to choose when they take breaks during the working day.",
+  "correctAnswer": "not_given",
+  "score": 1,
+  "order": 5,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-24T08:49:29.947Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-24T04:11:46.259Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "683189aa19d884ef50e54abb"
+  },
+  "passageId": {
+    "$oid": "6831849719d884ef50e54a65"
+  },
+  "title": "Questions 36-40 \r\nComplete the summary below. \r\nChoose ONE WORD ONLY from the passage for each answer. \r\nWrite your answers in boxes 36-40 on your answer sheet.",
+  "questionType": "fill_blank",
+  "questionText": "Fun at work\r\n- Tews, Michel and Stafford carried out research on staff in an American chain of (36) ..............................\r\n- They discovered that activities designed for staff to have fun improved their (37) ..............................\r\n- Management involvement led to lower staff (38) ..............................\r\n- They also found that the activities needed to fit with both the company’s (39) .............................. and the (40) .............................. of the staff\r\n- A balance was required between a degree of freedom and maintaining work standards",
+  "blankStyle": "one_word_only",
+  "oneWordAnswers": [
+    "restaurants",
+    "performance",
+    "turnover",
+    "goals",
+    "characteristics"
+  ],
+  "correctAnswer": [
+    "restaurants",
+    "performance",
+    "turnover",
+    "goals",
+    "characteristics"
+  ],
+  "score": 5,
+  "order": 6,
+  "wordLimits": [
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "blankNumbers": [
+    36,
+    37,
+    38,
+    39,
+    40
+  ],
+  "createdAt": {
+    "$date": "2025-05-24T08:56:10.803Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-24T04:15:50.962Z"
+  },
+  "__v": 4
+},
+{
+  "_id": {
+    "$oid": "683598ae38dbea60b0f1bf1e"
+  },
+  "passageId": {
+    "$oid": "6835983838dbea60b0f1bf0d"
+  },
+  "title": "Questions 1-8 \r\nDo the following statements agree with the information given in Reading Passage 1? \r\nIn boxes 1-8 on your answer sheet, write \r\nTRUE  if the statement agrees with the information \r\nFALSE  if the statement contradicts the information \r\nNOT GIVEN  if there is no information on this",
+  "questionType": "true_false_not_given",
+  "questionText": "1. Henderson rarely visited the area around Press estate when he was younger.",
+  "correctAnswer": "true",
+  "score": 1,
+  "order": 1,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-27T10:49:18.028Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:09:04.983Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "683598ed38dbea60b0f1bf26"
+  },
+  "passageId": {
+    "$oid": "6835983838dbea60b0f1bf0d"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "2. Henderson pursued a business career because it was what his family wanted.",
+  "correctAnswer": "false",
+  "score": 1,
+  "order": 2,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-27T10:50:21.443Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:09:11.664Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "683599c63e219af2b9e82c63"
+  },
+  "passageId": {
+    "$oid": "6835983838dbea60b0f1bf0d"
+  },
+  "questionType": "true_false_not_given",
+  "questionText": "3. Henderson and Notman were surprised by the results of their 1865 experiment.",
+  "correctAnswer": "not_given",
+  "score": 1,
+  "order": 3,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-27T10:53:58.792Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:09:17.989Z"
+  },
+  "__v": 0,
+  "title": ""
+},
+{
+  "_id": {
+    "$oid": "683599df3e219af2b9e82c6b"
+  },
+  "passageId": {
+    "$oid": "6835983838dbea60b0f1bf0d"
+  },
+  "questionType": "true_false_not_given",
+  "questionText": "4. There were many similarities between Henderson's early landscapes and those of Notman.",
+  "correctAnswer": "true",
+  "score": 1,
+  "order": 4,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-27T10:54:23.603Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:09:24.252Z"
+  },
+  "__v": 0,
+  "title": ""
+},
+{
+  "_id": {
+    "$oid": "683599ee3e219af2b9e82c6f"
+  },
+  "passageId": {
+    "$oid": "6835983838dbea60b0f1bf0d"
+  },
+  "questionType": "true_false_not_given",
+  "questionText": "5. The studio that Henderson opened in 1866 was close to his home.",
+  "correctAnswer": "false",
+  "score": 1,
+  "order": 5,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-27T10:54:38.460Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:09:29.886Z"
+  },
+  "__v": 0,
+  "title": ""
+},
+{
+  "_id": {
+    "$oid": "683599fb3e219af2b9e82c73"
+  },
+  "passageId": {
+    "$oid": "6835983838dbea60b0f1bf0d"
+  },
+  "questionType": "true_false_not_given",
+  "questionText": "6. Henderson gave up portraiture so that he could focus on taking photographs of scenery.",
+  "correctAnswer": "not_given",
+  "score": 1,
+  "order": 6,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-27T10:54:51.346Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:09:36.498Z"
+  },
+  "__v": 0,
+  "title": ""
+},
+{
+  "_id": {
+    "$oid": "68359a0b3e219af2b9e82c77"
+  },
+  "passageId": {
+    "$oid": "6835983838dbea60b0f1bf0d"
+  },
+  "questionType": "true_false_not_given",
+  "questionText": "7. When Henderson began work for the Intercolonial Railway, the Montreal to Halifax line had been finished.",
+  "correctAnswer": "true",
+  "score": 1,
+  "order": 7,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-27T10:55:07.733Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:09:45.789Z"
+  },
+  "__v": 0,
+  "title": ""
+},
+{
+  "_id": {
+    "$oid": "68359a173e219af2b9e82c7b"
+  },
+  "passageId": {
+    "$oid": "6835983838dbea60b0f1bf0d"
+  },
+  "questionType": "true_false_not_given",
+  "questionText": "8. Henderson's last work as a photographer was with the Canadian Pacific Railway.",
+  "correctAnswer": "false",
+  "score": 1,
+  "order": 8,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-27T10:55:19.851Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:09:54.066Z"
+  },
+  "__v": 0,
+  "title": ""
+},
+{
+  "_id": {
+    "$oid": "6835b3b8dc688f68e8232fef"
+  },
+  "passageId": {
+    "$oid": "6835983838dbea60b0f1bf0d"
+  },
+  "title": "Questions 9-13 \r\nComplete the notes below. \r\nChoose ONE WORD ONLY from the passage for each answer. \r\nWrite your answers in boxes 9-13 on your answer sheet.",
+  "questionType": "fill_blank",
+  "questionText": "Alexander Henderson\r\n\r\nEarly life\r\n- Was born in Scotland in 1831 – father was a (9) ............................\r\n- Trained as an accountant, emigrated to Canada in 1855\r\n\r\nStart of a photographic career\r\n- Opened up a photographic studio in 1866\r\n- Took photos of city life, but preferred landscape photography\r\n- People bought Henderson’s photos because photography took up considerable time and the (10) ............................ was heavy\r\n- The photographs Henderson sold were (11) ............................ or souvenirs\r\n\r\nTravelling as a professional photographer\r\n- Travelled widely in Quebec and Ontario in 1870s and 1880s\r\n- Took many trips along eastern rivers in a (12) ............................\r\n- Worked for Canadian railways between 1875 and 1897\r\n- Worked for CPR in 1885 and photographed the (13) ............................ and the railway at Rogers Pass",
+  "blankStyle": "one_word_only",
+  "oneWordAnswers": [
+    "one",
+    "two",
+    "three",
+    "four",
+    "five"
+  ],
+  "correctAnswer": [
+    "one",
+    "two",
+    "three",
+    "four",
+    "five"
+  ],
+  "score": 5,
+  "order": 9,
+  "wordLimits": [
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "blankNumbers": [
+    9,
+    10,
+    11,
+    12,
+    13
+  ],
+  "createdAt": {
+    "$date": "2025-05-27T12:44:40.945Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:10:35.870Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "68368852d34c36cb45f7b2c6"
+  },
+  "passageId": {
+    "$oid": "68368698d34c36cb45f7b2a2"
+  },
+  "title": "Questions 14-18 \r\nReading Passage 2 has nine sections, A-I.",
+  "questionType": "matching",
+  "questionText": "Which section contains the following information? \r\nWrite the correct letter, A-I, in boxes 14-18 on your answer sheet.",
+  "matchingOptions": {
+    "headings": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H",
+      "I"
+    ],
+    "paragraphs": [
+      "14. why some people avoided hospitals in the 19th century",
+      "15. a suggestion that the popularity of tall buildings is linked to prestige",
+      "16. a comparison between the circulation of air in a 19th-century building and modern standards",
+      "17. how Short tested the circulation of air in a 19th-century building",
+      "18. an implication that advertising led to the large increase in the use of air conditioning"
+    ],
+    "_id": {
+      "$oid": "687c5e47f1c59abc1442083d"
+    }
+  },
+  "score": 5,
+  "order": 1,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T03:51:46.478Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:11:03.407Z"
+  },
+  "__v": 0,
+  "correctAnswer": {
+    "type": "one_to_one",
+    "selections": {
+      "0": 0,
+      "1": 1,
+      "2": 2,
+      "3": 3,
+      "4": 4
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "683689d7d34c36cb45f7b2ce"
+  },
+  "passageId": {
+    "$oid": "68368698d34c36cb45f7b2a2"
+  },
+  "title": "Questions 19-26 \r\nComplete the summary below. \r\nChoose ONE WORD ONLY from the passage for each answer. \r\nWrite your answers in boxes 19-26 on your answer sheet.",
+  "questionType": "fill_blank",
+  "questionText": "Ventilation in 19th-century hospital wards\r\n- Professor Alan Short examined the work of John Shaw Billings, who influenced the architectural (19) .................. of hospitals to ensure they had good ventilation.\r\n- He calculated that (20) .................. in the air coming from patients suffering from (21) .................. would not have harmed other patients.\r\n- He also found that the air in (22) .................. in hospitals could change as often as in a modern operating theatre.\r\n- He suggests that energy use could be reduced by locating more patients in (23) .................. areas.\r\n\r\n- A major reason for improving ventilation in 19th-century hospitals was the demand from the (24) .................. for protection against bad air, known as (25) ..................\r\n- These were blamed for the spread of disease for hundreds of years, including epidemics of (26) .................. in London and Paris in the middle of the 19th century.",
+  "blankStyle": "one_word_only",
+  "oneWordAnswers": [
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight"
+  ],
+  "correctAnswer": [
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight"
+  ],
+  "score": 8,
+  "order": 2,
+  "wordLimits": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "blankNumbers": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "createdAt": {
+    "$date": "2025-05-28T03:58:15.350Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:11:38.131Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "68368b3bd34c36cb45f7b2d4"
+  },
+  "passageId": {
+    "$oid": "68368698d34c36cb45f7b2a2"
+  },
+  "title": "You should spend about 20 minutes on Questions 27-40, which are based on Reading Passage 3 on pages 47 and 48. \r\nQuestions 27-34",
+  "questionType": "matching",
+  "questionText": "Reading Passage 3 has eight sections, A-H. \r\nChoose the correct heading for each section from the list of headings below. \r\nWrite the correct number, iix, in boxes 27-34 on your answer sheet.",
+  "matchingOptions": {
+    "headings": [
+      "I. Complaints about the impact of a certain approach",
+      "II. Fundamental beliefs that are in fact incorrect",
+      "III. Early recommendations concerning business activities",
+      "IV. Organisations that put a new approach into practice",
+      "V. Companies that have suffered from changing their approach",
+      "VI. What people are increasingly expected to do",
+      "VII. How to achieve outcomes that are currently impossible",
+      "VIII. Neither approach guarantees continuous improvement",
+      "IX. Evidence that a certain approach can have more disadvantages than advantages"
+    ],
+    "paragraphs": [
+      "27. Section A",
+      "28. Section B",
+      "29. Section C",
+      "30. Section D",
+      "31. Section E",
+      "32. Section F",
+      "33. Section G",
+      "34. Section H"
+    ],
+    "_id": {
+      "$oid": "687c5eb3f1c59abc1442084c"
+    }
+  },
+  "score": 8,
+  "order": 3,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T04:04:11.745Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:12:51.988Z"
+  },
+  "__v": 0,
+  "correctAnswer": {
+    "type": "one_to_one",
+    "selections": {
+      "0": 0,
+      "1": 1,
+      "2": 2,
+      "3": 3,
+      "4": 4,
+      "5": 5,
+      "6": 6,
+      "7": 7
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "68368ecbd34c36cb45f7b328"
+  },
+  "passageId": {
+    "$oid": "68368c5fd34c36cb45f7b313"
+  },
+  "title": "Questions 35-37 \r\nComplete the sentences below. \r\nChoose ONE WORD ONLY from the passage for each answer. \r\nWrite your answers in boxes 35-37 on your answer sheet",
+  "questionType": "fill_blank",
+  "questionText": "Numerous training sessions are aimed at people who feel they are not (35) ................................... enough.\r\nBeing organised appeals to people who regard themselves as (36) ...................................\r\nMany people feel (37) ................................... with aspects of their work.",
+  "blankStyle": "one_word_only",
+  "oneWordAnswers": [
+    "one",
+    "two",
+    "three"
+  ],
+  "correctAnswer": [
+    "one",
+    "two",
+    "three"
+  ],
+  "score": 3,
+  "order": 1,
+  "wordLimits": [
+    1,
+    1,
+    1
+  ],
+  "blankNumbers": [
+    1,
+    2,
+    3
+  ],
+  "createdAt": {
+    "$date": "2025-05-28T04:19:23.234Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:15:55.742Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "68368ef7d34c36cb45f7b32e"
+  },
+  "passageId": {
+    "$oid": "68368c5fd34c36cb45f7b313"
+  },
+  "title": "Questions 38-40 \r\nDo the following statements agree with the information given in Reading Passage 3? \r\nIn boxes 38-40 on your answer sheet, write \r\nTRUE  if the statement agrees with the information \r\nFALSE  if the statement contradicts the information \r\nNOT GIVEN  if there is no information on this",
+  "questionType": "true_false_not_given",
+  "questionText": "38. Both businesses and people aim at order without really considering its value.",
+  "correctAnswer": "true",
+  "score": 1,
+  "order": 2,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T04:20:07.588Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:16:04.762Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68368f04d34c36cb45f7b332"
+  },
+  "passageId": {
+    "$oid": "68368c5fd34c36cb45f7b313"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "39. Innovation is most successful if the people involved have distinct roles.",
+  "correctAnswer": "false",
+  "score": 1,
+  "order": 3,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T04:20:20.101Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:16:12.571Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68368f13d34c36cb45f7b336"
+  },
+  "passageId": {
+    "$oid": "68368c5fd34c36cb45f7b313"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "40. Google was inspired to adopt flexibility by the success of General Electric.",
+  "correctAnswer": "not_given",
+  "score": 1,
+  "order": 4,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T04:20:35.201Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:16:22.905Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "683695ecd34c36cb45f7b445"
+  },
+  "passageId": {
+    "$oid": "6836954bd34c36cb45f7b42e"
+  },
+  "title": "Questions 1-3 \r\nReading Passage 1 has ten sections, A-J.",
+  "questionType": "matching",
+  "questionText": "Which section contains the following information? \r\nWrite the correct letter, A-J, in boxes 1-3 on your answer sheet.",
+  "matchingOptions": {
+    "headings": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H",
+      "J"
+    ],
+    "paragraphs": [
+      "1. information about how non-scientists' assumptions about intelligence influence their behaviour towards others",
+      "2. a reference to lack of clarity over the definition of intelligence",
+      "3. the point that a researcher's implicit and explicit theories may be very different"
+    ],
+    "_id": {
+      "$oid": "687c5f98f1c59abc1442089a"
+    }
+  },
+  "score": 3,
+  "order": 1,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T04:49:48.703Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:16:40.893Z"
+  },
+  "__v": 0,
+  "correctAnswer": {
+    "type": "one_to_one",
+    "selections": {
+      "0": 0,
+      "1": 1,
+      "2": 2
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6836965dd34c36cb45f7b462"
+  },
+  "passageId": {
+    "$oid": "6836954bd34c36cb45f7b42e"
+  },
+  "title": "Questions 4-6 \r\nDo the following statements agree with the claims of the writer in Reading Passage 1? \r\nIn boxes 4-6 on your answer sheet, write \r\nYES  if the statement agrees with the claims of the writer \r\nNO  if the statement contradicts the claims of the writer \r\nNOT GIVEN  if it is impossible to say what the writer thinks about this",
+  "questionType": "true_false_not_given",
+  "questionText": "4. Slow language development in children is likely to prove disappointing to their parents.",
+  "correctAnswer": "true",
+  "score": 1,
+  "order": 2,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T04:51:41.585Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:16:48.030Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6836966bd34c36cb45f7b466"
+  },
+  "passageId": {
+    "$oid": "6836954bd34c36cb45f7b42e"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "5. People's expectations of what children should gain from education are universal.",
+  "correctAnswer": "false",
+  "score": 1,
+  "order": 3,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T04:51:55.386Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:16:58.676Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68369676d34c36cb45f7b46a"
+  },
+  "passageId": {
+    "$oid": "6836954bd34c36cb45f7b42e"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "6. Scholars may discuss theories without fully understanding each other.",
+  "correctAnswer": "not_given",
+  "score": 1,
+  "order": 4,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T04:52:06.157Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:17:05.533Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6836a4b8d34c36cb45f7b4ae"
+  },
+  "passageId": {
+    "$oid": "6836954bd34c36cb45f7b42e"
+  },
+  "title": "Questions 7-13 \r\nLook at the following statements (Questions 7-13) and the list of theories below.",
+  "questionType": "matching",
+  "questionText": "Match each statement with the correct theory, A, B, or C. \r\nWrite the correct letter, A, B, or C, in boxes 7-13 on your answer sheet. \r\nNB You may use any letter more than once.",
+  "matchingOptions": {
+    "headings": [
+      "A. Hamiltonian",
+      "B. Jeffersonian",
+      "C. Jacksonian"
+    ],
+    "paragraphs": [
+      "7. It is desirable for the same possibilities to be open to everyone",
+      "8. No section of society should have preferential treatment at the expense of another",
+      "9. People should only gain benefits on the basis of what they actually achieve.",
+      "10. Variation in intelligence begins at birth.",
+      "11. The more intelligent people should be in positions of power",
+      "12. Everyone can develop the same abilities.",
+      "13. People of low intelligence are likely to lead uncontrolled lives."
+    ],
+    "_id": {
+      "$oid": "687c5fe8f1c59abc144208b7"
+    }
+  },
+  "score": 7,
+  "order": 5,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T05:52:56.499Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:18:00.995Z"
+  },
+  "__v": 0,
+  "correctAnswer": {
+    "type": "one_to_one",
+    "selections": {
+      "0": 0,
+      "1": 1,
+      "2": 2,
+      "3": 0,
+      "4": 1,
+      "5": 2,
+      "6": 0
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6836a6a7d34c36cb45f7b4f5"
+  },
+  "passageId": {
+    "$oid": "6836a5e9d34c36cb45f7b4dc"
+  },
+  "title": "Questions 14-20 \r\nReading Passage 2 has nine paragraphs, A-I.",
+  "questionType": "matching",
+  "questionText": "Which paragraph contains the following information? \r\nWrite the correct letter, A-I, in boxes 14-20 on your answer sheet.",
+  "matchingOptions": {
+    "headings": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H",
+      "I"
+    ],
+    "paragraphs": [
+      "14. mention of factors driving a renewed interest in natural medicinal compounds",
+      "15. how recent technological advances have made insect research easier",
+      "16. examples of animals which use medicinal substances from nature",
+      "17. reasons why it is challenging to use insects in drug research",
+      "18. reference to how interest in drug research may benefit wildlife",
+      "19. a reason why nature-based medicines fell out of favour for a period",
+      "20. an example of an insect-derived medicine in use at the moment"
+    ],
+    "_id": {
+      "$oid": "687c6010f1c59abc144208d5"
+    }
+  },
+  "score": 1,
+  "order": 1,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T06:01:11.210Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:18:40.325Z"
+  },
+  "__v": 0,
+  "correctAnswer": {
+    "type": "one_to_one",
+    "selections": {
+      "0": 0,
+      "1": 1,
+      "2": 2,
+      "3": 3,
+      "4": 4,
+      "5": 5,
+      "6": 6
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6836a75fd34c36cb45f7b514"
+  },
+  "passageId": {
+    "$oid": "6836a5e9d34c36cb45f7b4dc"
+  },
+  "title": "Questions 21 and 22 \r\nChoose TWO letters, A-E. \r\nWrite the correct letters in boxes 21 and 22 on your answer sheet.",
+  "questionType": "multiple_choice",
+  "questionText": "Which TWO of the following make insects interesting for drug research?",
+  "options": [
+    "A. the huge number of individual insects in the world",
+    "B. the variety of substances insects have developed to protect themselves",
+    "C. the potential to extract and make use of insects' genetic codes",
+    "D. the similarities between different species of insect",
+    "E. the manageable size of most insects"
+  ],
+  "multipleAnswers": true,
+  "correctAnswer": [
+    "A. the huge number of individual insects in the world",
+    "B. the variety of substances insects have developed to protect themselves"
+  ],
+  "score": 1,
+  "order": 2,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T06:04:15.947Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:18:55.087Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6836a821d34c36cb45f7b518"
+  },
+  "passageId": {
+    "$oid": "6836a5e9d34c36cb45f7b4dc"
+  },
+  "title": "Questions 23-26 \r\nComplete the summary below. \r\nChoose ONE WORD ONLY from the passage for each answer. \r\nWrite your answers in boxes 23-26 on your answer sheet.",
+  "questionType": "fill_blank",
+  "questionText": "--------- Research at Aberystwyth University ---------\r\n- Ross Piper and fellow zoologists at Aberystwyth University are using their expertise in (23) ............................ when undertaking bioprospecting with insects.\r\n- They are especially interested in the compounds that insects produce to overpower and preserve their (24) ............................\r\n- They are also interested in compounds which insects use to protect themselves from pathogenic bacteria and fungi found in their (25) ............................\r\n- Piper hopes that these substances will be useful in the development of drugs such as (26) ............................",
+  "blankStyle": "one_word_only",
+  "oneWordAnswers": [
+    "one",
+    "two",
+    "three",
+    "four"
+  ],
+  "correctAnswer": [
+    "one",
+    "two",
+    "three",
+    "four"
+  ],
+  "score": 1,
+  "order": 3,
+  "wordLimits": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "blankNumbers": [
+    23,
+    24,
+    25,
+    26
+  ],
+  "createdAt": {
+    "$date": "2025-05-28T06:07:29.798Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-21T07:15:50.315Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "6836a9d2d34c36cb45f7b561"
+  },
+  "passageId": {
+    "$oid": "6836a902d34c36cb45f7b546"
+  },
+  "title": "Questions 27-31 \r\nLook at the following statements (Questions 27-31) and the list of researchers below.",
+  "questionType": "matching",
+  "questionText": "Match each statement with the correct researcher, A-G. \r\nWrite the correct letter, A-G, in boxes 27-31 on your answer sheet.",
+  "matchingOptions": {
+    "headings": [
+      "A.  Elkind",
+      "B. Miller & Almon",
+      "C. Rubin et al.",
+      "D. Stuart Brown",
+      "E. Pellegrini",
+      "F. Joan Goodman",
+      "G. Hirsch-Pasek et al."
+    ],
+    "paragraphs": [
+      "27. Play can be divided into a number of separate categories.",
+      "28. Adults' intended goals affect how they play with children.",
+      "29. Combining work with play may be the best way for children to learn.",
+      "30. Certain elements of play are more significant than others.",
+      "31. Activities can be classified on a scale of playfulness,"
+    ],
+    "_id": {
+      "$oid": "687c60fcf1c59abc144208ff"
+    }
+  },
+  "score": 1,
+  "order": 1,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T06:14:42.545Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:22:36.220Z"
+  },
+  "__v": 0,
+  "correctAnswer": {
+    "type": "one_to_one",
+    "selections": {
+      "0": 0,
+      "1": 1,
+      "2": 2,
+      "3": 3,
+      "4": 4
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6836aa2cd34c36cb45f7b569"
+  },
+  "passageId": {
+    "$oid": "6836a902d34c36cb45f7b546"
+  },
+  "title": "Questions 32-36 \r\nDo the following statements agree with the claims of the writer in Reading Passage 3? \r\nIn boxes 32-36 on your answer sheet, write \r\nYES  if the statement agrees with the claims of the writer \r\nNO if the statement contradicts the claims of the writer \r\nNOT GIVEN  if it is impossible to say what the writer thinks about this",
+  "questionType": "true_false_not_given",
+  "questionText": "32. Children need toys in order to play.",
+  "correctAnswer": "true",
+  "score": 1,
+  "order": 2,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T06:16:12.302Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:22:55.313Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6836aa39d34c36cb45f7b56d"
+  },
+  "passageId": {
+    "$oid": "6836a902d34c36cb45f7b546"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "33. It is a mistake to treat play and learning as separate types of activities.",
+  "correctAnswer": "false",
+  "score": 1,
+  "order": 3,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T06:16:25.054Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:23:02.039Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6836aa46d34c36cb45f7b571"
+  },
+  "passageId": {
+    "$oid": "6836a902d34c36cb45f7b546"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "34. Play helps children to develop their artistic talents.",
+  "correctAnswer": "not_given",
+  "score": 1,
+  "order": 4,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T06:16:38.168Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:23:12.709Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6836aa54d34c36cb45f7b575"
+  },
+  "passageId": {
+    "$oid": "6836a902d34c36cb45f7b546"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "35. Researchers have agreed on a definition of play.",
+  "correctAnswer": "true",
+  "score": 1,
+  "order": 5,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T06:16:52.827Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:23:21.086Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6836aa60d34c36cb45f7b579"
+  },
+  "passageId": {
+    "$oid": "6836a902d34c36cb45f7b546"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "36. Work and play differ in terms of whether or not they have a target.",
+  "correctAnswer": "false",
+  "score": 1,
+  "order": 6,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T06:17:04.407Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:23:48.177Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6836ab6dd34c36cb45f7b57d"
+  },
+  "passageId": {
+    "$oid": "6836a902d34c36cb45f7b546"
+  },
+  "title": "Questions 37-40 \r\nComplete the summary below. \r\nChoose ONE WORD ONLY from the passage for each answer. \r\nWrite your answers in boxes 37-40 on your answer sheet",
+  "questionType": "fill_blank",
+  "questionText": "--------- Guided play ---------\r\n- In the simplest form of guided play, an adult contributes to the environment in which the child is playing.\r\n- Alternatively, an adult can play with a child and develop the play, for instance by (37) ............................ the child to investigate different aspects of their game.\r\n- Adults can help children to learn through play, and may make the activity rather structured, but it should still be based on the child's (38) ............................ to play.\r\n- Play without the intervention of adults gives children real (39) ............................\r\n- With adults, play can be (40) ............................ at particular goals.\r\n- However, all forms of play should be an opportunity for children to have fun.",
+  "blankStyle": "one_word_only",
+  "oneWordAnswers": [
+    "one",
+    "two",
+    "three",
+    "four"
+  ],
+  "correctAnswer": [
+    "one",
+    "two",
+    "three",
+    "four"
+  ],
+  "score": 1,
+  "order": 7,
+  "wordLimits": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "blankNumbers": [
+    37,
+    38,
+    39,
+    40
+  ],
+  "createdAt": {
+    "$date": "2025-05-28T06:21:33.950Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-21T07:20:13.978Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "6836c6dcd34c36cb45f7c630"
+  },
+  "passageId": {
+    "$oid": "6836c56dd34c36cb45f7c5f8"
+  },
+  "title": "Questions 1-8 \r\nComplete the notes below. \r\nChoose ONE WORD ONLY from the passage for each answer. \r\nWrite your answer in boxes 1-8 on your answer sheet",
+  "questionType": "fill_blank",
+  "questionText": "----------------- Ysabel Giraldo's research -----------------------\r\nFocused on a total of (1) .......................... different age groups of ants, analysing\r\n\r\nBehaviour:\r\n- how well ants looked after their (2) ..........................\r\n- their ability to locate (3) .......................... using a scent trail\r\n- the effect that (4) .......................... had on them\r\n- how (5) .......................... they attacked prey\r\n\r\nBrains:\r\n- comparison between age and the (6) .......................... brains of ants of dying cells in the\r\n- condition of synaptic complexes (areas in which (7) .......................... meet) in the brain's 'mushroom bodies'\r\n- level of two (8) .......................... in the brain associated with ageing",
+  "blankStyle": "one_word_only",
+  "oneWordAnswers": [
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight"
+  ],
+  "correctAnswer": [
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight"
+  ],
+  "score": 8,
+  "order": 1,
+  "wordLimits": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "blankNumbers": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "createdAt": {
+    "$date": "2025-05-28T08:18:36.237Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:25:56.230Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6836c73cd34c36cb45f7c636"
+  },
+  "passageId": {
+    "$oid": "6836c56dd34c36cb45f7c5f8"
+  },
+  "title": "Questions 9-13 \r\nDo the following statements agree with the information given in Reading Passage 1? \r\nIn boxes 9-13 on your answer sheet, write \r\nTRUE  if the statement agrees with the information \r\nFALSE   if the statement contradicts the information \r\nNOT GIVEN  if there is no information on this",
+  "questionType": "true_false_not_given",
+  "questionText": "9. Pheidole dentata ants are the only known animals which remain active for almost their whole lives.",
+  "correctAnswer": "true",
+  "score": 1,
+  "order": 2,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T08:20:12.374Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:26:04.616Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6836c74cd34c36cb45f7c63a"
+  },
+  "passageId": {
+    "$oid": "6836c56dd34c36cb45f7c5f8"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "10. Ysabel Giraldo was the first person to study Pheidole dentata ants using precise data about the insects' ages.",
+  "correctAnswer": "false",
+  "score": 1,
+  "order": 3,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T08:20:28.107Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:26:12.143Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6836c75bd34c36cb45f7c63e"
+  },
+  "passageId": {
+    "$oid": "6836c56dd34c36cb45f7c5f8"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "11. The ants in Giraldo's experiments behaved as she had predicted that they would.",
+  "correctAnswer": "not_given",
+  "score": 1,
+  "order": 4,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T08:20:43.520Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:26:18.692Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6836c76cd34c36cb45f7c642"
+  },
+  "passageId": {
+    "$oid": "6836c56dd34c36cb45f7c5f8"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "12. The recent studies of bees used different methods of measuring age-related decline.",
+  "correctAnswer": "true",
+  "score": 1,
+  "order": 5,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T08:21:00.271Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:26:26.488Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6836c77cd34c36cb45f7c646"
+  },
+  "passageId": {
+    "$oid": "6836c56dd34c36cb45f7c5f8"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "13. Pheidole dentata ants kept in laboratory conditions tend to live longer lives.",
+  "correctAnswer": "false",
+  "score": 1,
+  "order": 6,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T08:21:16.430Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:26:33.557Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6836c94ad34c36cb45f7c69d"
+  },
+  "passageId": {
+    "$oid": "6836c818d34c36cb45f7c661"
+  },
+  "title": "Questions 14-17 \r\nReading Passage 2 has six paragraphs, A-F.",
+  "questionType": "matching",
+  "questionText": "Which paragraph contains the following information? \r\nWrite the correct letter, A-F, in boxes 14-17 on your answer sheet.",
+  "matchingOptions": {
+    "headings": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F"
+    ],
+    "paragraphs": [
+      "14. a reference to how quickly animal species can die out",
+      "15. reasons why it is preferable to study animals in captivity rather than in the wild",
+      "16. mention of two ways of learning about animals other than visiting them in zoos",
+      "17. reasons why animals in zoos may be healthier than those in the wild"
+    ],
+    "_id": {
+      "$oid": "687c6214f1c59abc1442099f"
+    }
+  },
+  "score": 4,
+  "order": 1,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T08:28:58.577Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:27:16.695Z"
+  },
+  "__v": 0,
+  "correctAnswer": {
+    "type": "one_to_one",
+    "selections": {
+      "0": 0,
+      "1": 1,
+      "2": 2,
+      "3": 3
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6836c9d0d34c36cb45f7c6a5"
+  },
+  "passageId": {
+    "$oid": "6836c818d34c36cb45f7c661"
+  },
+  "title": "Questions 18-22 \r\nDo the following statements agree with the information given in Reading Passage 2? \r\nIn boxes 18-22 on your answer sheet, write \r\nTRUE If the statement agrees with the information \r\nFALSE  if the statement contradicts the information \r\nNOT GIVEN  if there is no information on this",
+  "questionType": "true_false_not_given",
+  "questionText": "18. An animal is likely to live longer in a zoo than in the wild.",
+  "correctAnswer": "true",
+  "score": 1,
+  "order": 2,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T08:31:12.472Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:27:23.350Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6836c9ded34c36cb45f7c6a9"
+  },
+  "passageId": {
+    "$oid": "6836c818d34c36cb45f7c661"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "19. There are some species in zoos which can no longer be found in the wild",
+  "correctAnswer": "false",
+  "score": 1,
+  "order": 3,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T08:31:26.832Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:27:31.042Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6836c9eed34c36cb45f7c6ad"
+  },
+  "passageId": {
+    "$oid": "6836c818d34c36cb45f7c661"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "20. Improvements in the quality of TV wildlife documentaries have resulted in increased numbers of zoo visitors.",
+  "correctAnswer": "not_given",
+  "score": 1,
+  "order": 4,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T08:31:42.365Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:27:37.730Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6836c9fdd34c36cb45f7c6b1"
+  },
+  "passageId": {
+    "$oid": "6836c818d34c36cb45f7c661"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "21. Zoos have always excelled at transmitting information about animals to the public",
+  "correctAnswer": "true",
+  "score": 1,
+  "order": 5,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T08:31:57.373Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:27:45.368Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6836ca0cd34c36cb45f7c6b5"
+  },
+  "passageId": {
+    "$oid": "6836c818d34c36cb45f7c661"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "22. Studying animals in zoos is less stressful for the animals than studying them in the wild",
+  "correctAnswer": "false",
+  "score": 1,
+  "order": 6,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T08:32:12.113Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:27:54.575Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6836caa3d34c36cb45f7c6b9"
+  },
+  "passageId": {
+    "$oid": "6836c818d34c36cb45f7c661"
+  },
+  "title": "Questions 23 and 24 \r\nChoose TWO letters, A-E. \r\nWrite the correct letters in boxes 23 and 24 on your answer sheet.",
+  "questionType": "multiple_choice",
+  "questionText": "Which TWO of the following are stated about zoo staff in the text?",
+  "options": [
+    "A. Some take part in television documentaries about animals.",
+    "B. Some travel to overseas locations to join teams in zoos.",
+    "C. Some get experience with species in the wild before taking up zoo jobs.",
+    "D. Some teach people who are involved with conservation projects.",
+    "E. Some specialise in caring for species which are under threat."
+  ],
+  "multipleAnswers": true,
+  "correctAnswer": [
+    "A. Some take part in television documentaries about animals.",
+    "B. Some travel to overseas locations to join teams in zoos."
+  ],
+  "score": 2,
+  "order": 7,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T08:34:43.967Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:28:09.361Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6836cb0ed34c36cb45f7c6bd"
+  },
+  "passageId": {
+    "$oid": "6836c818d34c36cb45f7c661"
+  },
+  "title": "Questions 25 and 26 \r\nChoose TWO letters, A-E. \r\nWrite the correct letters in boxes 25 and 26 on your answer sheet.",
+  "questionType": "multiple_choice",
+  "questionText": "Which TWO of these beliefs about zoos does the writer mention in the text?",
+  "options": [
+    "A They can help children overcome their fears of wild animals.",
+    "B They can increase public awareness of environmental issues.",
+    "C They can provide employment for a range of professional people.",
+    "D They can generate income to support wildlife conservation projects.",
+    "E They can raise animals which can later be released into the wild."
+  ],
+  "multipleAnswers": true,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": [
+    "A They can help children overcome their fears of wild animals.",
+    "B They can increase public awareness of environmental issues."
+  ],
+  "score": 2,
+  "order": 8,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T08:36:30.738Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-23T02:45:56.454Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6836cce5d34c36cb45f7c6fd"
+  },
+  "passageId": {
+    "$oid": "6836cc7dd34c36cb45f7c6dc"
+  },
+  "title": "Questions 27-33 \r\nDo the following statements agree with the information given in Reading Passage 3? \r\nIn boxes 27-33 on your answer sheet, write \r\nTRUE  if the statement agrees with the information \r\nFALSE  if the statement contradicts the information \r\nNOT GIVEN  if there is no information on this",
+  "questionType": "true_false_not_given",
+  "questionText": "27. Rochman and her colleagues were the first people to research the problem of marine debris.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "true",
+  "score": 1,
+  "order": 1,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T08:44:21.400Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-04T06:57:05.273Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6836ccfcd34c36cb45f7c701"
+  },
+  "passageId": {
+    "$oid": "6836cc7dd34c36cb45f7c6dc"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "28. The creatures most in danger from ocean trash are certain seabirds.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "false",
+  "score": 1,
+  "order": 2,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T08:44:44.073Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-04T07:02:18.112Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6836cd12d34c36cb45f7c705"
+  },
+  "passageId": {
+    "$oid": "6836cc7dd34c36cb45f7c6dc"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "29. The studies Rochman has reviewed have already proved that populations of some birds will soon become extinct.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "not_given",
+  "score": 1,
+  "order": 3,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T08:45:06.182Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-04T07:02:55.319Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6836cd27d34c36cb45f7c709"
+  },
+  "passageId": {
+    "$oid": "6836cc7dd34c36cb45f7c6dc"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "30. Rochman analysed papers on the different kinds of danger caused by ocean trash",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "true",
+  "score": 1,
+  "order": 4,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T08:45:27.638Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-04T07:03:07.720Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6836cd35d34c36cb45f7c70d"
+  },
+  "passageId": {
+    "$oid": "6836cc7dd34c36cb45f7c6dc"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "31. Most of the research analysed by Rochman and her colleagues was badly designed.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "false",
+  "score": 1,
+  "order": 5,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T08:45:41.043Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-04T07:03:19.824Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6836cd50d34c36cb45f7c711"
+  },
+  "passageId": {
+    "$oid": "6836cc7dd34c36cb45f7c6dc"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "32. One study examined by Rochman was expecting to find that mussels were harmed by eating plastic.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "not_given",
+  "score": 1,
+  "order": 6,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T08:46:08.748Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-04T07:03:32.760Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6836cd5fd34c36cb45f7c715"
+  },
+  "passageId": {
+    "$oid": "6836cc7dd34c36cb45f7c6dc"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "33. Some mussels choose to eat plastic in preference to their natural diet.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "true",
+  "score": 1,
+  "order": 7,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T08:46:23.822Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-04T07:03:47.280Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6836cfbdd34c36cb45f7c719"
+  },
+  "passageId": {
+    "$oid": "6836cc7dd34c36cb45f7c6dc"
+  },
+  "title": "Questions 34-39 \r\nComplete the notes below. \r\nChoose ONE WORD ONLY from the passage for each answer. \r\nWrite your answers in boxes 34-39 on your answer sheet.",
+  "questionType": "fill_blank",
+  "questionText": "------------------Findings related to marine debris------------------- \r\n\r\nStudies of marine debris found the biggest threats were \r\n\r\n - plastic (not metal or wood) \r\n\r\n- bits of debris that were (34)................... (harmful to animals) \r\n\r\nThere was little research into (35)................... e.g. from synthetic fibres. \r\n\r\nDrawbacks of the studies examined \r\n\r\n- most of them focused on individual animals, not entire (36)................... \r\n\r\n- the (37)....................  of plastic used in the lab did not always reflect those in the ocean\r\n- there was insufficient information on \r\n-- numbers of animals which could be affected \r\n-- the impact of a reduction in numbers on the (38)............................. of that \r\nspecies \r\n-- the impact on the ecosystem \r\nRochman says more information is needed on the possible impact of future (39).............................. (e.g. involving oil).",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "one_word_only",
+  "blankOptions": [],
+  "oneWordAnswers": [
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six"
+  ],
+  "correctAnswer": [
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six"
+  ],
+  "score": 6,
+  "order": 8,
+  "acceptableShortAnswers": [],
+  "wordLimits": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "blankNumbers": [
+    34,
+    35,
+    36,
+    37,
+    38,
+    39
+  ],
+  "createdAt": {
+    "$date": "2025-05-28T08:56:29.328Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-23T02:46:25.662Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6836d011d34c36cb45f7c71f"
+  },
+  "passageId": {
+    "$oid": "6836cc7dd34c36cb45f7c6dc"
+  },
+  "title": "Question 40 \r\nChoose the correct letter, A, B, C or D. \r\nWrite the correct letter in box 40 on your answer sheet.",
+  "questionType": "multiple_choice",
+  "questionText": "40. What would be the best title for this passage?",
+  "options": [
+    "A. Assessing the threat of marine debris",
+    "B. Marine debris: who is to blame?",
+    "C. A new solution to the problem of marine debris",
+    "D. Marine debris: the need for international action"
+  ],
+  "multipleAnswers": false,
+  "correctAnswer": "A. Assessing the threat of marine debris",
+  "score": 1,
+  "order": 9,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-05-28T08:57:53.768Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T03:28:41.933Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6846a76a0cdaa36caccaa538"
+  },
+  "passageId": {
+    "$oid": "6846a71d0cdaa36caccaa519"
+  },
+  "title": "Questions 9-13\r\nDo the following statements agree with the information given in Reading Passage 1?\r\nIn boxes 9-13 on your answer sheet, write\r\nTRUE if the statement agrees with the information\r\nFALSE if the statement contradicts the information\r\nNOT GIVEN if there is no information on this",
+  "questionType": "true_false_not_given",
+  "questionText": "9 Children with good self-control are known to be likely to do well at school later on.",
+  "correctAnswer": "false",
+  "score": 1,
+  "order": 1,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-06-09T09:20:42.172Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-03T02:42:15.409Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6881ae0cf7ac4ac30ef1189b"
+  },
+  "passageId": {
+    "$oid": "683169265c325b3c46a10f21"
+  },
+  "title": "Test 1\r\nQuestions (1)–(8)\r\n\r\nComplete the notes below.\r\nChoose ONE WORD ONLY from the passage for each answer.\r\nWrite your answers in boxes (1)–(8) on your answer sheet.",
+  "questionType": "fill_blank",
+  "questionText": "___________Children’s play___________\r\nUses of children's play\r\nbuilding a ‘magical kingdom’ may help develop (1)..............................\r\nboard games involve (2) ..............................and turn-taking\r\nRecent changes affecting children's play\r\npopulations of (3).............................. have grown\r\nopportunities for free play are limited due to\r\n  – fear of (4)..............................\r\n  – fear of (5)..............................\r\n  – increased (6)..............................in schools\r\nInternational policies on children’s play\r\nit is difficult to find (7) ..............................to support new policies\r\nresearch needs to study the impact of play on the rest of the child’s (8)..............................",
+  "blankStyle": "one_word_only",
+  "oneWordAnswers": [
+    "creativity",
+    "rules",
+    "cities",
+    "traffic",
+    "crime",
+    "competition",
+    "evidence",
+    "life"
+  ],
+  "correctAnswer": [
+    "creativity",
+    "rules",
+    "cities",
+    "traffic",
+    "crime",
+    "competition",
+    "evidence",
+    "life"
+  ],
+  "score": 8,
+  "order": 1,
+  "wordLimits": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "blankNumbers": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "createdAt": {
+    "$date": "2025-07-24T03:52:44.156Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-21T07:25:16.167Z"
+  },
+  "__v": 4
+},
+{
+  "_id": {
+    "$oid": "6881b17df7ac4ac30ef1198d"
+  },
+  "passageId": {
+    "$oid": "683177d819d884ef50e54a0a"
+  },
+  "title": "Test 1\r\n\r\nQuestions (14)–(18)\r\n\r\nReading Passage 2 has seven paragraphs, A–G.",
+  "questionType": "matching",
+  "questionText": "Which paragraph contains the following information?\r\n\r\nWrite the correct letter, A–G, in boxes (14)–(18) on your answer sheet.\r\n\r\nNB: You may use any letter more than once.",
+  "matchingOptions": {
+    "headings": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G"
+    ],
+    "paragraphs": [
+      "14. a description of how people misused a bike-sharing scheme",
+      "15. an explanation of why a proposed bike-sharing scheme was turned down",
+      "16. a reference to a person being unable to profit from their work",
+      "17. an explanation of the potential savings a bike-sharing scheme would bring",
+      "18. a reference to the problems a bike-sharing scheme was intended to solve"
+    ],
+    "_id": {
+      "$oid": "6881b9c8115c810c9db2fb2a"
+    }
+  },
+  "score": 5,
+  "order": 1,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-07-24T04:07:25.318Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-24T04:42:48.391Z"
+  },
+  "__v": 0,
+  "correctAnswer": {
+    "type": "one_to_one",
+    "selections": {
+      "0": 4,
+      "1": 2,
+      "2": 5,
+      "3": 2,
+      "4": 0
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6881b5b6f7ac4ac30ef11b06"
+  },
+  "passageId": {
+    "$oid": "683177d819d884ef50e54a0a"
+  },
+  "title": "Test 1\r\nQuestions (23)–(26)\r\nComplete the summary below.\r\nChoose ONE WORD ONLY from the passage for each answer.\r\nWrite your answers in boxes (23)–(26) on your answer sheet.",
+  "questionType": "fill_blank",
+  "questionText": "___________The first urban bike-sharing scheme___________\r\nThe first bike-sharing scheme was the idea of the Dutch group Provo. The people who belonged to this group were (23)............................... \r\nThey were concerned about damage to the environment and about (24).............................., and believed that the bike-sharing scheme would \r\ndraw attention to these issues. As well as painting some bikes white, they handed out (25).............................. that condemned the use of cars.\r\nHowever, the scheme was not a great success: almost as quickly as Provo left the bikes around the city, the (26)..............................took them away. \r\nAccording to Schimmelpennink, the scheme was intended to be symbolic. The idea was to get people thinking about the issues.",
+  "blankStyle": "one_word_only",
+  "oneWordAnswers": [
+    "activists",
+    "consumerism",
+    "leaflets",
+    "police"
+  ],
+  "correctAnswer": [
+    "activists",
+    "consumerism",
+    "leaflets",
+    "police"
+  ],
+  "score": 4,
+  "order": 4,
+  "wordLimits": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "blankNumbers": [
+    23,
+    24,
+    25,
+    26
+  ],
+  "createdAt": {
+    "$date": "2025-07-24T04:25:26.187Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-21T07:27:36.122Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "6881c7cf115c810c9db2ff29"
+  },
+  "passageId": {
+    "$oid": "6881c560115c810c9db2ff14"
+  },
+  "title": "Questions 1–8\r\nDo the following statements agree with the information given in Reading Passage 1?\r\nIn boxes 1–8 on your answer sheet, write\r\nTRUE if the statement agrees with the information\r\nFALSE if the statement contradicts the information\r\nNOT GIVEN if there is no information on this",
+  "questionType": "true_false_not_given",
+  "questionText": "1.Henderson rarely visited the area around Press estate when he was younger.",
+  "correctAnswer": "false",
+  "score": 1,
+  "order": 1,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-07-24T05:42:39.888Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-21T07:32:09.418Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6881c85b115c810c9db2ff2d"
+  },
+  "passageId": {
+    "$oid": "6881c560115c810c9db2ff14"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "2.Henderson pursued a business career because it was what his family wanted.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "true",
+  "score": 1,
+  "order": 2,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-07-24T05:44:59.635Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-24T05:44:59.635Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6881c87c115c810c9db2ff31"
+  },
+  "passageId": {
+    "$oid": "6881c560115c810c9db2ff14"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "3.Henderson and Notman were surprised by the results of their 1865 experiment.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "not_given",
+  "score": 1,
+  "order": 3,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-07-24T05:45:32.623Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-24T05:45:32.623Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6881c8a8115c810c9db2ff35"
+  },
+  "passageId": {
+    "$oid": "6881c560115c810c9db2ff14"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "4.There were many similarities between Henderson’s early landscapes and those of Notman.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "false",
+  "score": 1,
+  "order": 4,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-07-24T05:46:16.496Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-24T05:46:16.496Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6881c8c2115c810c9db2ff39"
+  },
+  "passageId": {
+    "$oid": "6881c560115c810c9db2ff14"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "5.The studio that Henderson opened in 1866 was close to his home.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "not_given",
+  "score": 1,
+  "order": 5,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-07-24T05:46:42.226Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-24T05:46:42.226Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6882fbfbfcda89ece93985fb"
+  },
+  "passageId": {
+    "$oid": "6881c560115c810c9db2ff14"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "6. Henderson gave up portraiture so that he could focus on taking photographs of scenery.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "true",
+  "score": 1,
+  "order": 6,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-07-25T03:37:31.432Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-25T03:37:31.432Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6882fc1afcda89ece93985ff"
+  },
+  "passageId": {
+    "$oid": "6881c560115c810c9db2ff14"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "7. When Henderson began work for the Intercolonial Railway, the Montreal to Halifax line had been finished.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "false",
+  "score": 1,
+  "order": 7,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-07-25T03:38:02.090Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-25T03:38:02.090Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6882fc39fcda89ece9398603"
+  },
+  "passageId": {
+    "$oid": "6881c560115c810c9db2ff14"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "8. Henderson’s last work as a photographer was with the Canadian Pacific Railway.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "true",
+  "score": 1,
+  "order": 8,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-07-25T03:38:33.160Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-25T03:38:33.160Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6882fea3fcda89ece939860b"
+  },
+  "passageId": {
+    "$oid": "6881c560115c810c9db2ff14"
+  },
+  "title": "Questions 9–13\r\nComplete the notes below.\r\nChoose ONE WORD ONLY from the passage for each answer.\r\nWrite your answers in boxes 9–13 on your answer sheet.",
+  "questionType": "fill_blank",
+  "questionText": "____________Alexander Henderson_____________\r\nEarly life\r\n-was born in Scotland in 1831 – father was a (9)..............................\r\n-trained as an accountant, emigrated to Canada in 1855\r\nStart of a photographic career\r\n- opened up a photographic studio in 1866\r\n- took photos of city life, but preferred landscape photography\r\n- people bought Henderson’s photos because photography took up considerable time and the (10)..............................was heavy\r\n- the photographs Henderson sold were (11)..............................or souvenirs\r\nTravelling as a professional photographer\r\n- travelled widely in Quebec and Ontario in 1870s and 1880s\r\n- took many trips along eastern rivers in a (12)..............................\r\n- worked for Canadian railways between 1875 and 1897\r\n- worked for CPR in 1885 and photographed the (13)..............................and the railway at Rogers Pass",
+  "blankStyle": "one_word_only",
+  "oneWordAnswers": [
+    "merchant",
+    "equipment",
+    "gifts",
+    "canoe",
+    "mountains"
+  ],
+  "correctAnswer": [
+    "merchant",
+    "equipment",
+    "gifts",
+    "canoe",
+    "mountains"
+  ],
+  "score": 5,
+  "order": 9,
+  "wordLimits": [
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "blankNumbers": [
+    9,
+    10,
+    11,
+    12,
+    13
+  ],
+  "createdAt": {
+    "$date": "2025-07-25T03:48:51.940Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-21T07:34:15.441Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "68830846fcda89ece9398658"
+  },
+  "passageId": {
+    "$oid": "688306bbfcda89ece939861c"
+  },
+  "title": "Test 2\r\nQuestions 14-18\r\nReading Passage 2 has nine sections, A-I.",
+  "questionType": "matching",
+  "questionText": "Which section contains the following information?\r\nWrite the correct letter, A-I, in boxes 14-18 on your answer sheet.",
+  "matchingOptions": {
+    "headings": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H",
+      "I"
+    ],
+    "paragraphs": [
+      "14. Why some people avoided hospitals in the 19th century",
+      "15. A suggestion that the popularity of tall buildings is linked to prestige",
+      "16. A comparison between the circulation of air in a 19th-century building and modern standards",
+      "17. How Short tested the circulation of air in a 19th-century building",
+      "18. An implication that advertising led to the large increase in the use of air conditioning"
+    ],
+    "_id": {
+      "$oid": "6883085dfcda89ece9398661"
+    }
+  },
+  "score": 5,
+  "order": 1,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-07-25T04:29:58.611Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-25T04:30:21.767Z"
+  },
+  "__v": 0,
+  "correctAnswer": {
+    "type": "one_to_one",
+    "selections": {
+      "0": 5,
+      "1": 2,
+      "2": 4,
+      "3": 3,
+      "4": 1
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "688309b1fcda89ece939867c"
+  },
+  "passageId": {
+    "$oid": "688306bbfcda89ece939861c"
+  },
+  "title": "Questions 19–26\r\nComplete the summary below.\r\nChoose ONE WORD ONLY from the passage for each answer.\r\nWrite your answers in boxes 19–26 on your answer sheet.",
+  "questionType": "fill_blank",
+  "questionText": "Ventilation in 19th-century hospital wards\r\nProfessor Alan Short examined the work of John Shaw Billings, who influenced the architectural (19)..............................of hospitals to ensure they had good ventilation.\r\nHe calculated that (20)..............................in the air coming from patients suffering from (21)..............................would not have harmed other patients. He also found that the air in (22)..............................in hospitals could change as often as in a modern operating theatre. He suggests that energy use could be reduced by locating more patients in (23) ____________ areas.\r\nA major reason for improving ventilation in 19th-century hospitals was the demand from the (24)..............................for protection against bad air, known as (25)............................... These were blamed for the spread of disease for hundreds of years, including epidemics of (26)..............................in London and Paris in the middle of the 19th century.",
+  "blankStyle": "one_word_only",
+  "oneWordAnswers": [
+    "design",
+    "pathogens",
+    "tuberculosis",
+    "wards",
+    "communal",
+    "public",
+    "miasmas",
+    "cholera"
+  ],
+  "correctAnswer": [
+    "design",
+    "pathogens",
+    "tuberculosis",
+    "wards",
+    "communal",
+    "public",
+    "miasmas",
+    "cholera"
+  ],
+  "score": 8,
+  "order": 2,
+  "wordLimits": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "blankNumbers": [
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26
+  ],
+  "createdAt": {
+    "$date": "2025-07-25T04:36:01.936Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-21T07:35:28.428Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "68830d03fcda89ece93986c1"
+  },
+  "passageId": {
+    "$oid": "68830b1ffcda89ece9398690"
+  },
+  "title": "Questions 27–34\r\nReading Passage 3 has eight sections, A–H.",
+  "questionType": "matching",
+  "questionText": "Choose the correct heading for each section from the list of headings below.\r\nWrite the correct number, i–ix, in boxes 27–34 on your answer sheet.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "matchingOptions": {
+    "headings": [
+      "i. Complaints about the impact of a certain approach",
+      "ii. Fundamental beliefs that are in fact incorrect",
+      "iii. Early recommendations concerning business activities",
+      "iv. Organisations that put a new approach into practice",
+      "v. Companies that have suffered from changing their approach",
+      "vi. What people are increasingly expected to do",
+      "vii. How to achieve outcomes that are currently impossible",
+      "viii. Neither approach guarantees continuous improvement",
+      "ix. Evidence that a certain approach can have more disadvantages than advantages"
+    ],
+    "paragraphs": [
+      "27.  Section A",
+      "28. Section B",
+      "29. Section C",
+      "30. Section D",
+      "31. Section E",
+      "32. Section F",
+      "33. Section G",
+      "34. Section H"
+    ],
+    "_id": {
+      "$oid": "68830d03fcda89ece93986c2"
+    }
+  },
+  "score": 8,
+  "order": 1,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-07-25T04:50:11.276Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-25T04:50:11.281Z"
+  },
+  "__v": 0,
+  "correctAnswer": {
+    "0": "5",
+    "1": "0",
+    "2": "2",
+    "3": "1",
+    "4": "8",
+    "5": "6",
+    "6": "3",
+    "7": "7"
+  }
+},
+{
+  "_id": {
+    "$oid": "68830ddafcda89ece93986c9"
+  },
+  "passageId": {
+    "$oid": "68830b1ffcda89ece9398690"
+  },
+  "title": "Questions 35–37\r\nComplete the sentences below.\r\nChoose ONE WORD ONLY from the passage for each answer.\r\nWrite your answers in boxes 35–37 on your answer sheet.",
+  "questionType": "fill_blank",
+  "questionText": "(35) Numerous training sessions are aimed at people who feel they are not.............................. enough.\r\n\r\n(36) Being organised appeals to people who regard themselves as...............................\r\n\r\n(37) Many people feel ..............................with aspects of their work.",
+  "blankStyle": "one_word_only",
+  "oneWordAnswers": [
+    "productive",
+    "perfectionists",
+    "dissatisfied"
+  ],
+  "correctAnswer": [
+    "productive",
+    "perfectionists",
+    "dissatisfied"
+  ],
+  "score": 3,
+  "order": 2,
+  "wordLimits": [
+    1,
+    1,
+    1
+  ],
+  "blankNumbers": [
+    35,
+    36,
+    37
+  ],
+  "createdAt": {
+    "$date": "2025-07-25T04:53:46.191Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-21T07:36:59.732Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "68830e0efcda89ece93986cf"
+  },
+  "passageId": {
+    "$oid": "68830b1ffcda89ece9398690"
+  },
+  "title": "Questions 38–40\r\nDo the following statements agree with the information given in Reading Passage 3?\r\nIn boxes 38–40 on your answer sheet, write\r\nTRUE if the statement agrees with the information\r\nFALSE if the statement contradicts the information\r\nNOT GIVEN if there is no information on this",
+  "questionType": "true_false_not_given",
+  "questionText": "38. Both businesses and people aim at order without really considering its value.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "true",
+  "score": 1,
+  "order": 3,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-07-25T04:54:38.329Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-25T04:54:38.329Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68830e24fcda89ece93986d3"
+  },
+  "passageId": {
+    "$oid": "68830b1ffcda89ece9398690"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "39. Innovation is most successful if the people involved have distinct roles.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "false",
+  "score": 1,
+  "order": 4,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-07-25T04:55:00.163Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-25T04:55:00.163Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68830e32fcda89ece93986d7"
+  },
+  "passageId": {
+    "$oid": "68830b1ffcda89ece9398690"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "40. Google was inspired to adopt flexibility by the success of General Electric.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "not_given",
+  "score": 1,
+  "order": 5,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-07-25T04:55:14.306Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-25T04:55:14.306Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a06001d1269fccc047a684"
+  },
+  "passageId": {
+    "$oid": "68a05e24d1269fccc047a660"
+  },
+  "title": "Questions 1–3\r\nReading Passage 1 has ten sections, A–J.",
+  "questionType": "matching",
+  "questionText": "Which section contains the following information?\r\n\r\nWrite the correct letter, A–J, in boxes 1–3 on your answer sheet.",
+  "matchingOptions": {
+    "headings": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H",
+      "I",
+      "J"
+    ],
+    "paragraphs": [
+      "1. information about how non-scientists’ assumptions about intelligence influence their behaviour towards others",
+      "2. a reference to lack of clarity over the definition of intelligence",
+      "3. the point that a researcher’s implicit and explicit theories may be very different"
+    ],
+    "_id": {
+      "$oid": "68a57d01c08e734dbdaad662"
+    }
+  },
+  "score": 3,
+  "order": 1,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-16T10:40:01.434Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-20T07:45:05.408Z"
+  },
+  "__v": 0,
+  "correctAnswer": {
+    "type": "one_to_one",
+    "selections": {
+      "0": 1,
+      "1": 0,
+      "2": 3
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "68a060ddd1269fccc047a69e"
+  },
+  "passageId": {
+    "$oid": "68a05e24d1269fccc047a660"
+  },
+  "title": "Questions 4–6\r\nDo the following statements agree with the claims of the writer in Reading Passage 1?\r\nIn boxes 4–6 on your answer sheet, write\r\nYES if the statement agrees with the claims of the writer\r\nNO if the statement contradicts the claims of the writer\r\nNOT GIVEN if it is impossible to say what the writer thinks about this",
+  "questionType": "true_false_not_given",
+  "questionText": "4. Slow language development in children is likely to prove disappointing to their parents.",
+  "correctAnswer": "not_given",
+  "score": 1,
+  "order": 2,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-16T10:43:41.757Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-20T07:45:45.390Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a06106d1269fccc047a6a2"
+  },
+  "passageId": {
+    "$oid": "68a05e24d1269fccc047a660"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "5. People’s expectations of what children should gain from education are universal.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "false",
+  "score": 1,
+  "order": 3,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-16T10:44:22.217Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-16T10:44:22.217Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a06144d1269fccc047a6a6"
+  },
+  "passageId": {
+    "$oid": "68a05e24d1269fccc047a660"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "6. Scholars may discuss theories without fully understanding each other.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "true",
+  "score": 1,
+  "order": 4,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-16T10:45:24.433Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-16T10:45:24.433Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a06417d1269fccc047a6ae"
+  },
+  "passageId": {
+    "$oid": "68a05e24d1269fccc047a660"
+  },
+  "title": "Look at the following statements (Questions 7–13) and the list of theories below.",
+  "questionType": "matching",
+  "questionText": "Match each statement with the correct theory, A, B or C.\r\nWrite the correct letter, A, B or C, in boxes 7–13 on your answer sheet.\r\nNB You may use any letter more than once.",
+  "matchingOptions": {
+    "headings": [
+      "A. Hamiltonian",
+      "B. Jeffersonian",
+      "C. Jacksonian"
+    ],
+    "paragraphs": [
+      "7. It is desirable for the same possibilities to be open to everyone.",
+      "8. No section of society should have preferential treatment at the expense of another.",
+      "9. People should only gain benefits on the basis of what they actually achieve.",
+      "10. Variation in intelligence begins at birth.",
+      "11. The more intelligent people should be in positions of power.",
+      "12. Everyone can develop the same abilities.",
+      "13. People of low intelligence are likely to lead uncontrolled lives."
+    ],
+    "_id": {
+      "$oid": "68a57d6dc08e734dbdaad671"
+    }
+  },
+  "score": 7,
+  "order": 5,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-16T10:57:27.176Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-20T07:46:53.662Z"
+  },
+  "__v": 0,
+  "correctAnswer": {
+    "type": "one_to_one",
+    "selections": {
+      "0": 1,
+      "1": 2,
+      "2": 1,
+      "3": 0,
+      "4": 0,
+      "5": 2,
+      "6": 0
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "68a56bb2c08e734dbdaad46f"
+  },
+  "passageId": {
+    "$oid": "68a56974c08e734dbdaad41f"
+  },
+  "title": "Questions 14–20\r\nReading Passage 2 has nine paragraphs, labeled A–I.",
+  "questionType": "matching",
+  "questionText": "Which paragraph contains the following information?\r\nWrite the correct letter, A–I, in boxes 14–20 on your answer sheet.",
+  "matchingOptions": {
+    "headings": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H",
+      "I"
+    ],
+    "paragraphs": [
+      "14. mention of factors driving a renewed interest in natural medicinal compounds",
+      "15. how recent technological advances have made insect research easier",
+      "16. examples of animals which use medicinal substances from nature",
+      "17. reasons why it is challenging to use insects in drug research",
+      "18. reference to how interest in drug research may benefit wildlife",
+      "19. a reason why nature-based medicines fell out of favour for a period",
+      "20. an example of an insect-derived medicine in use at the moment"
+    ],
+    "_id": {
+      "$oid": "68a6cd5f53a56bb1d41e5699"
+    }
+  },
+  "score": 7,
+  "order": 1,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-20T06:31:14.196Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-21T07:40:15.480Z"
+  },
+  "__v": 0,
+  "correctAnswer": {
+    "type": "one_to_one",
+    "selections": {
+      "0": 2,
+      "1": 7,
+      "2": 0,
+      "3": 5,
+      "4": 8,
+      "5": 1,
+      "6": 4
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "68a56c31c08e734dbdaad477"
+  },
+  "passageId": {
+    "$oid": "68a56974c08e734dbdaad41f"
+  },
+  "title": "Questions 21 and 22\r\nChoose TWO letters, A–E.\r\nWrite the correct letters in boxes 21 and 22 on your answer sheet.",
+  "questionType": "multiple_choice",
+  "questionText": "Which TWO of the following features make insects valuable for drug research?",
+  "options": [
+    "A. the enormous population size of insects worldwide",
+    "B. the wide variety of protective substances insects have developed",
+    "C. the possibility of using insects’ genetic material to produce compounds",
+    "D. the similarities found among different insect species",
+    "D. the similarities found among different insect species"
+  ],
+  "multipleAnswers": true,
+  "correctAnswer": [
+    "B. the wide variety of protective substances insects have developed",
+    "C. the possibility of using insects’ genetic material to produce compounds"
+  ],
+  "score": 2,
+  "order": 2,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-20T06:33:21.418Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-21T07:40:26.952Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "68a56dd5c08e734dbdaad490"
+  },
+  "passageId": {
+    "$oid": "68a56974c08e734dbdaad41f"
+  },
+  "title": "Questions 23–26\r\nComplete the summary below.\r\nChoose ONE WORD ONLY from the passage for each answer.\r\nWrite your answers in boxes 23–26 on your answer sheet.",
+  "questionType": "fill_blank",
+  "questionText": "Research at Aberystwyth University\r\nRoss Piper and fellow zoologists at Aberystwyth University are using their expertise in (23).................. when undertaking bioprospecting with insects. They are especially interested in the compounds that insects produce to overpower and preserve their (24)................... They are also interested in compounds which insects use to protect themselves from pathogenic bacteria and fungi found in their (25)..................Piper hopes that these substances will be useful in the development of drugs such as (26).................. antibiotics.",
+  "blankStyle": "one_word_only",
+  "oneWordAnswers": [
+    "ecology",
+    "prey",
+    "habitats",
+    "habitats"
+  ],
+  "correctAnswer": [
+    "ecology",
+    "prey",
+    "habitats",
+    "habitats"
+  ],
+  "score": 4,
+  "order": 3,
+  "wordLimits": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "blankNumbers": [
+    23,
+    24,
+    25,
+    26
+  ],
+  "createdAt": {
+    "$date": "2025-08-20T06:40:21.460Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-21T07:40:41.796Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "68a573dac08e734dbdaad51b"
+  },
+  "passageId": {
+    "$oid": "68a57133c08e734dbdaad4c5"
+  },
+  "title": "Questions 27–31\r\nLook at the following statements (Questions 27–31) and the list of researchers below.",
+  "questionType": "matching",
+  "questionText": "Match each statement with the correct researcher, A–G.\r\n\r\nWrite the correct letter, A–G, in boxes 27–31 on your answer sheet.",
+  "matchingOptions": {
+    "headings": [
+      "A Elkind",
+      "B Miller & Almon",
+      "C Rubin et al.",
+      "D Stuart Brown",
+      "E Pellegrini",
+      "F Joan Goodman",
+      "G Hirsch-Pasek et al."
+    ],
+    "paragraphs": [
+      "27. Play can be divided into a number of separate categories.",
+      "28. Adults’ intended goals affect how they play with children.",
+      "29. Combining work with play may be the best way for children to learn.",
+      "30. Certain elements of play are more significant than others.",
+      "31. Activities can be classified on a scale of playfulness."
+    ],
+    "_id": {
+      "$oid": "68a57c7ac08e734dbdaad62e"
+    }
+  },
+  "score": 5,
+  "order": 1,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-20T07:06:02.330Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-20T07:42:50.078Z"
+  },
+  "__v": 0,
+  "correctAnswer": {
+    "type": "one_to_one",
+    "selections": {
+      "0": 1,
+      "1": 6,
+      "2": 5,
+      "3": 4,
+      "4": 2
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "68a5763cc08e734dbdaad523"
+  },
+  "passageId": {
+    "$oid": "68a57133c08e734dbdaad4c5"
+  },
+  "title": "Questions 32–36\r\nDo the following statements agree with the claims of the writer in Reading Passage 3?\r\nIn boxes 32–36 on your answer sheet, write\r\nTRUE if the statement agrees with the claims of the writer\r\nFALSE if the statement contradicts the claims of the writer\r\nNOT GIVEN if it is impossible to say what the writer thinks about this",
+  "questionType": "true_false_not_given",
+  "questionText": "32. Children need toys in order to play.",
+  "correctAnswer": "false",
+  "score": 1,
+  "order": 2,
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-20T07:16:12.265Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-20T07:43:12.920Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a5765ec08e734dbdaad527"
+  },
+  "passageId": {
+    "$oid": "68a57133c08e734dbdaad4c5"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "33. It is a mistake to treat play and learning as separate types of activities.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "true",
+  "score": 1,
+  "order": 3,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-20T07:16:46.976Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-20T07:16:46.976Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a57688c08e734dbdaad52b"
+  },
+  "passageId": {
+    "$oid": "68a57133c08e734dbdaad4c5"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "34. Play helps children to develop their artistic talents.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "not_given",
+  "score": 1,
+  "order": 4,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-20T07:17:28.560Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-20T07:17:28.560Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a576abc08e734dbdaad52f"
+  },
+  "passageId": {
+    "$oid": "68a57133c08e734dbdaad4c5"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "35. Researchers have agreed on a definition of play.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "false",
+  "score": 1,
+  "order": 5,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-20T07:18:03.997Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-20T07:18:03.997Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a576cbc08e734dbdaad533"
+  },
+  "passageId": {
+    "$oid": "68a57133c08e734dbdaad4c5"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "36. Work and play differ in terms of whether or not they have a target.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "true",
+  "score": 1,
+  "order": 6,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-20T07:18:35.276Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-20T07:18:35.276Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a578f2c08e734dbdaad53b"
+  },
+  "passageId": {
+    "$oid": "68a57133c08e734dbdaad4c5"
+  },
+  "title": "Questions 37–40\r\nComplete the summary below.\r\nChoose ONE WORD ONLY from the passage for each answer.\r\nWrite your answers in boxes 37–40 on your answer sheet.",
+  "questionType": "fill_blank",
+  "questionText": "Guided play\r\n\r\nIn the simplest form of guided play, an adult contributes to the environment in which the child is playing. \r\nAlternatively, an adult can play with a child and develop the play, for instance by (37)...................the child to \r\ninvestigate different aspects of their game. Adults can help children to learn through play, and may make the\r\n activity rather structured, but it should still be based on the child’s (38)................... to play.\r\n\r\nPlay without the intervention of adults gives children real (39)...................; with adults, play can be (40)...................\r\n at particular goals. However, all forms of play should be an opportunity for children to have fun.",
+  "blankStyle": "one_word_only",
+  "oneWordAnswers": [
+    "encouraging",
+    "desire",
+    "autonomy",
+    "targeted"
+  ],
+  "correctAnswer": [
+    "encouraging",
+    "desire",
+    "autonomy",
+    "targeted"
+  ],
+  "score": 4,
+  "order": 7,
+  "wordLimits": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "blankNumbers": [
+    37,
+    38,
+    39,
+    40
+  ],
+  "createdAt": {
+    "$date": "2025-08-20T07:27:46.116Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-20T07:43:40.005Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "68a6c5d853a56bb1d41e556b"
+  },
+  "passageId": {
+    "$oid": "68a6c39e53a56bb1d41e5557"
+  },
+  "title": "Questions 1–8\r\nComplete the notes below.\r\nChoose ONE WORD ONLY from the passage for each answer.\r\nWrite your answer in boxes 1–8 on your answer sheet.",
+  "questionType": "fill_blank",
+  "questionText": "__________Ysabel Giraldo’s research__________\r\nFocused on a total of (1)................................ different age groups of ants, analysing\r\nBehaviour:\r\n  -  how well ants looked after their (2)................................\r\n  -  their ability to locate (3)................................ using a scent trail\r\n  -  the effect that (4)................................ had on them\r\n  -  how (5)................................ they attacked prey\r\nBrains:\r\n  -  comparison between age and the (6)................................ of dying cells in the brains of ants\r\n  -  condition of synaptic complexes (areas in which (7)................................ meet) in the brain’s ‘mushroom bodies’\r\n  -  level of two (8)................................ in the brain associated with ageing",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "one_word_only",
+  "blankOptions": [],
+  "oneWordAnswers": [
+    "four",
+    "young",
+    "food",
+    "light",
+    "aggressively",
+    "location",
+    "neurons",
+    "chemicals"
+  ],
+  "correctAnswer": [
+    "four",
+    "young",
+    "food",
+    "light",
+    "aggressively",
+    "location",
+    "neurons",
+    "chemicals"
+  ],
+  "score": 8,
+  "order": 1,
+  "acceptableShortAnswers": [],
+  "wordLimits": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "blankNumbers": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "createdAt": {
+    "$date": "2025-08-21T07:08:08.509Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-21T07:08:08.509Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a6ce4a53a56bb1d41e56c4"
+  },
+  "passageId": {
+    "$oid": "68a6c39e53a56bb1d41e5557"
+  },
+  "title": "Questions 9–13\r\nDo the following statements agree with the information given in Reading Passage 1?\r\nIn boxes 9–13 on your answer sheet, write\r\nTRUE if the statement agrees with the information\r\nFALSE if the statement contradicts the information\r\nNOT GIVEN if there is no information on this",
+  "questionType": "true_false_not_given",
+  "questionText": "9. Pheidole dentata ants are the only known animals which remain active for almost their whole lives.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "false",
+  "score": 1,
+  "order": 2,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-21T07:44:10.298Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-21T07:44:10.298Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a6ce6653a56bb1d41e56c8"
+  },
+  "passageId": {
+    "$oid": "68a6c39e53a56bb1d41e5557"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "10. Ysabel Giraldo was the first person to study Pheidole dentata ants using precise data about the insects’ ages.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "true",
+  "score": 1,
+  "order": 3,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-21T07:44:38.414Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-21T07:44:38.414Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a6ce7953a56bb1d41e56cc"
+  },
+  "passageId": {
+    "$oid": "68a6c39e53a56bb1d41e5557"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "11. The ants in Giraldo’s experiments behaved as she had predicted that they would.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "false",
+  "score": 1,
+  "order": 4,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-21T07:44:57.347Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-21T07:44:57.347Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a6cea553a56bb1d41e56d0"
+  },
+  "passageId": {
+    "$oid": "68a6c39e53a56bb1d41e5557"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "12. The recent studies of bees used different methods of measuring age-related decline.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "not_given",
+  "score": 1,
+  "order": 5,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-21T07:45:41.672Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-21T07:45:41.672Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a6cec353a56bb1d41e56d4"
+  },
+  "passageId": {
+    "$oid": "68a6c39e53a56bb1d41e5557"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "13. Pheidole dentata ants kept in laboratory conditions tend to live longer lives.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "true",
+  "score": 1,
+  "order": 6,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-21T07:46:11.531Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-21T07:46:11.531Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a6d17a53a56bb1d41e5717"
+  },
+  "passageId": {
+    "$oid": "68a6cfec53a56bb1d41e5701"
+  },
+  "title": "Questions 14–17\r\nReading Passage 2 has six paragraphs, A–F.",
+  "questionType": "matching",
+  "questionText": "Which paragraph contains the following information?\r\nWrite the correct letter, A–F, in boxes 14–17 on your answer sheet.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "matchingOptions": {
+    "headings": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F"
+    ],
+    "paragraphs": [
+      "14. a reference to how quickly animal species can die out",
+      "15. reasons why it is preferable to study animals in captivity rather than in the wild",
+      "16. mention of two ways of learning about animals other than visiting them in zoos",
+      "17. reasons why animals in zoos may be healthier than those in the wild"
+    ],
+    "_id": {
+      "$oid": "68a6d17a53a56bb1d41e5718"
+    }
+  },
+  "score": 4,
+  "order": 1,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-21T07:57:46.725Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-21T07:57:46.732Z"
+  },
+  "__v": 0,
+  "correctAnswer": {
+    "0": "1",
+    "1": "4",
+    "2": "2",
+    "3": "0"
+  }
+},
+{
+  "_id": {
+    "$oid": "68a6d1ca53a56bb1d41e571f"
+  },
+  "passageId": {
+    "$oid": "68a6cfec53a56bb1d41e5701"
+  },
+  "title": "Questions 18–22\r\nDo the following statements agree with the information given in Reading Passage 2?\r\nIn boxes 18–22 on your answer sheet, write:\r\nTRUE if the statement agrees with the information\r\nFALSE if the statement contradicts the information\r\nNOT GIVEN if there is no information on this",
+  "questionType": "true_false_not_given",
+  "questionText": "18. An animal is likely to live longer in a zoo than in the wild.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "true",
+  "score": 1,
+  "order": 2,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-21T07:59:06.725Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-21T07:59:06.725Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a6d1e153a56bb1d41e5723"
+  },
+  "passageId": {
+    "$oid": "68a6cfec53a56bb1d41e5701"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "19. There are some species in zoos which can no longer be found in the wild.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "true",
+  "score": 1,
+  "order": 3,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-21T07:59:29.289Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-21T07:59:29.289Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a6d1fb53a56bb1d41e5727"
+  },
+  "passageId": {
+    "$oid": "68a6cfec53a56bb1d41e5701"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "20. Improvements in the quality of TV wildlife documentaries have resulted in increased numbers of zoo visitors.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "not_given",
+  "score": 1,
+  "order": 4,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-21T07:59:55.052Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-21T07:59:55.052Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a6d21953a56bb1d41e572b"
+  },
+  "passageId": {
+    "$oid": "68a6cfec53a56bb1d41e5701"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "21. Zoos have always excelled at transmitting information about animals to the public.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "false",
+  "score": 1,
+  "order": 5,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-21T08:00:25.279Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-21T08:00:25.279Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a6d23a53a56bb1d41e572f"
+  },
+  "passageId": {
+    "$oid": "68a6cfec53a56bb1d41e5701"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "22 Studying animals in zoos is less stressful for the animals than studying them in the wild.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "not_given",
+  "score": 1,
+  "order": 6,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-21T08:00:58.156Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-21T08:00:58.156Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a6d37653a56bb1d41e5733"
+  },
+  "passageId": {
+    "$oid": "68a6cfec53a56bb1d41e5701"
+  },
+  "title": "Questions 23 and 24\r\nChoose TWO letters, A–E.\r\nWrite the correct letters in boxes 23 and 24 on your answer sheet.",
+  "questionType": "multiple_choice",
+  "questionText": "Which TWO of the following are stated about zoo staff in the text?",
+  "options": [
+    "A. Some take part in television documentaries about animals.",
+    "B. Some travel to overseas locations to join teams in zoos.",
+    "C. Some get experience with species in the wild before taking up zoo jobs.",
+    "D. Some teach people who are involved with conservation projects.",
+    "E. Some specialise in caring for species which are under threat."
+  ],
+  "multipleAnswers": true,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": [
+    "B. Some travel to overseas locations to join teams in zoos.",
+    "D. Some teach people who are involved with conservation projects."
+  ],
+  "score": 2,
+  "order": 7,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-21T08:06:14.436Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-21T08:06:14.436Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a6d3c853a56bb1d41e5737"
+  },
+  "passageId": {
+    "$oid": "68a6cfec53a56bb1d41e5701"
+  },
+  "title": "Questions 25 and 26\r\nChoose TWO letters, A–E.\r\nWrite the correct letters in boxes 25 and 26 on your answer sheet.",
+  "questionType": "multiple_choice",
+  "questionText": "Which TWO of these beliefs about zoos does the writer mention in the text?",
+  "options": [
+    "A. They can help children overcome their fears of wild animals.",
+    "B. They can increase public awareness of environmental issues.",
+    "C. They can provide employment for a range of professional people.",
+    "D. They can generate income to support wildlife conservation projects.",
+    "E. They can raise animals which can later be released into the wild."
+  ],
+  "multipleAnswers": true,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": [
+    "B. They can increase public awareness of environmental issues.",
+    "E. They can raise animals which can later be released into the wild."
+  ],
+  "score": 2,
+  "order": 8,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-21T08:07:36.354Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-21T08:07:36.354Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a6d5ee53a56bb1d41e5777"
+  },
+  "passageId": {
+    "$oid": "68a6d53253a56bb1d41e575f"
+  },
+  "title": "Questions 27–33\r\nDo the following statements agree with the information given in Reading Passage 3?\r\nIn boxes 27–33 on your answer sheet, write\r\nTRUE if the statement agrees with the information\r\nFALSE if the statement contradicts the information\r\nNOT GIVEN if there is no information on this",
+  "questionType": "true_false_not_given",
+  "questionText": "27. Rochman and her colleagues were the first people to research the problem of marine debris.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "false",
+  "score": 1,
+  "order": 1,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-21T08:16:46.429Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-21T08:16:46.429Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a6d60653a56bb1d41e577b"
+  },
+  "passageId": {
+    "$oid": "68a6d53253a56bb1d41e575f"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "28. The creatures most in danger from ocean trash are certain seabirds.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "not_given",
+  "score": 1,
+  "order": 2,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-21T08:17:10.610Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-21T08:17:10.610Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a6d62953a56bb1d41e577f"
+  },
+  "passageId": {
+    "$oid": "68a6d53253a56bb1d41e575f"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "29. The studies Rochman has reviewed have already proved that populations of some birds will soon become extinct.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "false",
+  "score": 1,
+  "order": 3,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-21T08:17:45.778Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-21T08:17:45.778Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a6d65253a56bb1d41e5783"
+  },
+  "passageId": {
+    "$oid": "68a6d53253a56bb1d41e575f"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "30. Rochman analysed papers on the different kinds of danger caused by ocean trash.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "true",
+  "score": 1,
+  "order": 4,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-21T08:18:26.474Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-21T08:18:26.474Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a6d6b753a56bb1d41e578d"
+  },
+  "passageId": {
+    "$oid": "68a6d53253a56bb1d41e575f"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "31. Most of the research analysed by Rochman and her colleagues was badly designed.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "false",
+  "score": 1,
+  "order": 5,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-21T08:20:07.401Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-21T08:20:07.401Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a6d6da53a56bb1d41e5791"
+  },
+  "passageId": {
+    "$oid": "68a6d53253a56bb1d41e575f"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "32. One study examined by Rochman was expecting to find that mussels were harmed by eating plastic.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "true",
+  "score": 1,
+  "order": 6,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-21T08:20:42.042Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-21T08:20:42.042Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a6d6e853a56bb1d41e5795"
+  },
+  "passageId": {
+    "$oid": "68a6d53253a56bb1d41e575f"
+  },
+  "title": "",
+  "questionType": "true_false_not_given",
+  "questionText": "33. Some mussels choose to eat plastic in preference to their natural diet.",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "not_given",
+  "score": 1,
+  "order": 7,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-21T08:20:56.930Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-21T08:20:56.930Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a6d97753a56bb1d41e5799"
+  },
+  "passageId": {
+    "$oid": "68a6d53253a56bb1d41e575f"
+  },
+  "title": "Questions 34–39\r\nComplete the notes below.\r\nChoose ONE WORD ONLY from the passage for each answer.\r\nWrite your answers in boxes 34–39 on your answer sheet.",
+  "questionType": "fill_blank",
+  "questionText": "____________Findings related to marine debris____________\r\nStudies of marine debris found the biggest threats were\r\n- plastic (not metal or wood)\r\n- bits of debris that were (34)............................ (harmful to animals)\r\nThere was little research into (35)............................, e.g. from synthetic fibres.\r\nDrawbacks of the studies examined\r\n- most of them focused on individual animals, not entire (36)............................\r\n- the (37)............................ of plastic used in the lab did not always reflect those in the ocean\r\n- there was insufficient information on\r\n          - numbers of animals which could be affected\r\n          - the impact of a reduction in numbers on the (38)............................ of that species\r\n          - the impact on the ecosystem\r\nRochman says more information is needed on the possible impact of future (39)............................(e.g. involving oil).",
+  "blankStyle": "one_word_only",
+  "oneWordAnswers": [
+    "large",
+    "microplastic",
+    "populations",
+    "concentrations",
+    "predators",
+    "disasters"
+  ],
+  "correctAnswer": [
+    "large",
+    "microplastic",
+    "populations",
+    "concentrations",
+    "predators",
+    "disasters"
+  ],
+  "score": 6,
+  "order": 8,
+  "wordLimits": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "blankNumbers": [
+    34,
+    35,
+    36,
+    37,
+    38,
+    39
+  ],
+  "createdAt": {
+    "$date": "2025-08-21T08:31:51.293Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-21T08:33:29.295Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "68a6d9c153a56bb1d41e579f"
+  },
+  "passageId": {
+    "$oid": "68a6d53253a56bb1d41e575f"
+  },
+  "title": "Question 40\r\nChoose the correct letter, A, B, C or D.\r\nWrite the correct letter in box 40 on your answer sheet.",
+  "questionType": "multiple_choice",
+  "questionText": "40. What would be the best title for this passage?",
+  "options": [
+    "A. Assessing the threat of marine debris",
+    "B. Marine debris: who is to blame?",
+    "C. A new solution to the problem of marine debris",
+    "D. Marine debris: the need for international action"
+  ],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": "A. Assessing the threat of marine debris",
+  "score": 1,
+  "order": 9,
+  "acceptableShortAnswers": [],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-21T08:33:05.162Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-21T08:33:05.162Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a80d0723a208d528cc7806"
+  },
+  "passageId": {
+    "$oid": "683169265c325b3c46a10f21"
+  },
+  "title": "",
+  "questionType": "short_answer",
+  "questionText": "test short",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": [
+    "admin 123"
+  ],
+  "score": 1,
+  "order": 7,
+  "wordLimit": 2,
+  "acceptableShortAnswers": [
+    "admin 123"
+  ],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-22T06:24:07.021Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-22T06:24:07.021Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a80fe923a208d528cc7a95"
+  },
+  "passageId": {
+    "$oid": "68a80f2523a208d528cc7a78"
+  },
+  "title": "Questions 11–13\r\nAnswer the questions below.\r\nChoose NO MORE THAN TWO WORDS from the passage for each answer.\r\nWrite your answers in boxes 11–13 on your answer sheet.",
+  "questionType": "short_answer",
+  "questionText": "1. What type of mineral were the Dolaucothi mines in Wales built to extract?",
+  "correctAnswer": [
+    "Gold"
+  ],
+  "score": 1,
+  "order": 1,
+  "wordLimit": 1,
+  "acceptableShortAnswers": [
+    "Gold"
+  ],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-22T06:36:25.610Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-22T06:44:50.911Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "68a8102e23a208d528cc7a99"
+  },
+  "passageId": {
+    "$oid": "68a80f2523a208d528cc7a78"
+  },
+  "title": "",
+  "questionType": "short_answer",
+  "questionText": "2. In addition to the patron, whose name might be carved onto a tunnel?",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": [
+    "Architect"
+  ],
+  "score": 1,
+  "order": 2,
+  "wordLimit": 2,
+  "acceptableShortAnswers": [
+    "Architect"
+  ],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-22T06:37:34.541Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-22T06:37:34.541Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a8105923a208d528cc7a9d"
+  },
+  "passageId": {
+    "$oid": "68a80f2523a208d528cc7a78"
+  },
+  "title": "",
+  "questionType": "short_answer",
+  "questionText": "3. What part of Seleuceia Pieria was the Çevlik tunnel built to protect?",
+  "options": [],
+  "multipleAnswers": false,
+  "acceptableAnswers": [],
+  "blankStyle": "simple",
+  "blankOptions": [],
+  "oneWordAnswers": [],
+  "correctAnswer": [
+    "Harbor"
+  ],
+  "score": 1,
+  "order": 3,
+  "wordLimit": 2,
+  "acceptableShortAnswers": [
+    "Harbor"
+  ],
+  "wordLimits": [],
+  "blankNumbers": [],
+  "createdAt": {
+    "$date": "2025-08-22T06:38:17.328Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-22T06:38:17.328Z"
+  },
+  "__v": 0
+}]

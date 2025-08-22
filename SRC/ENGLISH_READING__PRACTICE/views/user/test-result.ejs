@@ -1,0 +1,1163 @@
+<div class="max-w-7xl mx-auto px-4 py-8">
+  <h1 class="text-2xl font-bold text-gray-800 mb-6">Test result: <%= test.title %></h1>
+
+  <!-- Tóm tắt kết quả -->
+  <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+    <div class="px-6 py-4 bg-blue-50 border-b border-blue-100">
+      <h2 class="text-xl font-semibold text-blue-800">Summary</h2>
+    </div>
+    
+    <div class="p-6">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+        <div class="bg-gray-50 rounded-lg p-4 text-center">
+          <p class="text-gray-500 text-sm uppercase font-medium">Questions</p>
+          <p class="text-3xl font-bold text-blue-600 mt-1">
+            <%= userAttempt.score %> / <%= userAttempt.totalPossibleScore %>
+          </p>
+        </div>
+        
+        <div class="bg-gray-50 rounded-lg p-4 text-center">
+          <p class="text-gray-500 text-sm uppercase font-medium">Percentage</p>
+          <p class="text-3xl font-bold text-green-600 mt-1">
+            <%= userAttempt.percentageScore.toFixed(1) %>%
+          </p>
+        </div>
+        
+        <div class="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg p-4 text-center border border-yellow-200">
+          <p class="text-yellow-700 text-sm uppercase font-medium">IELTS Score</p>
+          <p class="text-3xl font-bold text-orange-600 mt-1">
+            <%= userAttempt.ieltsScore || 0 %>
+          </p>
+          <% if (userAttempt.ieltsScore40) { %>
+            <p class="text-xs text-yellow-600 mt-1">(<%= userAttempt.ieltsScore40 %>/40)</p>
+          <% } %>
+        </div>
+        
+        <div class="bg-gray-50 rounded-lg p-4 text-center">
+          <p class="text-gray-500 text-sm uppercase font-medium">Time spent</p>
+          <p class="text-3xl font-bold text-indigo-600 mt-1">
+            <% 
+              // Định dạng thời gian làm bài
+              let timeSpentText = "No data";
+              if (userAttempt.timeSpentInSeconds !== undefined && userAttempt.timeSpentInSeconds !== null) {
+                const hours = Math.floor(userAttempt.timeSpentInSeconds / 3600);
+                const minutes = Math.floor((userAttempt.timeSpentInSeconds % 3600) / 60);
+                const seconds = userAttempt.timeSpentInSeconds % 60;
+                
+                if (hours > 0) {
+                  timeSpentText = `${hours}h ${minutes}m ${seconds}s`;
+                } else {
+                  timeSpentText = `${minutes}m ${seconds}s`;
+                }
+              }
+            %>
+            <%= timeSpentText %>
+          </p>
+        </div>
+        
+        <div class="bg-gray-50 rounded-lg p-4 text-center">
+          <p class="text-gray-500 text-sm uppercase font-medium">Completed time</p>
+          <p class="text-3xl font-bold text-purple-600 mt-1">
+            <% 
+              // Định dạng thời gian hoàn thành
+              const completedDate = new Date(userAttempt.completedAt);
+              const formattedDate = completedDate.toLocaleDateString('vi-VN');
+              const formattedTime = completedDate.toLocaleTimeString('vi-VN');
+            %>
+            <%= formattedDate %> <%= formattedTime %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bảng chuyển đổi điểm IELTS -->
+  <% if (userAttempt.ieltsScore) { %>
+  <div class="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg shadow-md overflow-hidden mb-8 border border-yellow-200">
+    <div class="px-6 py-4 bg-gradient-to-r from-yellow-100 to-orange-100 border-b border-yellow-200">
+      <h2 class="text-xl font-semibold text-orange-800 flex items-center">
+        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        IELTS Reading Score Conversion
+      </h2>
+    </div>
+    
+    <div class="p-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Kết quả của bạn -->
+        <div>
+          <h3 class="text-lg font-medium text-gray-900 mb-4">Your IELTS Reading Score</h3>
+          <div class="bg-white rounded-lg p-6 shadow-sm border border-yellow-200">
+            <div class="text-center">
+              <div class="text-4xl font-bold text-orange-600 mb-2"><%= userAttempt.ieltsScore %></div>
+              <div class="text-sm text-gray-600 mb-4">IELTS Band Score</div>
+              <div class="text-lg text-gray-700">
+                Based on <span class="font-medium text-orange-600"><%= userAttempt.ieltsScore40 %>/40</span> correct answers
+              </div>
+              <div class="text-sm text-gray-500 mt-2">
+                Raw score: <%= userAttempt.score %>/<%= userAttempt.totalPossibleScore %>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Bảng chuyển đổi -->
+        <div>
+          <h3 class="text-lg font-medium text-gray-900 mb-4">IELTS Reading Score Conversion Table</h3>
+          <div class="bg-white rounded-lg shadow-sm border border-yellow-200 overflow-hidden">
+            <table class="min-w-full">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Correct Answers</th>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">IELTS Band</th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+                <%
+                  const ieltsTable = [
+                    { range: '39-40', band: '9.0', highlight: userAttempt.ieltsScore === 9.0 },
+                    { range: '37-38', band: '8.5', highlight: userAttempt.ieltsScore === 8.5 },
+                    { range: '35-36', band: '8.0', highlight: userAttempt.ieltsScore === 8.0 },
+                    { range: '33-34', band: '7.5', highlight: userAttempt.ieltsScore === 7.5 },
+                    { range: '30-32', band: '7.0', highlight: userAttempt.ieltsScore === 7.0 },
+                    { range: '27-29', band: '6.5', highlight: userAttempt.ieltsScore === 6.5 },
+                    { range: '23-26', band: '6.0', highlight: userAttempt.ieltsScore === 6.0 },
+                    { range: '19-22', band: '5.5', highlight: userAttempt.ieltsScore === 5.5 },
+                    { range: '15-18', band: '5.0', highlight: userAttempt.ieltsScore === 5.0 },
+                    { range: '13-14', band: '4.5', highlight: userAttempt.ieltsScore === 4.5 },
+                    { range: '10-12', band: '4.0', highlight: userAttempt.ieltsScore === 4.0 },
+                    { range: '8-9', band: '3.5', highlight: userAttempt.ieltsScore === 3.5 },
+                    { range: '6-7', band: '3.0', highlight: userAttempt.ieltsScore === 3.0 }
+                  ];
+                  
+                  ieltsTable.forEach(row => {
+                %>
+                  <tr class="<%= row.highlight ? 'bg-yellow-50 border-yellow-200' : '' %>">
+                    <td class="px-4 py-3 text-sm <%= row.highlight ? 'font-semibold text-orange-800' : 'text-gray-900' %>">
+                      <%= row.range %>
+                    </td>
+                    <td class="px-4 py-3 text-sm <%= row.highlight ? 'font-semibold text-orange-800' : 'text-gray-900' %>">
+                      <%= row.band %>
+                      <% if (row.highlight) { %>
+                        <span class="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-orange-100 text-orange-800">
+                          Your score
+                        </span>
+                      <% } %>
+                    </td>
+                  </tr>
+                <% }); %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+        <p class="text-sm text-blue-800">
+          <strong>Note:</strong> This conversion is based on official IELTS Reading test scoring criteria. 
+          Your actual IELTS score may vary depending on the specific test version and marking standards.
+        </p>
+      </div>
+    </div>
+  </div>
+  <% } %>
+  
+  <!-- Chi tiết kết quả theo từng bài đọc -->
+  <% test.passages.forEach((passage, passageIndex) => { %>
+    <div class="bg-white rounded-lg shadow-md overflow-hidden mb-6">
+      <div class="px-6 py-4 bg-gray-50 border-b border-gray-200">
+        <h3 class="text-lg font-medium text-gray-900 mb-4">
+          <%= passage.passageId ? passage.passageId.title : 'Passage không tồn tại' %>
+        </h3>
+        
+        <!-- Hiển thị đoạn văn -->
+        <div class="prose prose-sm max-w-none bg-white p-4 rounded-md border border-gray-200">
+          <% if (passage.passageId && passage.passageId.content) { %>
+            <% 
+              // Chia đoạn văn thành các đoạn nhỏ để hiển thị
+              const paragraphs = passage.passageId.content.split('\n').filter(p => p.trim());
+              paragraphs.forEach(paragraph => {
+            %>
+              <p class="mb-3"><%= paragraph %></p>
+            <% }); %>
+          <% } else { %>
+            <p class="text-gray-500 italic">Nội dung passage không có sẵn</p>
+          <% } %>
+        </div>
+      </div>
+      
+      <!-- Hiển thị câu hỏi và đáp án -->
+      <div class="p-6 space-y-8">
+        <% passage.questions.forEach((question, qIndex) => { %>
+          <%
+            // Kiểm tra questionResults tồn tại và là mảng
+            const questionResults = Array.isArray(userAttempt.questionResults) ? userAttempt.questionResults : [];
+            
+            // Tìm kết quả câu hỏi tương ứng, xử lý cả trường hợp questionId là string hoặc ObjectId
+            const result = questionResults.find(a => {
+              if (!a || !a.questionId) return false;
+              
+              const aId = typeof a.questionId === 'object' && a.questionId !== null ? 
+                (a.questionId.toString ? a.questionId.toString() : String(a.questionId)) : 
+                String(a.questionId);
+                
+              const qId = question._id ? 
+                (question._id.toString ? question._id.toString() : String(question._id)) : 
+                '';
+                
+              return aId === qId;
+            });
+            
+            // Hiển thị trạng thái câu hỏi
+            let questionIsCorrect = result && result.isCorrect;
+            let questionScore = result ? (result.score || 0) : 0;
+            
+            // Nếu có thông tin đánh giá chi tiết cho câu hỏi matching, sử dụng thông tin đó
+            if ((question.questionType === 'matching' || question.type === 'matching') && question.matchingComparison) {
+                  questionIsCorrect = question.matchingComparison.isCorrect;
+                  questionScore = question.matchingComparison.earnedScore;
+                }
+          %>
+          
+          <div class="bg-white rounded-lg shadow-md overflow-hidden mb-6">
+            <div class="px-6 py-4 <%= questionIsCorrect ? 'bg-green-50 border-b border-green-100' : 'bg-red-50 border-b border-red-100' %>">
+              <h3 class="text-lg font-semibold <%= questionIsCorrect ? 'text-green-800' : 'text-red-800' %>">
+                Question: <%= question.text %>
+              </h3>
+              <div class="mt-2 flex items-center">
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium <%= questionIsCorrect ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' %> mr-2">
+                  <%= questionIsCorrect ? 'True' : 'False' %>
+                </span>
+                <span class="text-sm text-gray-600">Score: <%= questionScore.toFixed(2) %>/<%= question.score || 1 %></span>
+              </div>
+            </div>
+            
+            <div class="p-6 bg-white">
+              <!-- Hiển thị câu trả lời của người dùng -->
+              <div class="mb-6">
+                <h5 class="text-sm font-medium text-gray-700 mb-2 uppercase">YOUR ANSWER:</h5>
+                <div class="text-gray-800 p-4 bg-gray-50 rounded-md border border-gray-200">
+                  <% 
+                    try {
+                      // Xử lý hiển thị dựa vào loại câu hỏi
+                      if (question.questionType === 'multiple_choice') {
+                        // MULTIPLE CHOICE - Câu hỏi trắc nghiệm
+                        const isSingleChoice = !question.multipleAnswers;
+                        
+                        if (isSingleChoice) {
+                          // Dạng single choice
+                          if (!result || result.userAnswer === undefined || result.userAnswer === '') {
+                            %>
+                              <span class="text-gray-500 italic">No answer</span>
+                            <%
+                          } else {
+                            // Lấy đáp án người dùng
+                            const userAnswer = result.userAnswer;
+                            
+                            // Kiểm tra nếu result là index hoặc giá trị
+                            const answerIndex = parseInt(userAnswer);
+                            if (!isNaN(answerIndex) && answerIndex >= 0 && answerIndex < question.options.length) {
+                              %>
+                                <div class="flex items-center">
+                                  <span class="inline-flex items-center justify-center w-7 h-7 rounded-full <%= questionIsCorrect ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800' %> font-medium mr-3">
+                                    <%= String.fromCharCode(65 + answerIndex) %>
+                                  </span>
+                                  <span><%= question.options[answerIndex] %></span>
+                                </div>
+                              <%
+                            } else {
+                              // Tìm index của đáp án trong options
+                              const optionIndex = question.options.findIndex(opt => opt === userAnswer);
+                              if (optionIndex >= 0) {
+                                %>
+                                  <div class="flex items-center">
+                                    <span class="inline-flex items-center justify-center w-7 h-7 rounded-full <%= questionIsCorrect ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800' %> font-medium mr-3">
+                                      <%= String.fromCharCode(65 + optionIndex) %>
+                                    </span>
+                                    <span><%= userAnswer %></span>
+                                  </div>
+                                <%
+                              } else {
+                                %>
+                                  <%= userAnswer %>
+                                <%
+                              }
+                            }
+                          }
+                        } else {
+                          // Dạng multiple choice
+                          let selectedOptions = [];
+                          try {
+                            if (!result || !result.userAnswer) {
+                              selectedOptions = [];
+                            } else if (typeof result.userAnswer === 'string') {
+                              selectedOptions = JSON.parse(result.userAnswer);
+                            } else if (Array.isArray(result.userAnswer)) {
+                              selectedOptions = result.userAnswer;
+                            }
+                          } catch (e) {
+                            selectedOptions = [];
+                          }
+                          
+                          if (!selectedOptions.length) {
+                            %>
+                              <span class="text-gray-500 italic">No answer</span>
+                            <%
+                          } else {
+                            %>
+                              <ul class="space-y-3">
+                                <% 
+                                  // Xử lý cả trường hợp selectedOptions là mảng index hoặc mảng giá trị
+                                  selectedOptions.forEach(option => { 
+                                    let index = -1;
+                                    let text = '';
+                                    
+                                    if (typeof option === 'number' || !isNaN(parseInt(option))) {
+                                      // Nếu là index
+                                      index = parseInt(option);
+                                      text = index >= 0 && index < question.options.length ? 
+                                        question.options[index] : option;
+                                    } else {
+                                      // Nếu là giá trị
+                                      index = question.options.findIndex(opt => opt === option);
+                                      text = option;
+                                    }
+                                    
+                                    // Kiểm tra xem lựa chọn này có đúng không
+                                    let isCorrectOption = false;
+                                    if (question.correctAnswer) {
+                                      let correctOptions = [];
+                                      try {
+                                        if (typeof question.correctAnswer === 'string') {
+                                          correctOptions = JSON.parse(question.correctAnswer);
+                                        } else if (Array.isArray(question.correctAnswer)) {
+                                          correctOptions = question.correctAnswer;
+                                        }
+                                      } catch (e) {
+                                        correctOptions = [];
+                                      }
+                                      
+                                      if (typeof option === 'number' || !isNaN(parseInt(option))) {
+                                        isCorrectOption = correctOptions.includes(index) || correctOptions.includes(String(index));
+                                      } else {
+                                        isCorrectOption = correctOptions.includes(option);
+                                      }
+                                    }
+                                    
+                                    if (index >= 0) {
+                                %>
+                                  <li class="flex items-center">
+                                    <span class="inline-flex items-center justify-center w-7 h-7 rounded-full <%= isCorrectOption ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800' %> font-medium mr-3">
+                                      <%= String.fromCharCode(65 + index) %>
+                                    </span>
+                                    <span><%= text %></span>
+                                  </li>
+                                <% } else { %>
+                                  <li class="pl-10 <%= isCorrectOption ? 'text-green-700' : 'text-red-700' %>"><%= option %></li>
+                                <% }
+                                  }); %>
+                              </ul>
+                            <%
+                          }
+                        }
+                      } else if (question.questionType === 'matching' || question.type === 'matching') {
+                        // MATCHING - Câu hỏi ghép đôi
+                        let correctAnswers = {};
+                        try {
+                          if (typeof question.correctAnswer === 'string') {
+                            const parsed = JSON.parse(question.correctAnswer);
+                            // Kiểm tra nếu có cấu trúc với type và selections
+                            if (parsed.type && parsed.selections) {
+                              correctAnswers = parsed.selections;
+                            } else {
+                              correctAnswers = parsed;
+                            }
+                          } else if (typeof question.correctAnswer === 'object' && question.correctAnswer !== null) {
+                            // Kiểm tra nếu có cấu trúc với type và selections
+                            if (question.correctAnswer.type && question.correctAnswer.selections) {
+                              correctAnswers = question.correctAnswer.selections;
+                            } else {
+                              correctAnswers = question.correctAnswer;
+                            }
+                          }
+                        } catch (e) {
+                          correctAnswers = {};
+                        }
+                        
+                        // Lấy dữ liệu từ matchingOptions (cấu trúc mới)
+                        let headings = [];
+                        let paragraphs = [];
+                        
+                        if (question.matchingOptions) {
+                          headings = question.matchingOptions.headings || [];
+                          paragraphs = question.matchingOptions.paragraphs || [];
+                        }
+                        
+                        // Fallback cho cấu trúc cũ
+                        if (headings.length === 0 && question.matchingItems) {
+                          headings = question.matchingItems.map(item => item.text || item.value || item);
+                        }
+                        if (paragraphs.length === 0 && question.matchingOptions && question.matchingOptions.paragraphs) {
+                          paragraphs = question.matchingOptions.paragraphs;
+                        }
+                        
+                        // Lấy câu trả lời của người dùng
+                        let userAnswers = {};
+                        try {
+                          if (result && result.userAnswer) {
+                            if (typeof result.userAnswer === 'string') {
+                              userAnswers = JSON.parse(result.userAnswer);
+                            } else if (typeof result.userAnswer === 'object' && result.userAnswer !== null) {
+                              userAnswers = result.userAnswer;
+                            }
+                          }
+                        } catch (e) {
+                          userAnswers = {};
+                        }
+                        
+                        // Sử dụng kết quả đã được tính từ backend thay vì tính lại
+                        let correctCount = 0;
+                        let totalRequiredMatches = Object.keys(correctAnswers).length;
+                        let earnedScore = questionScore; // Sử dụng điểm đã tính từ backend
+                        let isFullyCorrect = questionIsCorrect; // Sử dụng kết quả đúng/sai từ backend
+                        
+                        // Tính số cặp ghép đúng để hiển thị thông tin chi tiết
+                        Object.entries(correctAnswers).forEach(([headingIndex, paragraphIndex]) => {
+                          const userParagraphIndex = userAnswers[headingIndex];
+                          if (String(userParagraphIndex) === String(paragraphIndex)) {
+                            correctCount++;
+                          }
+                        });
+                      %>
+                                                <div class="mb-6">
+                          <h5 class="text-sm font-medium text-gray-700 mb-2 uppercase">EVALUATION INFORMATION:</h5>
+                          <div class="bg-blue-50 p-4 rounded-md border border-blue-100 mb-4">
+                            <ul class="list-disc pl-5 text-blue-800">
+                              <li>Matching correct: <%= correctCount %>/<%= totalRequiredMatches %></li>
+                              <li>Earned score: <%= earnedScore.toFixed(2) %>/<%= question.score || 1 %></li>
+                              <li>Result: <%= isFullyCorrect ? 'Fully correct' : 'Not fully correct' %></li>
+                            </ul>
+                          </div>
+                          
+                          <h5 class="text-sm font-medium text-gray-700 mb-2 uppercase">COMPARISON TABLE:</h5>
+                          
+                          <div class="overflow-x-auto mt-4">
+                            <table class="min-w-full divide-y divide-gray-200 border border-gray-300 rounded-lg">
+                              <thead class="bg-gray-50">
+                                <tr>
+                                  <th class="px-4 py-3 text-left text-sm font-medium text-gray-700" style="width: 50%;">PARAGRAPH</th>
+                                  <th class="px-4 py-3 text-center text-sm font-medium text-gray-700" style="width: 17%;">YOUR ANSWER</th>
+                                  <th class="px-4 py-3 text-center text-sm font-medium text-gray-700" style="width: 17%;">CORRECT ANSWER</th>
+                                  <th class="px-4 py-3 text-center text-sm font-medium text-gray-700" style="width: 16%;">STATUS</th>
+                                </tr>
+                              </thead>
+                              <tbody class="bg-white divide-y divide-gray-200">
+                                <% 
+                                  // Hiển thị theo từng paragraph (thông tin cần ghép)
+                                  paragraphs.forEach((paragraph, paragraphIndex) => {
+                                    const correctHeadingIndex = correctAnswers[paragraphIndex];
+                                    const userHeadingIndex = userAnswers[paragraphIndex];
+                                    
+                                    const correctHeading = correctHeadingIndex !== undefined && correctHeadingIndex !== null &&
+                                                          correctHeadingIndex >= 0 && correctHeadingIndex < headings.length ?
+                                                          headings[correctHeadingIndex] : 'Không xác định';
+                                    
+                                    const userHeading = userHeadingIndex !== undefined && userHeadingIndex !== null &&
+                                                       userHeadingIndex >= 0 && userHeadingIndex < headings.length ?
+                                                       headings[userHeadingIndex] : 'No answer';
+                                    
+                                    const isCorrect = String(userHeadingIndex) === String(correctHeadingIndex);
+                                %>
+                                  <tr>
+                                    <td class="px-4 py-3 text-sm text-gray-900" style="width: 50%;">
+                                      <%= paragraph %>
+                                    </td>
+                                    <td class="px-4 py-3 text-center" style="width: 17%;">
+                                      <% if (userHeading !== 'No answer') { %>
+                                        <span class="inline-block w-8 h-8 bg-blue-100 text-blue-800 rounded-full text-center leading-8 font-semibold">
+                                          <%= userHeading %>
+                                        </span>
+                                      <% } else { %>
+                                        <span class="text-gray-400 text-sm">-</span>
+                                      <% } %>
+                                    </td>
+                                    <td class="px-4 py-3 text-center" style="width: 17%;">
+                                      <span class="inline-block w-8 h-8 bg-green-100 text-green-800 rounded-full text-center leading-8 font-semibold">
+                                        <%= correctHeading %>
+                                      </span>
+                                    </td>
+                                    <td class="px-4 py-3 text-center" style="width: 16%;">
+                                      <% if (isCorrect) { %>
+                                        <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs font-medium">True</span>
+                                      <% } else { %>
+                                        <span class="px-2 py-1 bg-red-100 text-red-800 rounded text-xs font-medium">False</span>
+                                      <% } %>
+                                    </td>
+                                  </tr>
+                                <% }); %>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      <%
+                    } else if (question.questionType === 'fill_blank' && question.blankStyle === 'one_word_only') { %>
+                      <!-- FILL BLANK ONE WORD ONLY -->
+                                                <div class="overflow-x-auto">
+                            <table class="min-w-full table-fixed divide-y divide-gray-200 border border-gray-200 rounded-lg shadow-sm">
+                              <thead>
+                                <tr>
+                                  <th scope="col" class="px-4 py-3 bg-blue-50 text-center text-xs font-medium text-blue-800 uppercase tracking-wider" style="width: 15%;">BLANK #</th>
+                                  <th scope="col" class="px-4 py-3 bg-blue-50 text-center text-xs font-medium text-blue-800 uppercase tracking-wider" style="width: 30%;">YOUR ANSWER</th>
+                                  <th scope="col" class="px-4 py-3 bg-blue-50 text-center text-xs font-medium text-blue-800 uppercase tracking-wider" style="width: 30%;">CORRECT ANSWER</th>
+                                  <th scope="col" class="px-4 py-3 bg-blue-50 text-center text-xs font-medium text-blue-800 uppercase tracking-wider" style="width: 25%;">STATUS</th>
+                                </tr>
+                              </thead>
+                              <tbody class="bg-white divide-y divide-gray-200">
+                            <% 
+                              // Xử lý câu trả lời của người dùng
+                              let userAnswers = [];
+                              
+                              if (result && result.userAnswer) {
+                                // Nếu userAnswer là mảng
+                                if (Array.isArray(result.userAnswer)) {
+                                  userAnswers = result.userAnswer;
+                                } 
+                                // Nếu userAnswer là chuỗi JSON
+                                else if (typeof result.userAnswer === 'string' && result.userAnswer.startsWith('{')) {
+                                  try {
+                                    const parsed = JSON.parse(result.userAnswer);
+                                    if (Array.isArray(parsed)) {
+                                      userAnswers = parsed;
+                                    } else {
+                                      userAnswers = Object.values(parsed);
+                                    }
+                                  } catch (e) {
+                                    console.error('Lỗi parse JSON:', e);
+                                    userAnswers = [result.userAnswer];
+                                  }
+                                }
+                                // Nếu userAnswer là object
+                                else if (typeof result.userAnswer === 'object' && result.userAnswer !== null) {
+                                  userAnswers = Object.values(result.userAnswer);
+                                }
+                                // Nếu userAnswer là chuỗi thường
+                                else if (typeof result.userAnswer === 'string') {
+                                  userAnswers = [result.userAnswer];
+                                }
+                              }
+                              
+                              // Lấy mảng blankNumbers từ câu hỏi hoặc mặc định [4, 5]
+                              const blankNumbers = question.blankNumbers && Array.isArray(question.blankNumbers) ? 
+                                                  question.blankNumbers : [4, 5];
+                              
+                              // Lấy đáp án đúng
+                              let correctAnswers = [];
+                              if (question.correctAnswer) {
+                                if (Array.isArray(question.correctAnswer)) {
+                                  correctAnswers = question.correctAnswer;
+                                } else if (typeof question.correctAnswer === 'string' && question.correctAnswer.startsWith('{')) {
+                                  try {
+                                    const parsed = JSON.parse(question.correctAnswer);
+                                    if (Array.isArray(parsed)) {
+                                      correctAnswers = parsed;
+                                    } else {
+                                      correctAnswers = Object.values(parsed);
+                                    }
+                                  } catch (e) {
+                                    correctAnswers = [question.correctAnswer];
+                                  }
+                                } else if (typeof question.correctAnswer === 'object' && question.correctAnswer !== null) {
+                                  correctAnswers = Object.values(question.correctAnswer);
+                                } else {
+                                  correctAnswers = [question.correctAnswer];
+                                }
+                              }
+                              
+                              // Hiển thị từng dòng
+                              for (let i = 0; i < blankNumbers.length; i++) {
+                                const blankNumber = blankNumbers[i];
+                                const userAnswer = i < userAnswers.length ? userAnswers[i] : '';
+                                const correctAnswer = i < correctAnswers.length ? correctAnswers[i] : '';
+                                
+                                // Kiểm tra đáp án đúng/sai
+                                let isCorrect = false;
+                                if (userAnswer && correctAnswer) {
+                                  isCorrect = String(userAnswer).toLowerCase().trim() === String(correctAnswer).toLowerCase().trim();
+                                }
+                            %>
+                              <tr class="<%= isCorrect ? 'bg-green-50' : 'bg-red-50' %>">
+                                <td class="px-4 py-3 text-sm font-medium text-gray-900 text-center align-middle" style="width: 15%;"><%= blankNumber %></td>
+                                <td class="px-4 py-3 text-sm text-center align-middle" style="width: 30%;">
+                                  <% if (userAnswer) { %>
+                                    <span class="<%= isCorrect ? 'text-green-700' : 'text-red-700' %> font-medium">
+                                      <%= userAnswer %>
+                                    </span>
+                                  <% } else { %>
+                                    <span class="text-gray-500 italic">No answer</span>
+                                  <% } %>
+                                </td>
+                                <td class="px-4 py-3 text-sm text-center align-middle" style="width: 30%;">
+                                  <span class="font-medium text-green-700">
+                                    <%= correctAnswer %>
+                                  </span>
+                                </td>
+                                <td class="px-4 py-3 text-sm text-center align-middle" style="width: 25%;">
+                                  <span class="inline-flex items-center justify-center px-2.5 py-0.5 rounded-full text-xs font-medium <%= isCorrect ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' %>">
+                                    <%= isCorrect ? 'True' : 'False' %>
+                                  </span>
+                                </td>
+                              </tr>
+                            <% } %>
+                          </tbody>
+                        </table>
+                      </div>
+                    <% } else if (question.questionType === 'fill_blank') {
+                      // FILL BLANK - Câu hỏi điền vào chỗ trống
+                      let correctAnswers = {};
+                      try {
+                        if (typeof question.correctAnswer === 'string' && question.correctAnswer.startsWith('{')) {
+                          correctAnswers = JSON.parse(question.correctAnswer);
+                        } else if (typeof question.correctAnswer === 'object' && question.correctAnswer !== null) {
+                          correctAnswers = question.correctAnswer;
+                        } else if (Array.isArray(question.correctAnswer)) {
+                          correctAnswers = question.correctAnswer.reduce((acc, val, idx) => {
+                            acc[idx] = val;
+                            return acc;
+                          }, {});
+                        }
+                      } catch (e) {
+                        correctAnswers = {};
+                        console.error("Lỗi khi xử lý correctAnswer:", e);
+                      }
+                      
+                      // Lấy câu trả lời của người dùng để so sánh
+                      let userAnswers = {};
+                      try {
+                        if (result && result.userAnswer) {
+                          if (typeof result.userAnswer === 'string' && result.userAnswer.startsWith('{')) {
+                            userAnswers = JSON.parse(result.userAnswer);
+                          } else if (typeof result.userAnswer === 'object' && result.userAnswer !== null) {
+                            userAnswers = result.userAnswer;
+                          } else if (Array.isArray(result.userAnswer)) {
+                            userAnswers = result.userAnswer.reduce((acc, val, idx) => {
+                              acc[idx] = val;
+                              return acc;
+                            }, {});
+                          } else {
+                            userAnswers = { 0: result.userAnswer };
+                          }
+                        }
+                      } catch (e) {
+                        userAnswers = {};
+                        console.error("Lỗi khi xử lý userAnswer:", e);
+                      }
+                      
+                      // Kiểm tra xem có phải dạng fill blank multiple không
+                      const isMultipleFillBlank = question.isMultipleFillBlank || 
+                                                 (question.fillBlankType && question.fillBlankType === 'multiple') ||
+                                                 (question.metadata && question.metadata.isMultipleFillBlank);
+                      
+                      if (Object.keys(correctAnswers).length === 0) {
+                        %>
+                          <span class="text-gray-500 italic">No answer</span>
+                        <%
+                      } else {
+                        %>
+                          <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200 border border-gray-200 rounded-lg shadow-sm">
+                              <thead>
+                                <tr>
+                                  <th scope="col" class="px-4 py-3 bg-blue-50 text-left text-xs font-medium text-blue-800 uppercase tracking-wider">BLANK #</th>
+                                  <th scope="col" class="px-4 py-3 bg-blue-50 text-left text-xs font-medium text-blue-800 uppercase tracking-wider">YOUR ANSWER</th>
+                                  <th scope="col" class="px-4 py-3 bg-blue-50 text-left text-xs font-medium text-blue-800 uppercase tracking-wider">CORRECT ANSWER</th>
+                                  <th scope="col" class="px-4 py-3 bg-blue-50 text-left text-xs font-medium text-blue-800 uppercase tracking-wider">STATUS</th>
+                                </tr>
+                              </thead>
+                              <tbody class="bg-white divide-y divide-gray-200">
+                                <% 
+                                  // Lấy danh sách các chỗ trống
+                                  const blankNumbers = Object.keys(correctAnswers).sort((a, b) => parseInt(a) - parseInt(b));
+                                  
+                                  // Duyệt qua từng chỗ trống
+                                  blankNumbers.forEach(blankNumber => {
+                                    const correctAnswer = correctAnswers[blankNumber];
+                                    // Đảm bảo userAnswers không bị undefined hoặc null
+                                    const userAnswer = userAnswers[blankNumber] !== undefined && userAnswers[blankNumber] !== null ? 
+                                                      userAnswers[blankNumber] : '';
+                                    
+                                    // Kiểm tra đáp án đúng/sai
+                                    let isCorrect = false;
+                                    
+                                    if (Array.isArray(correctAnswer)) {
+                                      // Nếu đáp án đúng là một mảng các giá trị có thể chấp nhận
+                                      isCorrect = correctAnswer.some(ans => {
+                                        if (ans === null || ans === undefined) return false;
+                                        return String(ans).toLowerCase().trim() === String(userAnswer).toLowerCase().trim();
+                                      });
+                                    } else if (correctAnswer === null || correctAnswer === undefined) {
+                                      // Nếu không có đáp án đúng
+                                      isCorrect = false;
+                                    } else if (userAnswer === '' || userAnswer === null || userAnswer === undefined) {
+                                      // Nếu người dùng không trả lời
+                                      isCorrect = false;
+                                    } else if (correctAnswer === userAnswer) {
+                                      // So sánh chính xác
+                                      isCorrect = true;
+                                    } else if (typeof correctAnswer === 'string' && typeof userAnswer === 'string') {
+                                      // So sánh không phân biệt chữ hoa/thường và loại bỏ khoảng trắng thừa
+                                      isCorrect = correctAnswer.toLowerCase().trim() === userAnswer.toLowerCase().trim();
+                                    } else if (typeof correctAnswer === 'number' && typeof userAnswer === 'string') {
+                                      // So sánh số với chuỗi
+                                      isCorrect = correctAnswer === Number(userAnswer) || String(correctAnswer) === userAnswer.trim();
+                                    } else if (typeof correctAnswer === 'string' && typeof userAnswer === 'number') {
+                                      // So sánh chuỗi với số
+                                      isCorrect = Number(correctAnswer) === userAnswer || correctAnswer.trim() === String(userAnswer);
+                                    }
+                                    
+                                    // Hiển thị đáp án đúng dưới dạng chuỗi
+                                    let correctAnswerDisplay = '';
+                                    if (Array.isArray(correctAnswer)) {
+                                      correctAnswerDisplay = correctAnswer.join(' / ');
+                                    } else if (correctAnswer === null || correctAnswer === undefined) {
+                                      correctAnswerDisplay = 'Không có đáp án';
+                                    } else {
+                                      correctAnswerDisplay = String(correctAnswer);
+                                    }
+                                %>
+                                  <tr class="<%= isCorrect ? 'bg-green-50' : 'bg-red-50' %>">
+                                    <td class="px-4 py-3 font-medium"><%= blankNumber %></td>
+                                    <td class="px-4 py-3">
+                                      <% if (userAnswer !== '' && userAnswer !== null && userAnswer !== undefined) { %>
+                                        <span class="<%= isCorrect ? 'text-green-700' : 'text-red-700' %> font-medium">
+                                          <%= userAnswer %>
+                                        </span>
+                                      <% } else { %>
+                                        <span class="text-gray-500 italic">No answer</span>
+                                      <% } %>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                      <span class="font-medium text-green-700">
+                                        <%= correctAnswerDisplay %>
+                                      </span>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium <%= isCorrect ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' %>">
+                                        <%= isCorrect ? 'True' : 'False' %>
+                                      </span>
+                                    </td>
+                                  </tr>
+                                <% }); %>
+                              </tbody>
+                            </table>
+                          </div>
+                          
+                          <% if (question.fillBlankText) { %>
+                            <div class="mt-4">
+                              <h5 class="text-sm font-medium text-gray-700 mb-2 uppercase">PARAGRAPH WITH YOUR ANSWER:</h5>
+                              <div class="p-4 bg-gray-50 rounded-md border border-gray-200">
+                                <% 
+                                  // Hiển thị đoạn văn với câu trả lời của người dùng
+                                  let fillBlankText = question.fillBlankText;
+                                  
+                                  // Thay thế các placeholder bằng câu trả lời của người dùng
+                                  Object.entries(userAnswers).forEach(([blankNumber, userAnswer]) => {
+                                    if (userAnswer === undefined || userAnswer === null) return;
+                                    
+                                    const placeholder = `[${blankNumber}]`;
+                                    const correctAnswer = correctAnswers[blankNumber];
+                                    
+                                    // Kiểm tra đáp án đúng/sai
+                                    let isCorrect = false;
+                                    if (Array.isArray(correctAnswer)) {
+                                      isCorrect = correctAnswer.some(ans => {
+                                        if (ans === null || ans === undefined) return false;
+                                        return String(ans).toLowerCase().trim() === String(userAnswer).toLowerCase().trim();
+                                      });
+                                    } else if (correctAnswer === userAnswer) {
+                                      isCorrect = true;
+                                    } else if (typeof correctAnswer === 'string' && typeof userAnswer === 'string') {
+                                      isCorrect = correctAnswer.toLowerCase().trim() === userAnswer.toLowerCase().trim();
+                                    } else if (typeof correctAnswer === 'number' && typeof userAnswer === 'string') {
+                                      isCorrect = correctAnswer === Number(userAnswer) || String(correctAnswer) === userAnswer.trim();
+                                    } else if (typeof correctAnswer === 'string' && typeof userAnswer === 'number') {
+                                      isCorrect = Number(correctAnswer) === userAnswer || correctAnswer.trim() === String(userAnswer);
+                                    }
+                                    
+                                    // Tạo span với màu tương ứng
+                                    const replacement = userAnswer !== '' ? 
+                                      `<span class="${isCorrect ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800'} px-1 rounded font-medium">${userAnswer}</span>` : 
+                                      `<span class="bg-gray-200 text-gray-800 px-1 rounded">${placeholder}</span>`;
+                                    
+                                    // Thay thế placeholder trong đoạn văn
+                                    fillBlankText = fillBlankText.replace(placeholder, replacement);
+                                  });
+                                %>
+                                <p class="whitespace-pre-line"><%- fillBlankText %></p>
+                              </div>
+                            </div>
+                          <% } %>
+                        <%
+                      }
+                    } else if (question.questionType === 'true_false_not_given') {
+                      // TRUE_FALSE_NOT_GIVEN - Câu hỏi True/False/Not Given
+                      const options = ['True', 'False', 'Not Given'];
+                      
+                      // Function to format text with proper capitalization  
+                      const formatAnswerText = (answer) => {
+                        if (typeof answer === 'string') {
+                          const lowerAnswer = answer.toLowerCase().trim();
+                          if (lowerAnswer === 'true') return 'True';
+                          if (lowerAnswer === 'false') return 'False';
+                          if (lowerAnswer === 'not given' || lowerAnswer === 'not_given') return 'Not Given';
+                          return answer;
+                        }
+                        return answer;
+                      };
+                      
+                      // Xử lý đáp án của người dùng
+                      let userAnswerText = 'No answer';
+                      let userAnswerIndex = -1;
+                      
+                      if (result && result.userAnswer !== undefined && result.userAnswer !== '') {
+                        userAnswerIndex = parseInt(result.userAnswer);
+                        userAnswerText = userAnswerIndex >= 0 && userAnswerIndex < options.length ? 
+                          options[userAnswerIndex] : formatAnswerText(result.userAnswer);
+                      }
+                      
+                      // Xử lý đáp án đúng
+                      const correctAnswerIndex = parseInt(question.correctAnswer);
+                      const correctAnswerText = correctAnswerIndex >= 0 && correctAnswerIndex < options.length ? 
+                        options[correctAnswerIndex] : formatAnswerText(question.correctAnswer);
+                      
+                      // Kiểm tra đúng/sai
+                      const isCorrect = userAnswerIndex === correctAnswerIndex || 
+                                       (userAnswerText !== 'No answer' && userAnswerText === correctAnswerText);
+                      %>
+                        <div class="overflow-x-auto">
+                          <table class="min-w-full table-fixed divide-y divide-gray-200 border border-gray-200 rounded-lg shadow-sm">
+                            <thead>
+                              <tr>
+                                <th scope="col" class="px-4 py-3 bg-blue-50 text-center text-xs font-medium text-blue-800 uppercase tracking-wider" style="width: 35%;">YOUR ANSWER</th>
+                                <th scope="col" class="px-4 py-3 bg-blue-50 text-center text-xs font-medium text-blue-800 uppercase tracking-wider" style="width: 35%;">CORRECT ANSWER</th>
+                                <th scope="col" class="px-4 py-3 bg-blue-50 text-center text-xs font-medium text-blue-800 uppercase tracking-wider" style="width: 30%;">STATUS</th>
+                              </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                              <tr class="<%= isCorrect ? 'bg-green-50' : 'bg-red-50' %>">
+                                <td class="px-4 py-4 text-center align-middle" style="width: 35%;">
+                                  <% if (userAnswerText === 'No answer') { %>
+                                    <span class="inline-flex items-center justify-center px-3 py-1.5 rounded-full text-sm font-medium bg-gray-100 text-gray-600">
+                                      No answer
+                                    </span>
+                                  <% } else { %>
+                                    <span class="inline-flex items-center justify-center px-3 py-1.5 rounded-full text-sm font-medium <%= isCorrect ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' %>">
+                                      <%= userAnswerText %>
+                                    </span>
+                                  <% } %>
+                                </td>
+                                <td class="px-4 py-4 text-center align-middle" style="width: 35%;">
+                                  <span class="inline-flex items-center justify-center px-3 py-1.5 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                                    <%= correctAnswerText %>
+                                  </span>
+                                </td>
+                                <td class="px-4 py-4 text-center align-middle" style="width: 30%;">
+                                  <span class="inline-flex items-center justify-center px-2.5 py-0.5 rounded-full text-xs font-medium <%= isCorrect ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' %>">
+                                    <%= isCorrect ? 'True' : 'False' %>
+                                  </span>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      <%
+                    } else if (question.questionType === 'short_answer') {
+                      // SHORT_ANSWER - Câu hỏi trả lời ngắn
+                      if (!result || !result.userAnswer) {
+                        %>
+                          <span class="text-gray-500 italic">No answer</span>
+                        <%
+                      } else {
+                        %>
+                          <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200 border border-gray-200 rounded-lg shadow-sm">
+                              <thead>
+                                <tr>
+                                  <th scope="col" class="px-4 py-3 bg-blue-50 text-left text-xs font-medium text-blue-800 uppercase tracking-wider w-2/5">YOUR ANSWER</th>
+                                  <th scope="col" class="px-4 py-3 bg-blue-50 text-left text-xs font-medium text-blue-800 uppercase tracking-wider w-2/5">SAMPLE ANSWER</th>
+                                  <th scope="col" class="px-4 py-3 bg-blue-50 text-center text-xs font-medium text-blue-800 uppercase tracking-wider w-1/5">STATUS</th>
+                                </tr>
+                              </thead>
+                              <tbody class="bg-white divide-y divide-gray-200">
+                                <tr class="<%= questionIsCorrect ? 'bg-green-50' : 'bg-red-50' %>">
+                                  <td class="px-4 py-3 text-sm whitespace-pre-line"><%= result.userAnswer %></td>
+                                  <td class="px-4 py-3 text-sm whitespace-pre-line">
+                                    <% if (Array.isArray(question.correctAnswer)) { %>
+                                      <ul class="list-disc pl-5 space-y-1">
+                                        <% question.correctAnswer.forEach(ans => { %>
+                                          <li class="text-green-700"><%= ans %></li>
+                                        <% }); %>
+                                      </ul>
+                                    <% } else { %>
+                                      <%= question.correctAnswer %>
+                                    <% } %>
+                                  </td>
+                                  <td class="px-4 py-3 text-center">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium <%= questionIsCorrect ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' %>">
+                                      <%= questionIsCorrect ? 'True' : 'False' %>
+                                    </span>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        <%
+                      }
+                    } else {
+                      // Xử lý mặc định cho các loại câu hỏi khác
+                      if (!result || !result.userAnswer) {
+                        %>
+                          <span class="text-gray-500 italic">No answer</span>
+                        <%
+                      } else {
+                        %>
+                          <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200 border border-gray-200 rounded-lg shadow-sm">
+                              <thead>
+                                <tr>
+                                  <th scope="col" class="px-4 py-3 bg-blue-50 text-left text-xs font-medium text-blue-800 uppercase tracking-wider w-2/5">YOUR ANSWER</th>
+                                  <th scope="col" class="px-4 py-3 bg-blue-50 text-left text-xs font-medium text-blue-800 uppercase tracking-wider w-2/5">CORRECT ANSWER</th>
+                                  <th scope="col" class="px-4 py-3 bg-blue-50 text-center text-xs font-medium text-blue-800 uppercase tracking-wider w-1/5">STATUS</th>
+                                </tr>
+                              </thead>
+                              <tbody class="bg-white divide-y divide-gray-200">
+                                <tr class="<%= questionIsCorrect ? 'bg-green-50' : 'bg-red-50' %>">
+                                  <td class="px-4 py-3 text-sm"><%= result.userAnswer %></td>
+                                  <td class="px-4 py-3 text-sm"><%= question.correctAnswer %></td>
+                                  <td class="px-4 py-3 text-center">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium <%= questionIsCorrect ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' %>">
+                                      <%= questionIsCorrect ? 'True' : 'False' %>
+                                    </span>
+                                  </td>
+                                </tr>                                                             
+                              </tbody>
+                            </table>
+                          </div>
+                        <%
+                      }
+                    }
+                  } catch (e) {
+                    // Nếu có lỗi, hiển thị dưới dạng chuỗi
+                    if (!result || !result.userAnswer) {
+                      %>
+                        <span class="text-gray-500 italic">No answer</span>
+                      <%
+                    } else {
+                      %>
+                        <p><%= result.userAnswer %></p>
+                      <%
+                    }
+                  }
+                %>
+              </div>
+              
+              <!-- Hiển thị đáp án đúng -->
+              <div class="mt-6">
+                <h5 class="text-sm font-medium text-gray-700 mb-2 uppercase">CORRECT ANSWER:</h5>
+                <div class="text-gray-800 p-4 bg-green-50 rounded-md border border-green-200">
+                  <% 
+                    try {
+                      // Xử lý hiển thị đáp án đúng dựa vào loại câu hỏi
+                      if (question.questionType === 'multiple_choice') {
+                        // MULTIPLE CHOICE - Câu hỏi trắc nghiệm
+                        const isSingleChoice = !question.multipleAnswers;
+                        
+                        if (isSingleChoice) {
+                          // Dạng single choice
+                          if (question.correctAnswer === undefined || question.correctAnswer === '') {
+                            %>
+                              <span class="text-gray-500 italic">No answer</span>
+                            <%
+                          } else {
+                            // Lấy đáp án đúng
+                            const correctAnswer = question.correctAnswer;
+                            
+                            // Kiểm tra nếu correctAnswer là index hoặc giá trị
+                            const answerIndex = parseInt(correctAnswer);
+                            if (!isNaN(answerIndex) && answerIndex >= 0 && answerIndex < question.options.length) {
+                              %>
+                                <div class="flex items-center">
+                                  <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-green-200 text-green-800 font-medium mr-3">
+                                    <%= String.fromCharCode(65 + answerIndex) %>
+                                  </span>
+                                  <span><%= question.options[answerIndex] %></span>
+                                </div>
+                              <%
+                            } else {
+                              // Tìm index của đáp án trong options
+                              const optionIndex = question.options.findIndex(opt => opt === correctAnswer);
+                              if (optionIndex >= 0) {
+                                %>
+                                  <div class="flex items-center">
+                                    <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-green-200 text-green-800 font-medium mr-3">
+                                      <%= String.fromCharCode(65 + optionIndex) %>
+                                    </span>
+                                    <span><%= correctAnswer %></span>
+                                  </div>
+                                <%
+                              } else {
+                                %>
+                                  <%= correctAnswer %>
+                                <%
+                              }
+                            }
+                          }
+                        } else {
+                          // Dạng multiple choice
+                          let correctOptions = [];
+                          try {
+                            if (typeof question.correctAnswer === 'string') {
+                              correctOptions = JSON.parse(question.correctAnswer);
+                            } else if (Array.isArray(question.correctAnswer)) {
+                              correctOptions = question.correctAnswer;
+                            }
+                          } catch (e) {
+                            correctOptions = [];
+                          }
+                          
+                          if (!correctOptions.length) {
+                            %>
+                              <span class="text-gray-500 italic">No answer</span>
+                            <%
+                          } else {
+                            %>
+                              <ul class="space-y-3">
+                                <% 
+                                  // Xử lý cả trường hợp correctOptions là mảng index hoặc mảng giá trị
+                                  correctOptions.forEach(option => { 
+                                    let index = -1;
+                                    let text = '';
+                                    
+                                    if (typeof option === 'number' || !isNaN(parseInt(option))) {
+                                      // Nếu là index
+                                      index = parseInt(option);
+                                      text = index >= 0 && index < question.options.length ? 
+                                        question.options[index] : option;
+                                    } else {
+                                      // Nếu là giá trị
+                                      index = question.options.findIndex(opt => opt === option);
+                                      text = option;
+                                    }
+                                    
+                                    if (index >= 0) {
+                                %>
+                                  <li class="flex items-center">
+                                    <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-green-200 text-green-800 font-medium mr-3">
+                                      <%= String.fromCharCode(65 + index) %>
+                                    </span>
+                                    <span><%= text %></span>
+                                  </li>
+                                <% } else { %>
+                                  <li class="pl-10 text-green-700"><%= option %></li>
+                                <% }
+                                  }); %>
+                              </ul>
+                            <%
+                          }
+                        }
+                      } else if (question.questionType === 'fill_blank') {
+                        // FILL BLANK - Câu hỏi điền vào chỗ trống
+                        // Đã hiển thị trong bảng so sánh ở trên
+                        %>
+                          <p class="text-gray-500 italic">Correct answer has been displayed in the comparison table above</p>
+                        <%
+                      } else if (question.questionType === 'matching' || question.type === 'matching') {
+                        // MATCHING - Câu hỏi ghép đôi
+                        // Đã hiển thị trong bảng so sánh ở trên
+                        %>
+                          <p class="text-gray-500 italic">Correct answer has been displayed in the comparison table above</p>
+                        <%
+                      } else if (question.questionType === 'true_false_not_given' || 
+                                  question.questionType === 'short_answer') {
+                        // Đã hiển thị trong bảng so sánh ở trên
+                        %>
+                          <p class="text-gray-500 italic">Correct answer has been displayed in the comparison table above</p>
+                        <%
+                      } else {
+                        // Hiển thị đáp án đúng cho các loại câu hỏi khác
+                        if (question.correctAnswer === '' || question.correctAnswer === undefined) {
+                          %>
+                            <span class="text-gray-500 italic">No answer</span>
+                          <%
+                        } else if (typeof question.correctAnswer === 'object' && question.correctAnswer !== null) {
+                          %>
+                            <pre class="bg-green-50 p-3 rounded text-sm overflow-auto"><%= JSON.stringify(question.correctAnswer, null, 2) %></pre>
+                          <%
+                        } else {
+                          %>
+                            <p class="text-green-700"><%= question.correctAnswer %></p>
+                          <%
+                        }
+                      }
+                    } catch (e) {
+                      // Nếu có lỗi, hiển thị dưới dạng chuỗi
+                      if (question.correctAnswer === '' || question.correctAnswer === undefined) {
+                        %>
+                          <span class="text-gray-500 italic">No answer</span>
+                        <%
+                      } else {
+                        %>
+                          <p class="text-green-700"><%= question.correctAnswer %></p>
+                        <%
+                      }
+                    }
+                  %>
+                </div>
+              </div>
+            </div>
+            
+            <% if (question.explanation) { %>
+              <!-- Hiển thị giải thích -->
+              <div class="mt-6">
+                <h5 class="text-sm font-medium text-gray-700 mb-2 uppercase">EXPLANATION:</h5>
+                <div class="text-gray-700 p-4 bg-blue-50 rounded-md border border-blue-100">
+                  <p class="whitespace-pre-line"><%= question.explanation %></p>
+                </div>
+              </div>
+            <% } %>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  <% }); %>
+  
+  <!-- Nút quay lại -->
+  <div class="mt-8 flex justify-center">
+    <a href="/user/tests" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+      <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+      </svg>
+      Back to test list
+    </a>
+  </div>
+  
+  <div class="mt-8 flex space-x-4">
+    <% if (user) { %>
+      <% if (typeof result !== 'undefined' && result) { %>
+        <a href="/user/tests/<%= test._id %>/continue" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+          Continue test
+        </a>
+      <% } %>
+      <a href="/user/tests/<%= test._id %>/start-new" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+        Start new test
+      </a>
+    <% } else { %>
+      <a href="/user/tests/<%= test._id %>/attempt" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+        Start new test
+      </a>
+      <a href="/auth/login" class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md shadow-sm text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+        Login to save result
+      </a>
+    <% } %>
+  </div>
+</div>

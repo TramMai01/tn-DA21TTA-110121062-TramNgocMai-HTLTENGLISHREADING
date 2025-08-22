@@ -1,0 +1,1160 @@
+<!-- Edit Question Form -->
+<div class="container mx-auto px-4 py-8">
+  <% if (locals.success) { %>
+    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4" role="alert">
+      <p><%= success %></p>
+    </div>
+  <% } %>
+
+  <% if (locals.error) { %>
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4" role="alert">
+      <p><%= error %></p>
+    </div>
+  <% } %>
+
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold text-gray-800">Edit question</h1>
+    <a href="/admin/passages/<%= passage._id %>" class="text-blue-500 hover:text-blue-700 flex items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+      </svg>
+      Back to passage
+    </a>
+  </div>
+
+  <!-- Passage Preview Card -->
+  <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+    <div class="px-6 py-4 bg-gray-50 border-b border-gray-200 flex justify-between items-center cursor-pointer" id="passageHeader">
+      <h2 class="text-xl font-semibold text-gray-800">Preview passage</h2>
+      <div class="flex items-center space-x-2">
+        <span class="text-sm text-gray-600" id="passageStatus">Hide passage</span>
+        <button type="button" id="togglePassageBtn" class="p-2 hover:bg-gray-200 rounded-lg transition-colors">
+          <svg id="expandIcon" class="w-5 h-5 text-gray-600 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+          <svg id="collapseIcon" class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="p-6 hidden" id="passageContentContainer">
+      <h3 class="text-lg font-medium text-gray-900 mb-3"><%= passage.title %></h3>
+      <div class="prose max-w-none text-gray-700 leading-relaxed" id="passageContent">
+        <%= passage.content %>
+      </div>
+      <div class="mt-4 pt-4 border-t border-gray-200">
+        <div class="flex items-center justify-between text-sm text-gray-500">
+          <span>Number of words: <strong><%= passage.content ? passage.content.split(' ').length : 0 %></strong></span>
+          <span>Estimated reading time: <strong><%= Math.ceil((passage.content ? passage.content.split(' ').length : 0) / 200) %> minutes</strong></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Question Form -->
+  <div class="bg-white rounded-lg shadow-md overflow-hidden">
+    <form id="editQuestionForm" action="/admin/questions/<%= question._id %>/edit" method="POST" class="p-6">
+      <!-- Basic Question Information -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div>
+          <label for="questionType" class="block text-sm font-medium text-gray-700 mb-1">Question type</label>
+          <select 
+            id="questionType" 
+            name="questionType" 
+            class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            required
+          >
+            <option value="" disabled>Select question type</option>
+            <option value="multiple_choice" <%= question.questionType === 'multiple_choice' ? 'selected' : '' %>>Multiple Choice</option>
+            <option value="fill_blank" <%= question.questionType === 'fill_blank' ? 'selected' : '' %>>Fill in the Blank</option>
+            <option value="matching" <%= question.questionType === 'matching' ? 'selected' : '' %>>Matching</option>
+            <option value="true_false_not_given" <%= question.questionType === 'true_false_not_given' ? 'selected' : '' %>>True/False/Not Given</option>
+            <option value="short_answer" <%= question.questionType === 'short_answer' ? 'selected' : '' %>>Short Answer</option>
+          </select>
+        </div>
+        
+        <div>
+          <label for="order" class="block text-sm font-medium text-gray-700 mb-1">Question order</label>
+          <input 
+            type="number" 
+            id="order" 
+            name="order" 
+            min="1" 
+            value="<%= question.order %>" 
+            class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            required
+          >
+          <p class="mt-1 text-sm text-gray-500">Question display order</p>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <label for="title" class="block text-sm font-medium text-gray-700 mb-1">Question title (optional)</label>
+        <textarea 
+          id="title" 
+          name="title" 
+          rows="3"
+          placeholder="Nhập tiêu đề câu hỏi (nếu cần)" 
+          class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+        ><%= question.title || '' %></textarea>
+        <p class="mt-1 text-sm text-gray-500">Short title for the question (optional, can be multiple lines)</p>
+      </div>
+
+      <div class="mb-6">
+        <label for="questionText" class="block text-sm font-medium text-gray-700 mb-1">Question content</label>
+        <textarea 
+          id="questionText" 
+          name="questionText" 
+          rows="3" 
+          placeholder="Nhập câu hỏi" 
+          class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+          required
+        ><%= question.questionText %></textarea>
+        <p class="mt-1 text-sm text-gray-500">Try selecting text from the passage to create a question</p>
+      </div>
+
+      <div class="mb-6">
+        <label for="score" class="block text-sm font-medium text-gray-700 mb-1">Points</label>
+        <input 
+          type="number" 
+          id="score" 
+          name="score" 
+          min="0.5" 
+          step="0.5" 
+          value="<%= question.score %>" 
+          class="w-full max-w-xs rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+          required
+        >
+        <p class="mt-1 text-sm text-gray-500">Points awarded for correct answer</p>
+      </div>
+
+      <!-- Multiple Choice Options -->
+      <div id="multiple_choiceOptions" class="question-type-section mb-6 <%= question.questionType === 'multiple_choice' ? '' : 'hidden' %>">
+        <h3 class="text-lg font-medium text-gray-900 mb-3">Multiple Choice Options</h3>
+        
+        <div class="mb-4">
+          <label class="inline-flex items-center">
+            <input type="checkbox" id="multipleAnswersCheckbox" name="multipleAnswers" value="true" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" <%= question.multipleAnswers ? 'checked' : '' %>>
+            <span class="ml-2 text-sm text-gray-700">Allow multiple correct answers</span>
+          </label>
+        </div>
+        
+        <div id="optionsContainer" class="space-y-3">
+          <% if (question.options && question.options.length > 0) { %>
+            <% question.options.forEach((option, index) => { %>
+              <div class="flex items-center gap-2 mb-2 option-item">
+                <% if (question.multipleAnswers) { %>
+                  <input type="checkbox" 
+                         name="correctAnswer" 
+                         id="correctAnswer<%= index %>" 
+                         value="<%= option %>" 
+                         class="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500" 
+                         <%= question.correctAnswer && (Array.isArray(question.correctAnswer) ? question.correctAnswer.includes(option) : question.correctAnswer === option) ? 'checked' : '' %>>
+                <% } else { %>
+                  <input type="radio" 
+                         name="correctAnswer" 
+                         id="correctAnswer<%= index %>" 
+                         value="<%= option %>" 
+                         class="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500" 
+                         <%= question.correctAnswer === option || (Array.isArray(question.correctAnswer) && question.correctAnswer.includes(option)) ? 'checked' : '' %>>
+                <% } %>
+                <input type="text" 
+                       name="options" 
+                       placeholder="Tùy chọn <%= index + 1 %>" 
+                       value="<%= option %>" 
+                       class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" 
+                       oninput="updateInputValue(this)">
+                <button type="button" class="text-red-600 hover:text-red-900 remove-option <%= question.options.length <= 2 ? 'hidden' : '' %>">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </button>
+              </div>
+            <% }) %>
+          <% } else { %>
+            <!-- Default options if none exist -->
+            <div class="flex items-center gap-2 mb-2 option-item">
+              <input type="radio" name="correctAnswer" id="correctAnswer0" value="" class="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+              <input type="text" name="options" placeholder="Tùy chọn 1" class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" oninput="updateInputValue(this)">
+              <button type="button" class="text-red-600 hover:text-red-900 remove-option hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </button>
+            </div>
+            <div class="flex items-center gap-2 mb-2 option-item">
+              <input type="radio" name="correctAnswer" id="correctAnswer1" value="" class="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+              <input type="text" name="options" placeholder="Tùy chọn 2" class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" oninput="updateInputValue(this)">
+              <button type="button" class="text-red-600 hover:text-red-900 remove-option hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </button>
+            </div>
+          <% } %>
+        </div>
+        
+        <button type="button" id="addOptionBtn" class="mt-3 inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md text-green-700 bg-green-100 hover:bg-green-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+          </svg>
+          Thêm tùy chọn
+        </button>
+      </div>
+
+      <!-- Fill in the Blank Options -->
+      <div id="fill_blankOptions" class="question-type-section mb-6 <%= question.questionType === 'fill_blank' ? '' : 'hidden' %>">
+        <h3 class="text-lg font-medium text-gray-900 mb-3">Fill in the Blank</h3>
+        
+        <div class="mb-4">
+          <label for="blankStyleSelect" class="block text-sm font-medium text-gray-700 mb-1">Fill in the Blank type</label>
+          <select id="blankStyleSelect" name="blankStyle" class="w-full max-w-md rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+            <option value="simple" <%= (question.blankStyle === 'simple' || !question.blankStyle) ? 'selected' : '' %>>Simple</option>
+            <option value="multiple" <%= question.blankStyle === 'multiple' ? 'selected' : '' %>>Multiple</option>
+            <option value="one_word_only" <%= question.blankStyle === 'one_word_only' ? 'selected' : '' %>>One word only</option>
+          </select>
+        </div>
+        
+        <!-- Simple Blank Container -->
+        <div id="simpleBlankContainer" class="<%= question.blankStyle === 'simple' || !question.blankStyle ? '' : 'hidden' %>">
+          <h4 class="text-md font-medium text-gray-800 mb-2">Acceptable answers</h4>
+          <p class="text-sm text-gray-500 mb-3">Add all acceptable answers for the blank</p>
+          <div class="bg-yellow-50 border border-yellow-200 rounded-md p-3 mb-3">
+            <p class="text-sm text-yellow-800">
+              <strong>Note:</strong> This type only applies to one blank in the question. 
+              If you have multiple blanks, use the "Multiple" type instead.
+            </p>
+          </div>
+          
+          <div id="acceptableAnswersContainer" class="space-y-3">
+            <% 
+              // Tìm dữ liệu từ nhiều trường khác nhau
+              let simpleAnswers = [];
+              if (question.acceptableAnswers && question.acceptableAnswers.length > 0) {
+                simpleAnswers = question.acceptableAnswers;
+              } else if (question.blanks && question.blanks.length > 0) {
+                simpleAnswers = question.blanks;
+              } else if (question.oneWordBlanks && question.oneWordBlanks.length > 0) {
+                simpleAnswers = question.oneWordBlanks;
+              } else if (question.correctAnswer && Array.isArray(question.correctAnswer)) {
+                simpleAnswers = question.correctAnswer;
+              }
+            %>
+            
+            <% if (simpleAnswers.length > 0) { %>
+              <% simpleAnswers.forEach((answer, index) => { %>
+                <div class="flex items-center gap-2 mb-2 p-3 bg-gray-50 rounded-md">
+                  <div class="flex items-center gap-2">
+                    <label class="text-sm font-medium text-gray-700 whitespace-nowrap">Answer <%= index + 1 %>:</label>
+                  </div>
+                  <input 
+                    type="text" 
+                    name="acceptableAnswers" 
+                    placeholder="Enter acceptable answer" 
+                    value="<%= typeof answer === 'string' ? answer : (answer.answer || answer.text || '') %>"
+                    class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                  >
+                  <button type="button" class="text-red-600 hover:text-red-900 remove-answer <%= simpleAnswers.length <= 1 ? 'hidden' : '' %>" title="Xóa đáp án này">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  </button>
+                </div>
+              <% }); %>
+            <% } else { %>
+              <!-- Default answer nếu chưa có -->
+              <div class="flex items-center gap-2 mb-2 p-3 bg-gray-50 rounded-md">
+                <div class="flex items-center gap-2">
+                  <label class="text-sm font-medium text-gray-700 whitespace-nowrap">Answer 1:</label>
+                </div>
+                <input 
+                  type="text" 
+                  name="acceptableAnswers" 
+                  placeholder="Enter acceptable answer" 
+                  class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                >
+                <button type="button" class="text-red-600 hover:text-red-900 remove-answer hidden" title="Xóa đáp án này">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </button>
+              </div>
+            <% } %>
+          </div>
+          
+          <button type="button" id="addAnswerBtn" class="mt-3 px-3 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 text-sm">
+            Add Answer
+          </button>
+        </div>
+        
+        <!-- Multiple Blank Container -->
+        <div id="multipleBlankContainer" class="<%= question.blankStyle === 'multiple' ? '' : 'hidden' %>">
+          <div class="mb-4">
+            <h4 class="text-md font-medium text-gray-800 mb-2">Options for blank</h4>
+            <p class="text-sm text-gray-500 mb-3">Add options that students can choose</p>
+            
+            <div id="blankOptionsContainer" class="space-y-3">
+              <% 
+                // Tìm dữ liệu options từ nhiều trường
+                let multipleOptions = [];
+                if (question.blankOptions && question.blankOptions.length > 0) {
+                  multipleOptions = question.blankOptions;
+                } else if (question.options && question.options.length > 0) {
+                  multipleOptions = question.options;
+                }
+              %>
+              
+              <% if (multipleOptions.length > 0) { %>
+                <% multipleOptions.forEach((option, index) => { %>
+                  <div class="flex items-center gap-2 mb-2">
+                    <label class="text-sm font-medium text-gray-700 w-12"><%= String.fromCharCode(65 + index) %>.</label>
+                    <input 
+                      type="text" 
+                      name="blankOptions[]" 
+                      placeholder="Option <%= String.fromCharCode(65 + index) %>" 
+                      value="<%= option %>"
+                      class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    >
+                    <button type="button" class="text-red-600 hover:text-red-900 remove-blank-option <%= multipleOptions.length <= 2 ? 'hidden' : '' %>">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                      </svg>
+                    </button>
+                  </div>
+                <% }); %>
+              <% } else { %>
+                <!-- Default options nếu chưa có -->
+                <div class="flex items-center gap-2 mb-2">
+                  <label class="text-sm font-medium text-gray-700 w-12">A.</label>
+                  <input 
+                    type="text" 
+                    name="blankOptions[]" 
+                    placeholder="Option A" 
+                    class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                  >
+                  <button type="button" class="text-red-600 hover:text-red-900 remove-blank-option hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  </button>
+                </div>
+                <div class="flex items-center gap-2 mb-2">
+                  <label class="text-sm font-medium text-gray-700 w-12">B.</label>
+                  <input 
+                    type="text" 
+                    name="blankOptions[]" 
+                    placeholder="Option B" 
+                    class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                  >
+                  <button type="button" class="text-red-600 hover:text-red-900 remove-blank-option hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  </button>
+                </div>
+              <% } %>
+            </div>
+            
+            <button type="button" id="addBlankOptionBtn" class="mt-2 px-3 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 text-sm">
+              Add Option
+            </button>
+          </div>
+
+          <div class="mb-4">
+            <h4 class="text-md font-medium text-gray-800 mb-2">Blank Positions and Answers</h4>
+            <p class="text-sm text-gray-500 mb-3">Chỉ định vị trí blank và đáp án đúng cho từng vị trí</p>
+            <div class="bg-blue-50 border border-blue-200 rounded-md p-3 mb-3">
+              <p class="text-sm text-blue-800">
+                <strong>Lưu ý:</strong> Vị trí blank được đánh số theo thứ tự xuất hiện trong câu hỏi. 
+                Ví dụ: "The ___(1)___ is red and the ___(2)___ is blue" có 2 blank ở vị trí 1 và 2.
+              </p>
+            </div>
+            
+            <div id="blanksContainer" class="space-y-3">
+              <% 
+                // Tìm dữ liệu blanks từ nhiều trường
+                let multipleBlanks = [];
+                
+                // Ưu tiên sử dụng question.blanks nếu có
+                if (question.blanks && question.blanks.length > 0) {
+                  multipleBlanks = question.blanks;
+                } 
+                // Nếu không có blanks nhưng có correctAnswer object và blankNumbers
+                else if (question.correctAnswer && typeof question.correctAnswer === 'object' && !Array.isArray(question.correctAnswer)) {
+                  // Chuyển object thành array với vị trí thực tế
+                  multipleBlanks = Object.entries(question.correctAnswer).map(([key, value]) => ({
+                    number: parseInt(key),
+                    answer: value
+                  })).sort((a, b) => a.number - b.number); // Sắp xếp theo vị trí
+                } 
+                // Fallback: sử dụng acceptableAnswers với vị trí mặc định
+                else if (question.acceptableAnswers && question.acceptableAnswers.length > 0) {
+                  multipleBlanks = question.acceptableAnswers.map((answer, index) => ({
+                    number: index + 1,
+                    answer: answer
+                  }));
+                }
+
+              %>
+              
+              <% if (multipleBlanks.length > 0) { %>
+                <% multipleBlanks.forEach((blank, index) => { %>
+                  <div class="flex items-center gap-2 mb-2 p-3 bg-gray-50 rounded-md">
+                    <div class="flex items-center gap-2">
+                      <label class="text-sm font-medium text-gray-700 whitespace-nowrap">Blank:</label>
+                      <input 
+                        type="number" 
+                        name="blankNumbers[]" 
+                        value="<%= blank.number || (index + 1) %>"
+                        min="1" 
+                        max="50"
+                        class="w-20 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        title=" blank number "
+                      >
+                    </div>
+                    <div class="flex items-center gap-2 flex-1">
+                        <label class="text-sm font-medium text-gray-700 whitespace-nowrap">Correct Answer:</label>
+                      <select name="blankAnswers[]" class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        <option value="">Select Answer</option>
+                        <% if (multipleOptions.length > 0) { %>
+                          <% multipleOptions.forEach((option, optIndex) => { %>
+                            <option value="<%= optIndex %>" <%= (blank.answer == optIndex || blank.answer == option) ? 'selected' : '' %>><%= String.fromCharCode(65 + optIndex) %>. <%= option %></option>
+                          <% }) %>
+                        <% } %>
+                      </select>
+                    </div>
+                    <button type="button" class="text-red-600 hover:text-red-900 remove-blank <%= multipleBlanks.length <= 1 ? 'hidden' : '' %>" title="Xóa blank này">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  </button>
+                </div>
+                <% }); %>
+              <% } else { %>
+                <!-- Default blank nếu chưa có -->
+                <div class="flex items-center gap-2 mb-2 p-3 bg-gray-50 rounded-md">
+                  <div class="flex items-center gap-2">
+                    <label class="text-sm font-medium text-gray-700 whitespace-nowrap">Blank:</label>
+                    <input 
+                      type="number" 
+                      name="blankNumbers[]" 
+                      value="1"
+                      min="1" 
+                      max="50"
+                      class="w-20 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                      title=" blank number "
+                    >
+                  </div>
+                  <div class="flex items-center gap-2 flex-1">
+                    <label class="text-sm font-medium text-gray-700 whitespace-nowrap">Correct Answer:</label>
+                    <select name="blankAnswers[]" class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                      <option value="" selected disabled>Select Answer</option>
+                    </select>
+                  </div>
+                  <button type="button" class="text-red-600 hover:text-red-900 remove-blank hidden" title="Xóa blank này">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  </button>
+                </div>
+              <% } %>
+            </div>
+            
+            <button type="button" id="addBlankBtn" class="mt-3 px-3 py-1 bg-green-600 text-white rounded-md hover:bg-green-700 text-sm">
+              Add Blank
+            </button>
+          </div>
+        </div>
+        
+        <!-- One Word Only Container -->
+        <div id="oneWordOnlyContainer" class="<%= question.blankStyle === 'one_word_only' ? '' : 'hidden' %>">
+          <h4 class="text-md font-medium text-gray-800 mb-2">One Word Blanks</h4>
+          <p class="text-sm text-gray-500 mb-3">Add one word answers for each blank</p>
+          <div class="bg-green-50 border border-green-200 rounded-md p-3 mb-3">
+            <p class="text-sm text-green-800">
+              <strong>Note:</strong> This type allows multiple blanks, each accepting a limited number of words. 
+              You can specify the blank position in the question and set the word limit for each blank.
+            </p>
+          </div>
+          
+          <div id="oneWordBlanksContainer" class="space-y-3">
+            <% 
+              // Tìm dữ liệu one word từ nhiều trường
+              let oneWordAnswers = [];
+              if (question.oneWordAnswers && question.oneWordAnswers.length > 0) {
+                oneWordAnswers = question.oneWordAnswers;
+              } else if (question.acceptableAnswers && question.acceptableAnswers.length > 0) {
+                oneWordAnswers = question.acceptableAnswers;
+              } else if (question.blanks && question.blanks.length > 0) {
+                oneWordAnswers = question.blanks;
+              } else if (question.correctAnswer && Array.isArray(question.correctAnswer)) {
+                oneWordAnswers = question.correctAnswer;
+              }
+              
+              // Tìm word limits
+              let wordLimits = [];
+              if (question.wordLimits && question.wordLimits.length > 0) {
+                wordLimits = question.wordLimits;
+              } else {
+                wordLimits = oneWordAnswers.map(() => 1);
+              }
+
+            %>
+            
+            <% if (oneWordAnswers.length > 0) { %>
+              <% oneWordAnswers.forEach((answer, index) => { %>
+                <div class="flex items-center gap-2 mb-2 p-3 bg-gray-50 rounded-md">
+                  
+                  <div class="flex items-center gap-2">
+                    <label class="text-sm font-medium text-gray-700 whitespace-nowrap">Blank:</label>
+                    <input 
+                      type="number" 
+                      name="blankPositions[]" 
+                      value="<%= (question.blankNumbers && question.blankNumbers[index]) || (index + 1) %>"
+                      min="1" 
+                      max="50"
+                      class="w-16 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                      title=" blank number "
+                    >
+                  </div>
+                  <input 
+                    type="text" 
+                    name="oneWordAnswers[]" 
+                    placeholder="Answer <%= index + 1 %>" 
+                    value="<%= typeof answer === 'string' ? answer : (answer.answer || answer.text || '') %>"
+                    class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                  >
+                  <div class="flex items-center gap-2">
+                    <label class="text-sm font-medium text-gray-700 whitespace-nowrap">Word Limit:</label>
+                    <input 
+                      type="number" 
+                      name="wordLimit[]" 
+                      placeholder="1" 
+                      value="<%= wordLimits[index] || 1 %>"
+                      min="1" 
+                      max="5"
+                      class="w-20 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                      title=" word limit "
+                    >
+                  </div>
+                  <button type="button" class="text-red-600 hover:text-red-900 remove-one-word-blank <%= oneWordAnswers.length <= 1 ? 'hidden' : '' %>" title="Xóa blank này">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  </button>
+                </div>
+              <% }); %>
+            <% } else { %>
+              <!-- Default one word blank nếu chưa có -->
+              <div class="flex items-center gap-2 mb-2 p-3 bg-gray-50 rounded-md">
+                
+                <div class="flex items-center gap-2">
+                  <label class="text-sm font-medium text-gray-700 whitespace-nowrap">Blank:</label>
+                  <input 
+                    type="number" 
+                    name="blankPositions[]" 
+                    value="1"
+                    min="1" 
+                    max="50"
+                    class="w-16 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    title=" blank number "
+                  >
+                </div>
+                <input 
+                  type="text" 
+                  name="oneWordAnswers[]" 
+                  placeholder="Answer 1" 
+                  class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                >
+                <div class="flex items-center gap-2">
+                  <label class="text-sm font-medium text-gray-700 whitespace-nowrap">Word Limit:</label>
+                  <input 
+                    type="number" 
+                    name="wordLimit[]" 
+                    placeholder="1" 
+                    value="1"
+                    min="1" 
+                    max="5"
+                    class="w-20 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                      title=" word limit "
+                  >
+                </div>
+                <button type="button" class="text-red-600 hover:text-red-900 remove-one-word-blank hidden" title="Xóa blank này">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </button>
+              </div>
+            <% } %>
+          </div>
+          
+          <button type="button" id="addOneWordBlankBtn" class="mt-3 px-3 py-1 bg-purple-600 text-white rounded-md hover:bg-purple-700 text-sm">
+            Add One Word Blank
+          </button>
+        </div>
+        
+        <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mt-4">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <svg class="h-5 w-5 text-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div class="ml-3">
+              <p class="text-sm text-blue-700">
+                Ensure that multiple-word answers do not exceed the word limit set.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Matching Options -->
+      <div id="matchingOptions" class="question-type-section mb-6 <%= question.questionType === 'matching' ? '' : 'hidden' %>">
+        <h3 class="text-lg font-medium text-gray-900 mb-3">Matching Options</h3>
+        
+        <!-- Thêm phần chọn loại matching -->
+        <div class="mb-4">
+          <label for="matchingTypeSelect" class="block text-sm font-medium text-gray-700 mb-1">Matching type</label>
+          <select 
+            id="matchingTypeSelect" 
+            name="matchingType" 
+            class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+          >
+            <option value="one_to_one" <%= question.matchingType === 'one_to_one' ? 'selected' : '' %>>One-to-one (each paragraph connects to a single heading)</option>
+            <option value="not_all_used" <%= question.matchingType === 'not_all_used' ? 'selected' : '' %>>Not all used (some headings may not be used)</option>
+            <option value="many_to_one" <%= question.matchingType === 'many_to_one' ? 'selected' : '' %>>Many-to-one (multiple paragraphs can connect to the same heading)</option>
+          </select>
+          <p class="mt-1 text-sm text-gray-500">Select the matching type that suits your question</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <!-- Headings -->
+          <div>
+            <h4 class="text-md font-medium text-gray-800 mb-2">Headings</h4>
+            <p class="text-sm text-gray-500 mb-3">Add the headings that students will choose</p>
+            
+            <div id="headingsContainer" class="space-y-3">
+              <% 
+              let existingHeadings = [];
+              if (question.questionType === 'matching') {
+                if (question.headings && question.headings.length > 0) {
+                  existingHeadings = question.headings;
+                } else if (question.matchingOptions && question.matchingOptions.headings) {
+                  existingHeadings = question.matchingOptions.headings;
+                }
+              }
+              %>
+              
+              <% if (existingHeadings.length > 0) { %>
+                <% existingHeadings.forEach((heading, index) => { %>
+                  <div class="flex items-center gap-2 mb-2">
+                    <input type="text" 
+                           name="matchingHeadings[]" 
+                           value="<%= heading %>" 
+                           placeholder="Heading <%= index + 1 %>" 
+                           class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                           oninput="updateMatchingMatrix()">
+                    <button type="button" 
+                            class="text-red-600 hover:text-red-900 remove-heading <%= existingHeadings.length <= 2 ? 'hidden' : '' %>">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                      </svg>
+                    </button>
+                  </div>
+                <% }); %>
+              <% } %>
+            </div>
+            
+            <button type="button" id="addHeadingBtn" class="mt-3 inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+              </svg>
+              Add Heading
+            </button>
+          </div>
+          
+          <!-- Paragraphs -->
+          <div>
+            <h4 class="text-md font-medium text-gray-800 mb-2">Paragraphs</h4>
+            <p class="text-sm text-gray-500 mb-3">Add the paragraphs that need to be matched</p>
+            
+            <div id="paragraphsContainer" class="space-y-3">
+              <% 
+              let existingParagraphs = [];
+              if (question.questionType === 'matching') {
+                if (question.paragraphs && question.paragraphs.length > 0) {
+                  existingParagraphs = question.paragraphs;
+                } else if (question.matchingOptions && question.matchingOptions.paragraphs) {
+                  existingParagraphs = question.matchingOptions.paragraphs;
+                }
+              }
+              %>
+              
+              <% if (existingParagraphs.length > 0) { %>
+                <% existingParagraphs.forEach((paragraph, index) => { %>
+                  <div class="flex items-center gap-2 mb-2">
+                    <input type="text" 
+                           name="matchingParagraphs[]" 
+                           value="<%= paragraph %>" 
+                           placeholder="Paragraph <%= index + 1 %>" 
+                           class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                           oninput="updateMatchingMatrix()">
+                    <button type="button" 
+                            class="text-red-600 hover:text-red-900 remove-paragraph <%= existingParagraphs.length <= 2 ? 'hidden' : '' %>">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                      </svg>
+                    </button>
+                  </div>
+                <% }); %>
+              <% } %>
+            </div>
+            
+            <button type="button" id="addParagraphBtn" class="mt-3 inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md text-green-700 bg-green-100 hover:bg-green-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+              </svg>
+              Add Paragraph
+            </button>
+          </div>
+        </div>
+        
+        <!-- Simple Matching Matrix -->
+        <div class="mt-8">
+          <h4 class="text-md font-medium text-gray-800 mb-2">Matching Matrix</h4>
+          <p class="text-sm text-gray-500 mb-3">Set the correct answer for each paragraph</p>
+          
+          <div id="matchingMatrixContainer" class="space-y-3">
+            <!-- Will be populated dynamically -->
+          </div>
+          
+          <!-- Hidden input để lưu matching data -->
+          <input type="hidden" id="matchingDataInput" name="matchingData" value="">
+        </div>
+        
+        <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mt-4">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <svg class="h-5 w-5 text-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div class="ml-3">
+              <p class="text-sm text-blue-700">
+                <strong>Matching Types:</strong><br>
+                • <strong>One-to-one:</strong> Each paragraph connects to exactly one heading<br>
+                • <strong>Not all used:</strong> Some headings may not be used<br>
+                • <strong>Many-to-one:</strong> Multiple paragraphs can connect to the same heading
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- True/False/Not Given Options -->
+      <div id="true_false_not_givenOptions" class="question-type-section mb-6 <%= question.questionType === 'true_false_not_given' ? '' : 'hidden' %>">
+        <h3 class="text-lg font-medium text-gray-900 mb-3">True/False/Not Given</h3>
+        
+        <div class="space-y-2">
+          <label class="flex items-center">
+            <input type="radio" name="correctAnswer" value="true" 
+                   <%= question.correctAnswer === 'true' ? 'checked' : '' %>
+                   class="mr-2">
+            <span>True</span>
+          </label>
+          
+          <label class="flex items-center">
+            <input type="radio" name="correctAnswer" value="false" 
+                   <%= question.correctAnswer === 'false' ? 'checked' : '' %>
+                   class="mr-2">
+            <span>False</span>
+          </label>
+          
+          <label class="flex items-center">
+            <input type="radio" name="correctAnswer" value="not_given" 
+                   <%= question.correctAnswer === 'not_given' ? 'checked' : '' %>
+                   class="mr-2">
+            <span>Not Given</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Short Answer Options -->
+      <div id="shortAnswerOptions" class="question-type-section mb-6 <%= question.questionType === 'short_answer' ? '' : 'hidden' %>">
+        <h3 class="text-lg font-medium text-gray-900 mb-3">Short Answer</h3>
+        
+        <div class="mb-4">
+          <label class="inline-flex items-center">
+            <input type="checkbox" id="oneWordOnlyCheckbox" name="oneWordOnly" value="true" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" <%= question.oneWordOnly ? 'checked' : '' %>>
+            <span class="ml-2 text-sm text-gray-700">Only allow one word</span>
+          </label>
+        </div>
+        
+        <div class="mb-4">
+          <label for="wordLimit" class="block text-sm font-medium text-gray-700 mb-1">Word Limit</label>
+          <input 
+            type="number" 
+            id="wordLimit" 
+            name="wordLimit" 
+            min="1" 
+            max="50" 
+            value="<%= question.wordLimit || 10 %>" 
+            class="w-full max-w-xs rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+          >
+          <p class="mt-1 text-sm text-gray-500">Maximum number of words allowed in the answer</p>
+        </div>
+        
+        <div class="mb-4">
+          <h4 class="text-md font-medium text-gray-800 mb-2">Acceptable Answers</h4>
+          <p class="text-sm text-gray-500 mb-3">Add all acceptable answers (case-insensitive)</p>
+          
+                    <div id="shortAnswerContainer" class="space-y-3">
+            <% 
+              // Xử lý acceptableShortAnswers để luôn là array
+              let shortAnswers = [];
+              if (question.acceptableShortAnswers) {
+                if (Array.isArray(question.acceptableShortAnswers)) {
+                  shortAnswers = question.acceptableShortAnswers;
+                } else if (typeof question.acceptableShortAnswers === 'string') {
+                  shortAnswers = [question.acceptableShortAnswers];
+                }
+              }
+              // Fallback: nếu không có acceptableShortAnswers, thử từ correctAnswer
+              else if (question.correctAnswer) {
+                if (Array.isArray(question.correctAnswer)) {
+                  shortAnswers = question.correctAnswer;
+                } else if (typeof question.correctAnswer === 'string') {
+                  shortAnswers = [question.correctAnswer];
+                }
+              }
+            %>
+            
+            <% if (shortAnswers.length > 0) { %>
+              <% shortAnswers.forEach((answer, index) => { %>
+                <div class="flex items-center gap-2">
+                  <input 
+                    type="text" 
+                    name="acceptableShortAnswers" 
+                    placeholder="Answer <%= index + 1 %>" 
+                    value="<%= answer %>"
+                    class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                  >
+                  <button type="button" class="text-red-600 hover:text-red-900 remove-short-answer <%= shortAnswers.length <= 1 ? 'hidden' : '' %>">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  </button>
+                </div>
+              <% }) %>
+            <% } else { %>
+              <div class="flex items-center gap-2">
+                <input type="text" name="acceptableShortAnswers" placeholder="Answer 1" class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                <button type="button" class="text-red-600 hover:text-red-900 remove-short-answer hidden">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  </button>
+                </div>
+            <% } %>
+          </div>
+          
+          <button type="button" id="addShortAnswerBtn" class="mt-3 inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md text-green-700 bg-green-100 hover:bg-green-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+            </svg>
+            Add Answer
+          </button>
+        </div>
+        
+        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mt-4">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div class="ml-3">
+              <p class="text-sm text-yellow-700">
+                Ensure that multiple-word answers do not exceed the word limit set.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-end">
+        <button 
+          type="submit" 
+          id="updateQuestionBtn"
+          class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-md transition duration-200"
+        >
+          Update Question
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<% scripts = `
+<script>
+  // Truyền dữ liệu question từ server sang client
+  window.questionData = {
+    questionType: '` + question.questionType + `',
+    correctAnswer: ` + JSON.stringify(question.correctAnswer || {}) + `,
+    matchingType: '` + (question.matchingType || "one_to_one") + `'
+  };
+</script>
+
+<script>
+// Toggle passage visibility
+document.addEventListener('DOMContentLoaded', function() {
+  const passageHeader = document.getElementById('passageHeader');
+  const toggleBtn = document.getElementById('togglePassageBtn');
+  const passageContainer = document.getElementById('passageContentContainer');
+  const passageStatus = document.getElementById('passageStatus');
+  const expandIcon = document.getElementById('expandIcon');
+  const collapseIcon = document.getElementById('collapseIcon');
+  
+  // Kiểm tra xem tất cả elements có tồn tại không
+  if (!passageHeader || !toggleBtn || !passageContainer || !passageStatus || !expandIcon || !collapseIcon) {
+    console.warn('Passage toggle elements not found, skipping passage toggle functionality');
+    return;
+  }
+  
+  let isExpanded = false;
+  
+  function togglePassage() {
+    isExpanded = !isExpanded;
+    
+    if (isExpanded) {
+      // Show passage
+      passageContainer.classList.remove('hidden');
+      passageContainer.classList.add('animate-fadeIn');
+      passageStatus.textContent = 'Hide passage';
+      expandIcon.classList.add('hidden');
+      collapseIcon.classList.remove('hidden');
+    } else {
+      // Hide passage
+      passageContainer.classList.add('hidden');
+      passageContainer.classList.remove('animate-fadeIn');
+      passageStatus.textContent = 'Show passage';
+      expandIcon.classList.remove('hidden');
+      collapseIcon.classList.add('hidden');
+    }
+  }
+  
+  // Lưu trạng thái vào localStorage
+  function savePassageState() {
+    try {
+      localStorage.setItem('passageExpanded', isExpanded);
+    } catch (e) {
+      console.warn('Could not save passage state to localStorage:', e);
+    }
+  }
+  
+  // Restore state from localStorage
+  function restorePassageState() {
+    try {
+      const savedState = localStorage.getItem('passageExpanded');
+      if (savedState !== null) {
+        isExpanded = !JSON.parse(savedState); // Đảo ngược để togglePassage() hoạt động đúng
+        togglePassage();
+      }
+    } catch (e) {
+      console.warn('Could not restore passage state from localStorage:', e);
+    }
+  }
+  
+  // Event listeners với error handling
+  try {
+    passageHeader.addEventListener('click', function() {
+      togglePassage();
+      savePassageState();
+    });
+    
+    toggleBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      togglePassage();
+      savePassageState();
+    });
+    
+    // Khôi phục trạng thái khi tải trang
+    restorePassageState();
+  } catch (e) {
+    console.error('Error setting up passage toggle:', e);
+  }
+});
+</script>
+
+<style>
+/* Animation cho passage toggle */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Loading animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 8px;
+}
+
+/* Hover effect cho passage header */
+#passageHeader:hover {
+  background-color: #f9fafb;
+}
+
+#passageHeader:hover #passageStatus {
+  color: #3b82f6;
+}
+
+#togglePassageBtn:hover svg {
+  color: #3b82f6;
+}
+
+/* Cải thiện hiển thị passage content */
+#passageContent {
+  line-height: 1.8;
+  font-size: 16px;
+  text-align: justify;
+}
+
+#passageContent p {
+  margin-bottom: 1rem;
+}
+
+/* Form improvements */
+.question-type-section {
+  transition: all 0.3s ease;
+}
+
+.option-item {
+  transition: all 0.2s ease;
+}
+
+.option-item:hover {
+  background-color: #f8fafc;
+  border-radius: 6px;
+}
+
+/* Button hover effects */
+button:hover {
+  transform: translateY(-1px);
+  transition: transform 0.2s ease;
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Validation styles */
+.invalid-input {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+}
+
+/* Success message */
+.success-message {
+  background-color: #dcfce7;
+  border-color: #16a34a;
+  color: #166534;
+}
+
+/* Error message */
+.error-message {
+  background-color: #fef2f2;
+  border-color: #dc2626;
+  color: #991b1b;
+}
+
+/* Matching matrix improvements */
+.matching-matrix table {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.matching-matrix th,
+.matching-matrix td {
+  transition: background-color 0.2s ease;
+}
+
+.matching-matrix tr:hover td {
+  background-color: #f1f5f9;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  #passageHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  #passageHeader .flex {
+    align-self: flex-end;
+  }
+  
+  .grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+  
+  .matching-matrix {
+    overflow-x: auto;
+  }
+  
+  .option-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  
+  .option-item input[type="radio"],
+  .option-item input[type="checkbox"] {
+    align-self: flex-start;
+  }
+}
+
+/* Focus improvements */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Disabled state */
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+button:disabled:hover {
+  transform: none !important;
+}
+</style>
+
+<script src="/js/admin/questions/edit.js"></script>
+`; %>

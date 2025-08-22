@@ -1,0 +1,870 @@
+<div class="min-h-screen bg-gray-50">
+  <!-- Header Section -->
+  <div class="bg-white shadow-sm border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h1 class="text-3xl font-bold text-gray-900">Reading Passages</h1>
+          <p class="text-gray-600 mt-1">Manage your reading content library</p>
+        </div>
+        <a href="/admin/passages/create" class="btn-3d-primary">
+          <span class="btn-content">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+            </svg>
+            Add New Passage
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Advanced Search & Filters -->
+    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-8">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-semibold text-gray-900">Search & Filter</h3>
+        <button id="toggleAdvanced" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+          Advanced Options
+        </button>
+      </div>
+      
+      <form id="searchForm" action="/admin/passages" method="GET" class="space-y-4">
+        <!-- Basic Search -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="md:col-span-2">
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"> 
+                </svg>
+              </div>
+              <input type="text" id="search" name="search" 
+                     placeholder="Search by title, content, or author..." 
+                     class="search-input pl-10"
+                     value="<%= locals.search || '' %>">
+            </div>
+          </div>
+          
+          <div class="flex space-x-2">
+            <button type="submit" class="btn-search">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+              </svg>
+              Search
+            </button>
+            <button type="button" id="clearSearch" class="btn-clear">
+              Clear
+            </button>
+          </div>
+        </div>
+
+        <!-- Advanced Filters -->
+        <div id="advancedFilters" class="hidden border-t pt-4">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Sort By</label>
+              <select name="sortBy" class="filter-select">
+                <option value="createdAt" <%= locals.sortBy === 'createdAt' ? 'selected' : '' %>>Date Created</option>
+                <option value="title" <%= locals.sortBy === 'title' ? 'selected' : '' %>>Title</option>
+                <option value="author" <%= locals.sortBy === 'author' ? 'selected' : '' %>>Author</option>
+              </select>
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Order</label>
+              <select name="order" class="filter-select">
+                <option value="asc" <%= locals.order === 'asc' ? 'selected' : '' %>>Oldest First</option>
+                <option value="desc" <%= locals.order === 'desc' ? 'selected' : '' %>>Newest First</option>
+              </select>
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Date Range</label>
+              <input type="date" name="dateFrom" class="filter-input" value="<%= locals.dateFrom || '' %>">
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">To</label>
+              <input type="date" name="dateTo" class="filter-input" value="<%= locals.dateTo || '' %>">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Results Summary -->
+    <div class="flex items-center justify-between mb-6">
+      <div class="text-sm text-gray-600">
+        Showing <span class="font-medium"><%= passages ? passages.length : 0 %></span> of <span class="font-medium"><%= locals.totalResults || 0 %></span> passages
+        <% if (locals.search) { %>
+          for "<span class="font-medium text-blue-600"><%= locals.search %></span>"
+        <% } %>
+        <% if (locals.pagination) { %>
+          (Page <span class="font-medium"><%= locals.pagination.current %></span> of <span class="font-medium"><%= locals.pagination.total %></span>)
+        <% } %>
+      </div>
+      
+      <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-2">
+          <label class="text-sm text-gray-600">View:</label>
+          <button id="gridView" class="view-btn active">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+            </svg>
+          </button>
+          <button id="listView" class="view-btn">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Passages Grid View -->
+    <div id="gridContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <% if (passages && passages.length > 0) { %>
+        <% passages.forEach(passage => { %>
+          <div class="passage-card-3d" data-tilt>
+            <div class="passage-card-inner">
+              <div class="passage-header">
+                <h3 class="passage-title"><%= passage.title %></h3>
+                <div class="passage-meta">
+                  <span class="author-badge">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    </svg>
+                    <%= passage.createdBy?.username || 'Unknown' %>
+                  </span>
+                  <span class="date-badge">
+                    <%= new Date(passage.createdAt).toLocaleDateString() %>
+                  </span>
+                </div>
+              </div>
+              
+              <div class="passage-content">
+                <p class="passage-preview">
+                  <%= passage.content.substring(0, 150) %><%= passage.content.length > 150 ? '...' : '' %>
+                </p>
+              </div>
+              
+              <div class="passage-footer">
+                <div class="passage-stats">
+                  <span class="stat-item">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                    <%= passage.wordCount || passage.content.split(' ').length %> words
+                  </span>
+                </div>
+                
+                <div class="passage-actions">
+                  <a href="/admin/passages/<%= passage._id %>" class="action-btn view-btn-action" title="View Details">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                  </a>
+                  <a href="/admin/passages/<%= passage._id %>/edit" class="action-btn edit-btn-action" title="Edit">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                    </svg>
+                  </a>
+                  <button onclick="deletePassage('<%= passage._id %>')" 
+                          class="action-btn delete-btn-action" 
+                          title="Delete"
+                          <%= passage.isInUse ? 'disabled' : '' %>>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% }); %>
+      <% } else { %>
+        <div class="col-span-full">
+          <div class="empty-state-3d">
+            <div class="empty-icon">
+              <svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+            </div>
+            <h3>No passages found</h3>
+            <p>
+              <% if (locals.search) { %>
+                Try adjusting your search criteria or create a new passage.
+              <% } else { %>
+                Start building your content library by creating your first passage.
+              <% } %>
+            </p>
+            <a href="/admin/passages/create" class="btn-3d-primary mt-4">
+              <span class="btn-content">Create New Passage</span>
+            </a>
+          </div>
+        </div>
+      <% } %>
+    </div>
+
+    <!-- List View (Hidden by default) -->
+    <div id="listContainer" class="hidden bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+      <% if (passages && passages.length > 0) { %>
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th class="table-header">Title</th>
+              <th class="table-header">Author</th>
+              <th class="table-header">Created</th>
+              <th class="table-header">Words</th>
+              <th class="table-header">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+            <% passages.forEach(passage => { %>
+              <tr class="table-row">
+                <td class="table-cell">
+                  <div>
+                    <div class="font-medium text-gray-900"><%= passage.title %></div>
+                    <div class="text-sm text-gray-500">
+                      <%= passage.content.substring(0, 100) %><%= passage.content.length > 100 ? '...' : '' %>
+                    </div>
+                  </div>
+                </td>
+                <td class="table-cell">
+                  <span class="author-badge-small">
+                    <%= passage.createdBy?.username || 'Unknown' %>
+                  </span>
+                </td>
+                <td class="table-cell text-gray-500">
+                  <%= new Date(passage.createdAt).toLocaleDateString() %>
+                </td>
+                <td class="table-cell text-gray-500">
+                  <%= passage.wordCount || passage.content.split(' ').length %>
+                </td>
+                <td class="table-cell">
+                  <div class="flex space-x-2">
+                    <a href="/admin/passages/<%= passage._id %>" class="action-btn-small view-btn-action" title="View">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                      </svg>
+                    </a>
+                    <a href="/admin/passages/<%= passage._id %>/edit" class="action-btn-small edit-btn-action" title="Edit">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                      </svg>
+                    </a>
+                    <button onclick="deletePassage('<%= passage._id %>')" 
+                            class="action-btn-small delete-btn-action" 
+                            title="Delete"
+                            <%= passage.isInUse ? 'disabled' : '' %>>
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      <% } %>
+    </div>
+
+    <!-- Pagination -->
+    <% if (locals.pagination && locals.pagination.total > 1) { %>
+      <div class="flex items-center justify-center mt-8">
+        <nav class="pagination-nav">
+          <div class="flex items-center space-x-2">
+            <!-- Previous Button -->
+            <% if (locals.pagination.hasPrev) { %>
+              <a href="?page=<%= locals.pagination.prev %><%= locals.search ? '&search=' + encodeURIComponent(locals.search) : '' %><%= locals.sortBy ? '&sortBy=' + locals.sortBy : '' %><%= locals.order ? '&order=' + locals.order : '' %><%= locals.dateFrom ? '&dateFrom=' + locals.dateFrom : '' %><%= locals.dateTo ? '&dateTo=' + locals.dateTo : '' %>" 
+                 class="pagination-btn">
+                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                Previous
+              </a>
+            <% } else { %>
+              <span class="pagination-btn disabled">
+                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                Previous
+              </span>
+            <% } %>
+
+            <!-- Page Numbers -->
+            <div class="flex items-center space-x-1">
+              <% 
+                const startPage = Math.max(1, locals.pagination.current - 2);
+                const endPage = Math.min(locals.pagination.total, locals.pagination.current + 2);
+              %>
+              
+              <% if (startPage > 1) { %>
+                <a href="?page=1<%= locals.search ? '&search=' + encodeURIComponent(locals.search) : '' %><%= locals.sortBy ? '&sortBy=' + locals.sortBy : '' %><%= locals.order ? '&order=' + locals.order : '' %><%= locals.dateFrom ? '&dateFrom=' + locals.dateFrom : '' %><%= locals.dateTo ? '&dateTo=' + locals.dateTo : '' %>" 
+                   class="pagination-number">1</a>
+                <% if (startPage > 2) { %>
+                  <span class="pagination-dots">...</span>
+                <% } %>
+              <% } %>
+
+              <% for (let i = startPage; i <= endPage; i++) { %>
+                <% if (i === locals.pagination.current) { %>
+                  <span class="pagination-number active"><%= i %></span>
+                <% } else { %>
+                  <a href="?page=<%= i %><%= locals.search ? '&search=' + encodeURIComponent(locals.search) : '' %><%= locals.sortBy ? '&sortBy=' + locals.sortBy : '' %><%= locals.order ? '&order=' + locals.order : '' %><%= locals.dateFrom ? '&dateFrom=' + locals.dateFrom : '' %><%= locals.dateTo ? '&dateTo=' + locals.dateTo : '' %>" 
+                     class="pagination-number"><%= i %></a>
+                <% } %>
+              <% } %>
+
+              <% if (endPage < locals.pagination.total) { %>
+                <% if (endPage < locals.pagination.total - 1) { %>
+                  <span class="pagination-dots">...</span>
+                <% } %>
+                <a href="?page=<%= locals.pagination.total %><%= locals.search ? '&search=' + encodeURIComponent(locals.search) : '' %><%= locals.sortBy ? '&sortBy=' + locals.sortBy : '' %><%= locals.order ? '&order=' + locals.order : '' %><%= locals.dateFrom ? '&dateFrom=' + locals.dateFrom : '' %><%= locals.dateTo ? '&dateTo=' + locals.dateTo : '' %>" 
+                   class="pagination-number"><%= locals.pagination.total %></a>
+              <% } %>
+            </div>
+
+            <!-- Next Button -->
+            <% if (locals.pagination.hasNext) { %>
+              <a href="?page=<%= locals.pagination.next %><%= locals.search ? '&search=' + encodeURIComponent(locals.search) : '' %><%= locals.sortBy ? '&sortBy=' + locals.sortBy : '' %><%= locals.order ? '&order=' + locals.order : '' %><%= locals.dateFrom ? '&dateFrom=' + locals.dateFrom : '' %><%= locals.dateTo ? '&dateTo=' + locals.dateTo : '' %>" 
+                 class="pagination-btn">
+                Next
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            <% } else { %>
+              <span class="pagination-btn disabled">
+                Next
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </span>
+            <% } %>
+          </div>
+        </nav>
+      </div>
+    <% } %>
+  </div>
+</div>
+<% 
+scripts = `
+<style>
+/* Button Styles */
+.btn-3d-primary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 24px;
+  background: linear-gradient(145deg, #3b82f6, #2563eb);
+  color: white;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  transform: translateY(0);
+  transition: all 0.3s ease;
+}
+
+.btn-3d-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+}
+
+.btn-search {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-search:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+}
+
+.btn-clear {
+  padding: 10px 20px;
+  background: #f3f4f6;
+  color: #6b7280;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-clear:hover {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+/* Input Styles */
+.search-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.filter-select, .filter-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: white;
+  transition: border-color 0.2s ease;
+}
+
+.filter-select:focus, .filter-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+/* View Toggle */
+.view-btn {
+  padding: 8px;
+  border: 1px solid #d1d5db;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.view-btn.active {
+  background: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}
+
+.view-btn:hover:not(.active) {
+  background: #f3f4f6;
+}
+
+/* Passage Cards */
+.passage-card-3d {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.passage-card-3d:hover {
+  transform: translateY(-4px) rotateX(2deg);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+}
+
+.passage-card-inner {
+  padding: 24px;
+}
+
+.passage-header {
+  margin-bottom: 16px;
+}
+
+.passage-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.passage-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.author-badge, .date-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  background: #f3f4f6;
+  color: #6b7280;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.author-badge {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.passage-content {
+  margin-bottom: 20px;
+}
+
+.passage-preview {
+  color: #6b7280;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.passage-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.passage-stats {
+  display: flex;
+  gap: 12px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  color: #6b7280;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.passage-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.action-btn {
+  padding: 8px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+.view-btn-action {
+  color: #3b82f6;
+  background: #dbeafe;
+}
+
+.view-btn-action:hover {
+  background: #bfdbfe;
+}
+
+.edit-btn-action {
+  color: #7c3aed;
+  background: #ede9fe;
+}
+
+.edit-btn-action:hover {
+  background: #ddd6fe;
+}
+
+.delete-btn-action {
+  color: #dc2626;
+  background: #fee2e2;
+}
+
+.delete-btn-action:hover:not(:disabled) {
+  background: #fecaca;
+}
+
+.delete-btn-action:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Table Styles */
+.table-header {
+  padding: 12px 16px;
+  text-left;
+  font-weight: 600;
+  color: #374151;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
+
+.table-cell {
+  padding: 16px;
+  vertical-align: top;
+}
+
+.table-row:hover {
+  background: #f9fafb;
+}
+
+.action-btn-small {
+  padding: 6px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+.author-badge-small {
+  padding: 4px 8px;
+  background: #dbeafe;
+  color: #1d4ed8;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Empty State */
+.empty-state-3d {
+  text-align: center;
+  padding: 60px 20px;
+  background: white;
+  border-radius: 16px;
+  border: 2px dashed #d1d5db;
+}
+
+.empty-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 24px;
+  background: #f3f4f6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+}
+
+.empty-state-3d h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.empty-state-3d p {
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+/* Pagination Styles */
+.pagination-nav {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
+}
+
+.pagination-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  color: #374151;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.pagination-btn:hover:not(.disabled) {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+  transform: translateY(-1px);
+}
+
+.pagination-btn.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  color: #9ca3af;
+}
+
+.pagination-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: white;
+  border: 1px solid #d1d5db;
+  color: #374151;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.pagination-number:hover:not(.active) {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+  transform: translateY(-1px);
+}
+
+.pagination-number.active {
+  background: #3b82f6;
+  border-color: #3b82f6;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.pagination-dots {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: #9ca3af;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .passage-card-inner {
+    padding: 16px;
+  }
+  
+  .passage-footer {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .pagination-nav {
+    padding: 12px;
+  }
+
+  .pagination-btn {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+
+  .pagination-number {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .pagination-dots {
+    width: 36px;
+    height: 36px;
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Toggle advanced filters
+  const toggleBtn = document.getElementById('toggleAdvanced');
+  const advancedFilters = document.getElementById('advancedFilters');
+  
+  toggleBtn.addEventListener('click', function() {
+    advancedFilters.classList.toggle('hidden');
+    this.textContent = advancedFilters.classList.contains('hidden') ? 'Advanced Options' : 'Hide Advanced';
+  });
+
+  // Clear search
+  document.getElementById('clearSearch').addEventListener('click', function() {
+    document.getElementById('searchForm').reset();
+    window.location.href = '/admin/passages';
+  });
+
+  // View toggle
+  const gridView = document.getElementById('gridView');
+  const listView = document.getElementById('listView');
+  const gridContainer = document.getElementById('gridContainer');
+  const listContainer = document.getElementById('listContainer');
+
+  gridView.addEventListener('click', function() {
+    gridView.classList.add('active');
+    listView.classList.remove('active');
+    gridContainer.classList.remove('hidden');
+    listContainer.classList.add('hidden');
+  });
+
+  listView.addEventListener('click', function() {
+    listView.classList.add('active');
+    gridView.classList.remove('active');
+    listContainer.classList.remove('hidden');
+    gridContainer.classList.add('hidden');
+  });
+
+
+
+  // Reset to page 1 when form is submitted
+  document.getElementById('searchForm').addEventListener('submit', function() {
+    const existingPageInput = this.querySelector('input[name="page"]');
+    if (existingPageInput) {
+      existingPageInput.remove();
+    }
+  });
+
+  // Tilt effect for cards
+  const cards = document.querySelectorAll('[data-tilt]');
+  cards.forEach(function(card) {
+    card.addEventListener('mousemove', function(e) {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const rotateX = (y - centerY) / 20;
+      const rotateY = (centerX - x) / 20;
+      
+      card.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-4px)';
+    });
+    
+    card.addEventListener('mouseleave', function() {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+    });
+  });
+});
+
+// Delete function
+function deletePassage(id) {
+  if (confirm('Are you sure you want to delete this passage? This action cannot be undone.')) {
+    fetch('/admin/passages/' + id, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    })
+    .then(function(response) {
+      if (response.ok) {
+        location.reload();
+      } else {
+        alert('Error deleting passage');
+      }
+    })
+    .catch(function(error) {
+      alert('Error deleting passage');
+    });
+  }
+}
+</script>
+
+<script src="/js/admin/passages/passage-functions.js"></script>
+`;
+%>

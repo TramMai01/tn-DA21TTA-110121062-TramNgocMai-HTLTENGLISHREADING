@@ -1,0 +1,352 @@
+<div class="container mx-auto px-4 py-8">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold text-gray-800">Create Reading Test</h1>
+    <a href="/admin/tests" class="text-blue-500 hover:text-blue-700 flex items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+      </svg>
+      Back to Tests
+    </a>
+  </div>
+
+  <div class="bg-white rounded-lg shadow-md overflow-hidden">
+    <form action="/admin/tests/create" method="POST" id="testForm" class="p-6">
+      <% if (locals.error) { %>
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4" role="alert">
+          <p><%= locals.error %></p>
+        </div>
+      <% } %>
+      
+      <% if (locals.success) { %>
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4" role="alert">
+          <p><%= locals.success %></p>
+        </div>
+      <% } %>
+
+      <!-- Basic Test Information -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <div class="md:col-span-2">
+          <label for="title" class="block text-sm font-medium text-gray-700 mb-1">Test Title</label>
+          <input 
+            type="text" 
+            id="title" 
+            name="title" 
+            placeholder="Enter test title" 
+            class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            required
+          >
+        </div>
+        
+        <div>
+          <label for="timeLimit" class="block text-sm font-medium text-gray-700 mb-1">Time Limit (minutes)</label>
+          <input 
+            type="number" 
+            id="timeLimit" 
+            name="timeLimit" 
+            min="1" 
+            max="180" 
+            value="60" 
+            class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            required
+          >
+          <p class="mt-1 text-sm text-gray-500">Maximum time allowed for the test</p>
+        </div>
+      </div>
+
+      <!-- Question Type Filter -->
+      <div class="mb-8 p-4 bg-blue-50 rounded-lg border border-blue-200">
+        <h2 class="text-lg font-semibold text-blue-900 mb-3">Filter by question type</h2>
+        <p class="text-sm text-blue-700 mb-4">Select a specific question type for this test. If you select "All", the test will include all question types.</p>
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+          <label class="inline-flex items-center p-2 bg-white rounded border hover:bg-blue-50 cursor-pointer">
+            <input type="radio" name="questionTypeFilter" value="all" class="text-blue-600 focus:ring-blue-500" checked>
+            <span class="ml-2 text-sm font-medium text-gray-700">All</span>
+          </label>
+          
+          <label class="inline-flex items-center p-2 bg-white rounded border hover:bg-blue-50 cursor-pointer">
+            <input type="radio" name="questionTypeFilter" value="multiple_choice" class="text-blue-600 focus:ring-blue-500">
+            <span class="ml-2 text-sm font-medium text-gray-700">Multiple Choice</span>
+          </label>
+          
+          <label class="inline-flex items-center p-2 bg-white rounded border hover:bg-blue-50 cursor-pointer">
+            <input type="radio" name="questionTypeFilter" value="fill_blank" class="text-blue-600 focus:ring-blue-500">
+            <span class="ml-2 text-sm font-medium text-gray-700">Fill in the Blank</span>
+          </label>
+          
+          <label class="inline-flex items-center p-2 bg-white rounded border hover:bg-blue-50 cursor-pointer">
+            <input type="radio" name="questionTypeFilter" value="matching" class="text-blue-600 focus:ring-blue-500">
+            <span class="ml-2 text-sm font-medium text-gray-700">Matching</span>
+          </label>
+          
+          <label class="inline-flex items-center p-2 bg-white rounded border hover:bg-blue-50 cursor-pointer">
+            <input type="radio" name="questionTypeFilter" value="true_false_not_given" class="text-blue-600 focus:ring-blue-500">
+            <span class="ml-2 text-sm font-medium text-gray-700">True/False/Not Given</span>
+          </label>
+          
+          <label class="inline-flex items-center p-2 bg-white rounded border hover:bg-blue-50 cursor-pointer">
+            <input type="radio" name="questionTypeFilter" value="short_answer" class="text-blue-600 focus:ring-blue-500">
+            <span class="ml-2 text-sm font-medium text-gray-700">Short Answer</span>
+          </label>
+        </div>
+        
+        <div class="mt-3 p-3 bg-blue-100 rounded text-sm text-blue-700">
+          <div class="flex justify-between items-start">
+            <div>
+              <strong>Note:</strong> When selecting a specific question type, only questions of that type will be displayed and can be selected for the test.
+            </div>
+            <button type="button" id="clearSelections" class="ml-4 px-3 py-1 bg-red-500 text-white text-xs rounded hover:bg-red-600 transition-colors">
+              Clear all selections
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Passage Selection -->
+      <div class="mb-8">
+        <h2 class="text-lg font-semibold text-gray-900 mb-3">Reading Passages</h2>
+        <p class="text-sm text-gray-500 mb-3">Select passages to include in this test. Each passage can have its own set of questions.</p>
+        
+        <!-- Search and Filter -->
+        <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <!-- Search -->
+            <div class="lg:col-span-2">
+              <label for="search" class="block text-sm font-medium text-gray-700 mb-1">Search Passages</label>
+              <input 
+                type="text" 
+                id="search" 
+                placeholder="Search by title or content..." 
+                value="<%= search %>"
+                class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              >
+            </div>
+            
+            <!-- Sort -->
+            <div>
+              <label for="sortBy" class="block text-sm font-medium text-gray-700 mb-1">Sort By</label>
+              <select id="sortBy" class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                <option value="createdAt" <%= sortBy === 'createdAt' ? 'selected' : '' %>>Date Created</option>
+                <option value="title" <%= sortBy === 'title' ? 'selected' : '' %>>Title</option>
+                <option value="questionCount" <%= sortBy === 'questionCount' ? 'selected' : '' %>>Question Count</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="flex justify-between items-center mt-4">
+            <div class="flex items-center space-x-2">
+              <input type="checkbox" id="sortOrder" <%= order === 'desc' ? 'checked' : '' %>>
+              <label for="sortOrder" class="text-sm text-gray-700">Descending order</label>
+            </div>
+            <button type="button" id="searchBtn" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm">
+              Search
+            </button>
+          </div>
+        </div>
+
+        <!-- Results Summary -->
+        <div class="mb-4">
+          <% if (totalResults > 0) { %>
+            <p class="text-sm text-gray-600">
+              Showing <%= Math.min(6, totalResults) %> of <%= totalResults %> passages 
+              (Page <%= pagination.current %> of <%= pagination.total %>)
+            </p>
+          <% } else { %>
+            <p class="text-sm text-gray-600">No passages found</p>
+          <% } %>
+        </div>
+        
+        <div id="passagesContainer" class="space-y-6">
+          <% if (passages && passages.length > 0) { %>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+              <% passages.forEach(passage => { %>
+                <div class="bg-gray-50 border rounded-md p-4">
+                  <div class="flex items-start">
+                    <div class="flex items-center h-5">
+                      <input 
+                        id="passage-<%= passage._id %>" 
+                        name="passageIds" 
+                        type="checkbox" 
+                        value="<%= passage._id %>" 
+                        class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 passage-checkbox"
+                      >
+                    </div>
+                    <div class="ml-3 text-sm">
+                      <label for="passage-<%= passage._id %>" class="font-medium text-gray-700">
+                        <%= passage.title %>
+                      </label>
+                      <p class="text-gray-500">
+                        <% if (passage.questionCount) { %>
+                          <span class="ml-2"><%= passage.questionCount %> questions</span>
+                        <% } else { %>
+                          <span class="ml-2 text-red-500">No questions available</span>
+                        <% } %>
+                      </p>
+                      <% if (passage.createdBy) { %>
+                        <p class="text-xs text-gray-400 mt-1">
+                            By: <%= passage.createdBy.fullName %> | 
+                          <%= new Date(passage.createdAt).toLocaleDateString('vi-VN') %>
+                        </p>
+                      <% } %>
+                    </div>
+                  </div>
+                </div>
+              <% }); %>
+            </div>
+            
+            <!-- Pagination -->
+            <% if (pagination.total > 1) { %>
+              <div class="flex justify-center mt-8">
+                <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                  <!-- Previous Button -->
+                  <% if (pagination.hasPrev) { %>
+                    <a href="#" data-page="<%= pagination.prev %>" class="pagination-link relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-700 hover:border-gray-400 transition-all duration-200">
+                      <span class="sr-only">Previous</span>
+                      <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                      </svg>
+                    </a>
+                  <% } else { %>
+                    <span class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-gray-100 text-sm font-medium text-gray-400 cursor-not-allowed">
+                      <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                      </svg>
+                    </span>
+                  <% } %>
+
+                  <!-- Page Numbers -->
+                  <% 
+                    let startPage = Math.max(1, pagination.current - 2);
+                    let endPage = Math.min(pagination.total, pagination.current + 2);
+                    
+                    if (pagination.current <= 3) {
+                      endPage = Math.min(5, pagination.total);
+                    }
+                    if (pagination.current > pagination.total - 3) {
+                      startPage = Math.max(1, pagination.total - 4);
+                    }
+                  %>
+
+                  <% if (startPage > 1) { %>
+                    <a href="#" data-page="1" class="pagination-link relative inline-flex items-center px-3 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-600 hover:border-blue-300 transition-all duration-200">1</a>
+                    <% if (startPage > 2) { %>
+                      <span class="relative inline-flex items-center px-3 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-500">...</span>
+                    <% } %>
+                  <% } %>
+
+                  <% for(let i = startPage; i <= endPage; i++) { %>
+                    <% if (i === pagination.current) { %>
+                      <span class="relative inline-flex items-center px-3 py-2 border border-blue-500 bg-blue-50 text-sm font-medium text-blue-600 shadow-inner cursor-default">
+                        <%= i %>
+                      </span>
+                    <% } else { %>
+                      <a href="#" data-page="<%= i %>" class="pagination-link relative inline-flex items-center px-3 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-600 hover:border-blue-300 transition-all duration-200">
+                        <%= i %>
+                      </a>
+                    <% } %>
+                  <% } %>
+
+                  <% if (endPage < pagination.total) { %>
+                    <% if (endPage < pagination.total - 1) { %>
+                      <span class="relative inline-flex items-center px-3 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-500">...</span>
+                    <% } %>
+                    <a href="#" data-page="<%= pagination.total %>" class="pagination-link relative inline-flex items-center px-3 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-600 hover:border-blue-300 transition-all duration-200"><%= pagination.total %></a>
+                  <% } %>
+
+                  <!-- Next Button -->
+                  <% if (pagination.hasNext) { %>
+                    <a href="#" data-page="<%= pagination.next %>" class="pagination-link relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-700 hover:border-gray-400 transition-all duration-200">
+                      <span class="sr-only">Next</span>
+                      <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                      </svg>
+                    </a>
+                  <% } else { %>
+                    <span class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-gray-100 text-sm font-medium text-gray-400 cursor-not-allowed">
+                      <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                      </svg>
+                    </span>
+                  <% } %>
+                </nav>
+              </div>
+            <% } %>
+          <% } else { %>
+            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+              <div class="flex">
+                <div class="flex-shrink-0">
+                  <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <div class="ml-3">
+                  <p class="text-sm text-yellow-700">
+                    <% if (search) { %>
+                      No passages found matching your search. <a href="?" class="font-medium text-yellow-700 underline hover:text-yellow-600">Clear search</a> or <a href="/admin/passages/create" class="font-medium text-yellow-700 underline hover:text-yellow-600">create new passages</a>.
+                    <% } else { %>
+                      No reading passages available. Please <a href="/admin/passages/create" class="font-medium text-yellow-700 underline hover:text-yellow-600">create some passages</a> first.
+                    <% } %>
+                  </p>
+                </div>
+              </div>
+            </div>
+          <% } %>
+        </div>
+      </div>
+
+      <!-- Question Selection (Dynamic) -->
+      <div id="questionsContainer" class="mb-8 hidden">
+        <div class="flex justify-between items-center mb-3">
+          <div>
+            <h2 class="text-lg font-semibold text-gray-900">Select Questions</h2>
+            <p class="text-sm text-gray-500">Choose which questions to include for each selected passage.</p>
+          </div>
+          <div id="crossPageInfo" class="hidden text-sm text-blue-600 bg-blue-50 px-3 py-2 rounded-md">
+            <svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            Bao gồm passages từ trang khác
+          </div>
+        </div>
+        
+        <div id="passageQuestionsAccordion" class="space-y-4">
+          <!-- Will be populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Test Summary -->
+      <div class="mb-8 p-4 bg-gray-50 rounded-md">
+        <h2 class="text-lg font-semibold text-gray-900 mb-2">Test Summary</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <p class="text-sm text-gray-500">Passages</p>
+            <p id="summary-passages" class="text-lg font-medium text-gray-900">0 selected</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-500">Questions</p>
+            <p id="summary-questions" class="text-lg font-medium text-gray-900">0 Questions</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-500">Estimated Points</p>
+            <p id="summary-points" class="text-lg font-medium text-gray-900">0 Points</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-end">
+        <button 
+          type="submit" 
+          id="createTestBtn"
+          class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-md transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+          disabled
+        >
+          Create Test
+        </button>
+      </div>
+      
+      <!-- Hidden field to store selected questions -->
+      <input type="hidden" id="questionIds" name="questionIds" value="{}">
+    </form>
+  </div>
+</div>
+<% scripts = `<script src="/js/admin/test/create.js"></script>` %>

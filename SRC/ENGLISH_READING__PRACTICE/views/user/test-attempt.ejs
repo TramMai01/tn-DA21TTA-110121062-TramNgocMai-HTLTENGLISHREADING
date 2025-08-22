@@ -1,0 +1,773 @@
+<div class="w-full h-screen flex flex-col">
+  <div class="flex justify-between items-center px-4 py-3 bg-white shadow-sm">
+    <h1 class="text-xl font-bold text-gray-800"><%= test.title %></h1>
+    <div class="flex items-center">
+      <% if (test.timeLimit && test.timeLimit > 0) { %>
+        <div id="timer" class="text-lg font-medium mr-4">
+          <span>Time limit: </span>
+          <span id="minutes"><%= test.timeLimit.toString().padStart(2, '0') %></span>:<span id="seconds">00</span>
+        </div>
+      <% } else { %>
+        <div id="timer" class="text-lg font-medium mr-4">
+          No time limit
+        </div>
+      <% } %>
+      <button id="submitBtn" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition duration-200">
+        Submit
+      </button>
+    </div>
+  </div>
+
+  <% if (isTemporary) { %>
+    <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mx-4 my-2">
+      <div class="flex">
+        <div class="flex-shrink-0">
+          <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div class="ml-3">
+          <h3 class="text-sm font-medium text-yellow-800">Temporary test mode</h3>
+          <div class="mt-2 text-sm text-yellow-700">
+            <p>You are doing the test in temporary mode. The data will be saved temporarily and may be lost when refreshing the page.</p>
+            <p class="mt-1">
+              <a href="/auth/login" class="font-medium text-yellow-800 underline hover:text-yellow-600" target="_blank">Login</a> or 
+              <a href="/auth/register" class="font-medium text-yellow-800 underline hover:text-yellow-600" target="_blank">Register</a> 
+              to save your test results.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% } %>
+
+  <div class="flex flex-1 overflow-hidden">
+    <!-- Cột 1: Đoạn văn (40% chiều rộng) -->
+    <div class="w-2/5 bg-white border-r border-gray-200 overflow-y-auto">
+      <div class="p-4">
+        <h3 class="text-lg font-medium text-gray-800 mb-4">Passage</h3>
+        <% test.passages.forEach((passage, passageIndex) => { 
+          const paragraphs = passage.passageId && passage.passageId.content ? 
+            passage.passageId.content.split('\n').filter(p => p.trim() !== '') : 
+            ['Nội dung passage không có sẵn'];
+        %>
+          <div 
+            class="passage-content bg-white border border-gray-100 rounded-lg p-6 shadow-md mb-4 transition-all duration-300 hover:shadow-lg" 
+            id="passage-<%= passageIndex %>"
+            style="display: <%= passageIndex === 0 ? 'block' : 'none' %>;"
+          >
+            <div class="flex items-center mb-4 pb-2 border-b border-gray-200">
+              <div class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center mr-3 font-bold">
+                <%= passageIndex + 1 %>
+              </div>
+              <h4 class="text-md font-semibold text-gray-800">
+                Passage <%= passageIndex + 1 %>
+              </h4>
+            </div>
+            
+            <div class="text-gray-700 leading-relaxed tracking-wide space-y-4">
+              <% paragraphs.forEach((paragraph, index) => { %>
+                <p class="indent-4 first:indent-0 text-justify">
+                  <%= paragraph.trim() %>
+                </p>
+              <% }); %>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    </div>
+    
+    <!-- Cột 2: Tất cả câu hỏi (60% chiều rộng) -->
+    <div class="w-3/5 bg-white overflow-y-auto" id="questions-container">
+      <div class="p-6">
+        <!-- All questions displayed -->
+        <div class="space-y-8">
+          <% 
+            let questionIndex = 0;
+            test.passages.forEach((passage, passageIndex) => {
+              passage.questions.forEach((question, qIndex) => {
+                questionIndex++;
+          %>
+            <!-- Thêm marker để đánh dấu passage nào -->
+            <div class="question-container bg-gray-50 rounded-lg p-6 border border-gray-200" 
+                 id="question-<%= question._id %>"
+                 data-question-id="<%= question._id %>" 
+                 data-passage-index="<%= passageIndex %>" 
+                 data-index="<%= questionIndex %>">
+              
+              <!-- Hiển thị thông tin passage cho câu hỏi -->
+              <div class="mb-4 bg-blue-50 border-l-4 border-blue-500 p-3 rounded">
+                <span class="text-sm font-medium text-blue-600">
+                  Passage <%= passageIndex + 1 %>
+                </span>
+              </div>
+              
+              <!-- Hiển thị title cho tất cả các loại câu hỏi -->
+              <% if (question.title) { %>
+                <div class="mb-4 bg-blue-50 border-l-4 border-blue-500 p-3 rounded">
+                  <h4 class="text-md font-semibold text-blue-800">
+                    <%- question.title.replace(/\r\n/g, '<br>').replace(/\n/g, '<br>') %>
+                  </h4>
+                </div>
+              <% } %>
+              
+              <div class="mb-6">
+                <% if (question.questionType === 'fill_blank') { %>
+                  <!-- Special formatting for fill blank questions -->
+                  <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                    <div class="text-gray-800 leading-relaxed whitespace-pre-line text-justify text-lg">
+                      <%
+                        const questionText = question.questionText || question.text || '';
+                        const formattedText = questionText.replace(/\((\d+)\)/g, '<strong>($1)</strong>');
+                      %>
+                      <%- formattedText %>
+                    </div>
+                  </div>
+                <% } else { %>
+                  <!-- Regular formatting for other question types -->
+                  <p class="text-gray-800 leading-relaxed font-bold">
+                    <%= question.questionText || question.text %>
+                  </p>
+                <% } %>
+              </div>
+              
+              <!-- Multiple Choice (Một đáp án) -->
+              <% if ((question.questionType === 'multiple_choice' || question.type === 'multiple_choice') && !question.multipleAnswers) { %>
+                <div class="space-y-3">
+                  <% 
+                    let userAnswer = '';
+                    if (attempt && attempt.answers && Array.isArray(attempt.answers)) {
+                      const answerObj = attempt.answers.find(a => a.questionId.toString() === question._id.toString());
+                      if (answerObj) {
+                        userAnswer = answerObj.userAnswer;
+                      }
+                    }
+                  %>
+                  
+                  <% (question.options || []).forEach((option, optionIndex) => { %>
+                    <div class="flex items-start">
+                      <div class="flex items-center h-5">
+                        <input 
+                          id="option-<%= question._id %>-<%= optionIndex %>" 
+                          name="question-<%= question._id %>" 
+                          type="radio" 
+                          class="answer-option focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300"
+                          value="<%= option %>"
+                          data-question-id="<%= question._id %>"
+                          data-question-type="multiple-choice"
+                          <%= userAnswer === option ? 'checked' : '' %>
+                        >
+                      </div>
+                      <div class="ml-3 text-sm">
+                        <label for="option-<%= question._id %>-<%= optionIndex %>" class="font-medium text-gray-700">
+                          <%= option %>
+                        </label>
+                      </div>
+                    </div>
+                  <% }); %>
+                </div>
+              <% } %>
+
+              <!-- Multiple Choice (Nhiều đáp án) -->
+              <% if ((question.questionType === 'multiple_choice' || question.type === 'multiple_choice') && question.multipleAnswers) { %>
+                <div class="space-y-3">
+                  <% 
+                    let userAnswers = [];
+                    if (attempt && attempt.answers && Array.isArray(attempt.answers)) {
+                      const answerObj = attempt.answers.find(a => a.questionId.toString() === question._id.toString());
+                      if (answerObj && answerObj.userAnswer) {
+                        try {
+                          userAnswers = Array.isArray(answerObj.userAnswer) ? 
+                            answerObj.userAnswer : JSON.parse(answerObj.userAnswer);
+                        } catch (e) {
+                          userAnswers = [];
+                        }
+                      }
+                    }
+                    
+                    // Tính số đáp án đúng từ correctAnswer
+                    const maxSelections = Array.isArray(question.correctAnswer) ? question.correctAnswer.length : 2;
+                  %>
+                  
+                  <% (question.options || []).forEach((option, optionIndex) => { %>
+                    <div class="flex items-start">
+                      <div class="flex items-center h-5">
+                        <input 
+                          id="option-<%= question._id %>-<%= optionIndex %>" 
+                          name="question-<%= question._id %>[]" 
+                          type="checkbox" 
+                          class="answer-option-checkbox focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded"
+                          value="<%= option %>"
+                          data-question-id="<%= question._id %>"
+                          data-question-type="multiple-choice"
+                          data-max-selections="<%= maxSelections %>"
+                          <%= userAnswers.includes(option) ? 'checked' : '' %>
+                        >
+                      </div>
+                      <div class="ml-3 text-sm">
+                        <label for="option-<%= question._id %>-<%= optionIndex %>" class="font-medium text-gray-700">
+                          <%= option %>
+                        </label>
+                      </div>
+                    </div>
+                  <% }); %>
+                  <p class="mt-2 text-sm text-gray-500">Select exactly <%= maxSelections %> correct answer<%= maxSelections > 1 ? 's' : '' %>.</p>
+                  <div id="warning-<%= question._id %>" class="mt-2 text-sm text-red-600 hidden">
+                    <div class="flex items-center">
+                      <svg class="h-4 w-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                      </svg>
+                      <span>You can only select <%= maxSelections %> answer<%= maxSelections > 1 ? 's' : '' %> for this question.</span>
+                    </div>
+                  </div>
+                </div>
+              <% } %>
+
+              <!-- Fill in the Blank (Simple) -->
+              <% if (question.questionType === 'fill_blank' && question.blankStyle === 'simple') { %>
+                <div class="mt-4">
+                  <% 
+                    let userAnswer = '';
+                    if (attempt && attempt.answers && Array.isArray(attempt.answers)) {
+                      const answerObj = attempt.answers.find(a => a.questionId.toString() === question._id.toString());
+                      if (answerObj) {
+                        userAnswer = answerObj.userAnswer;
+                      }
+                    }
+                  %>
+                  
+                  <input 
+                    type="text" 
+                    class="fill-blank-input mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                    placeholder="Nhập câu trả lời của bạn"
+                    data-question-id="<%= question._id %>"
+                    data-question-type="fill_blank_simple"
+                    value="<%= userAnswer %>"
+                  >
+                  <% if (question.wordLimit && question.wordLimit > 0) { %>
+                    <p class="mt-2 text-sm text-gray-500">Limit: maximum <%= question.wordLimit %> words.</p>
+                  <% } %>
+                </div>
+              <% } %>
+
+              <!-- Fill in the Blank (Multiple) -->
+              <% if (question.questionType === 'fill_blank' && question.blankStyle === 'multiple') { %>
+                <div class="mt-4">
+                  <% 
+                    let userAnswers = {};
+                    if (attempt && attempt.answers && Array.isArray(attempt.answers)) {
+                      const answerObj = attempt.answers.find(a => a.questionId.toString() === question._id.toString());
+                      if (answerObj && answerObj.userAnswer) {
+                        try {
+                          userAnswers = typeof answerObj.userAnswer === 'object' ? 
+                            answerObj.userAnswer : JSON.parse(answerObj.userAnswer);
+                        } catch (e) {
+                          userAnswers = {};
+                        }
+                      }
+                    }
+                  %>
+                  
+                  <div class="space-y-4">
+                    <% 
+                      const blankNumbers = Object.keys(question.correctAnswer || {});
+                      for (let i = 0; i < blankNumbers.length; i++) { 
+                        const blankNumber = blankNumbers[i];
+                    %>
+                      <div class="flex items-center">
+                        <span class="mr-2 font-medium">(<%= blankNumber %>)</span>
+                        <select 
+                          class="fill-blank-multiple-select block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                          data-question-id="<%= question._id %>"
+                          data-blank-index="<%= i %>"
+                          data-blank-number="<%= blankNumber %>"
+                          data-question-type="fill_blank_multiple"
+                        >
+                          <option value="">-- Select --</option>
+                          <% (question.blankOptions || []).forEach((option, optionIndex) => { %>
+                            <option 
+                              value="<%= optionIndex %>"
+                              <%= userAnswers[blankNumber] === optionIndex ? 'selected' : '' %>
+                            >
+                              <%= option %>
+                            </option>
+                          <% }); %>
+                        </select>
+                      </div>
+                    <% } %>
+                  </div>
+                </div>
+              <% } %>
+
+              <!-- Fill in the Blank (One Word Only) -->
+              <% if (question.questionType === 'fill_blank' && question.blankStyle === 'one_word_only') { %>
+                <div class="mt-4">
+                  <% 
+                    let userAnswers = {};
+                    if (attempt && attempt.answers && Array.isArray(attempt.answers)) {
+                      const answerObj = attempt.answers.find(a => a.questionId.toString() === question._id.toString());
+                      if (answerObj && answerObj.userAnswer) {
+                        try {
+                          userAnswers = typeof answerObj.userAnswer === 'object' ? 
+                            answerObj.userAnswer : JSON.parse(answerObj.userAnswer);
+                        } catch (e) {
+                          userAnswers = {};
+                        }
+                      }
+                    }
+                  %>
+                  
+                  <div class="space-y-4">
+                    <% for (let blankIndex = 0; blankIndex < (question.oneWordAnswers || []).length; blankIndex++) { %>
+                      <div class="flex items-center">
+                        <% if (question.blankNumbers && question.blankNumbers[blankIndex]) { %>
+                          <span class="mr-2 font-medium">(<%= question.blankNumbers[blankIndex] %>)</span>
+                        <% } else { %>
+                          <span class="mr-2 font-medium">Blank <%= blankIndex + 1 %>:</span>
+                        <% } %>
+                        
+                        <input 
+                          type="text" 
+                          class="one-word-input block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                          placeholder="<%= question.wordLimits && question.wordLimits[blankIndex] ? ` ${question.wordLimits[blankIndex]} word` : 'Enter one word' %>"
+                          data-question-id="<%= question._id %>"
+                          data-blank-index="<%= blankIndex %>"
+                          data-blank-number="<%= question.blankNumbers ? question.blankNumbers[blankIndex] : '' %>"
+                          data-question-type="fill_blank_one_word"
+                          data-word-limit="<%= question.wordLimits && question.wordLimits[blankIndex] ? question.wordLimits[blankIndex] : 1 %>"
+                          value="<%= userAnswers[blankIndex] || '' %>"
+                        >
+                      </div>
+                    <% } %>
+                  </div>
+                  
+                  <% if (question.wordLimits && question.wordLimits.length > 0) { %>
+                    
+                  <% } else { %>
+                    <p class="mt-2 text-sm text-gray-500">Only enter one word for each blank.</p>
+                  <% } %>
+                </div>
+              <% } %>
+
+              <!-- Matching -->
+              <% if (question.questionType === 'matching' && question.matchingOptions) { %>
+                <div class="mt-4">
+                  <% 
+                    let userAnswers = [];
+                    if (attempt && attempt.answers && Array.isArray(attempt.answers)) {
+                      const answerObj = attempt.answers.find(a => a.questionId.toString() === question._id.toString());
+                      if (answerObj && answerObj.userAnswer) {
+                        try {
+                          userAnswers = Array.isArray(answerObj.userAnswer) ? answerObj.userAnswer : JSON.parse(answerObj.userAnswer);
+                        } catch (e) {
+                          userAnswers = [];
+                        }
+                      }
+                    }
+                  %>
+                  
+                  <!-- Hiển thị Headings trước -->
+                  <div class="mb-6">
+                    <h4 class="font-semibold text-gray-800 mb-3 text-lg">Available Headings:</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <% (question.matchingOptions.headings || []).forEach((heading, headingIndex) => { %>
+                        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                          <div class="flex items-start">
+                           
+                            <p class="text-gray-800 text-sm leading-relaxed">
+                              <%= heading %>
+                            </p>
+                          </div>
+                        </div>
+                      <% }); %>
+                    </div>
+                  </div>
+                  
+                  <!-- Hiển thị Paragraphs với matching -->
+                  <div class="border-t pt-6">
+                    <h4 class="font-semibold text-gray-800 mb-4 text-lg">Match paragraphs with headings:</h4>
+                    <div class="space-y-4">
+                      <% (question.matchingOptions.paragraphs || []).forEach((paragraph, paragraphIndex) => { %>
+                        <div class="bg-white border border-gray-300 rounded-lg p-4 shadow-sm">
+                          <!-- Hiển thị paragraph -->
+                          <div class="mb-4">
+                            <div class="flex items-start mb-2">
+                            
+                              </span>
+                              <p class="text-gray-800 leading-relaxed flex-1 font-bold">
+                                <%= paragraph %>
+                              </p>
+                            </div>
+                          </div>
+                          
+                          <!-- Dropdown chọn heading -->
+                          <div class="border-t pt-3">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                              Choose matching heading:
+                            </label>
+                            <select 
+                              class="matching-select w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                              data-question-id="<%= question._id %>"
+                              data-paragraph-index="<%= paragraphIndex %>"
+                              data-question-type="matching"
+                            >
+                              <option value="">-- Select heading --</option>
+                              <% (question.matchingOptions.headings || []).forEach((heading, headingIndex) => { %>
+                                <option 
+                                  value="<%= headingIndex %>"
+                                  <%= userAnswers[paragraphIndex] === headingIndex ? 'selected' : '' %>
+                                >
+                                  <%= heading.length > 60 ? heading.substring(0, 60) + '...' : heading %>
+                                </option>
+                              <% }); %>
+                            </select>
+                          </div>
+                        </div>
+                      <% }); %>
+                    </div>
+                  </div>
+                </div>
+              <% } %>
+
+              <!-- True/False/Not Given -->
+              <% if (question.questionType === 'true_false_not_given') { %>
+                <div class="space-y-3">
+                  <% 
+                    let userAnswer = '';
+                    if (attempt && attempt.answers && Array.isArray(attempt.answers)) {
+                      const answerObj = attempt.answers.find(a => a.questionId.toString() === question._id.toString());
+                      if (answerObj) {
+                        userAnswer = answerObj.userAnswer;
+                      }
+                    }
+                  %>
+                  
+                  <div class="flex items-start">
+                    <div class="flex items-center h-5">
+                      <input 
+                        id="true-<%= question._id %>" 
+                        name="question-<%= question._id %>" 
+                        type="radio" 
+                        class="answer-option focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300"
+                        value="true"
+                        data-question-id="<%= question._id %>"
+                        data-question-type="true_false_not_given"
+                        <%= userAnswer === 'true' ? 'checked' : '' %>
+                      >
+                    </div>
+                    <div class="ml-3 text-sm">
+                      <label for="true-<%= question._id %>" class="font-medium text-gray-700">
+                        True
+                      </label>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-start">
+                    <div class="flex items-center h-5">
+                      <input 
+                        id="false-<%= question._id %>" 
+                        name="question-<%= question._id %>" 
+                        type="radio" 
+                        class="answer-option focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300"
+                        value="false"
+                        data-question-id="<%= question._id %>"
+                        data-question-type="true_false_not_given"
+                        <%= userAnswer === 'false' ? 'checked' : '' %>
+                      >
+                    </div>
+                    <div class="ml-3 text-sm">
+                      <label for="false-<%= question._id %>" class="font-medium text-gray-700">
+                        False
+                      </label>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-start">
+                    <div class="flex items-center h-5">
+                      <input 
+                        id="not_given-<%= question._id %>" 
+                        name="question-<%= question._id %>" 
+                        type="radio" 
+                        class="answer-option focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300"
+                        value="not_given"
+                        data-question-id="<%= question._id %>"
+                        data-question-type="true_false_not_given"
+                        <%= userAnswer === 'not_given' ? 'checked' : '' %>
+                      >
+                    </div>
+                    <div class="ml-3 text-sm">
+                      <label for="not_given-<%= question._id %>" class="font-medium text-gray-700">
+                        Not given
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              <% } %>
+
+              <!-- Short Answer -->
+              <% if (question.questionType === 'short_answer') { %>
+                <div class="mt-4">
+                  <% 
+                    let userAnswer = '';
+                    if (attempt && attempt.answers && Array.isArray(attempt.answers)) {
+                      const answerObj = attempt.answers.find(a => a.questionId.toString() === question._id.toString());
+                      if (answerObj) {
+                        userAnswer = answerObj.userAnswer;
+                      }
+                    }
+                  %>
+                  
+                  <textarea 
+                    class="short-answer-input mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                    placeholder="Nhập câu trả lời của bạn"
+                    data-question-id="<%= question._id %>"
+                    data-question-type="short_answer"
+                    rows="3"
+                  ><%= userAnswer %></textarea>
+                  <p class="mt-2 text-sm text-gray-500">Limit: <%= question.wordLimit %> words.</p>
+                  <div class="mt-1 text-sm text-gray-500">
+                    <span class="word-count">0</span>/<%= question.wordLimit %> words
+                  </div>
+                </div>
+              <% } %>
+
+            </div>
+          <% 
+              });
+            });
+          %>
+          <div class="flex justify-end mt-8">
+            <button id="submitBtn2" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-md transition duration-200 font-semibold">
+              Submit Test
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<% 
+scripts = `
+
+<script>
+  window.testData = {
+    testId: '${test._id}',
+    attemptId: '${attempt ? attempt._id : ""}',
+    isTemporary: ${isTemporary || false},
+    timeLimit: ${test.timeLimit || 0},
+    isNewAttempt: ${typeof isNewAttempt !== 'undefined' ? isNewAttempt : false}
+  };
+
+  // Hàm hiển thị passage tương ứng
+  function showPassageForQuestion(passageIndex) {
+    // Ẩn tất cả passages
+    document.querySelectorAll('.passage-content').forEach(passage => {
+      passage.style.display = 'none';
+    });
+    
+    // Hiển thị passage tương ứng
+    const targetPassage = document.getElementById('passage-' + passageIndex);
+    if (targetPassage) {
+      targetPassage.style.display = 'block';
+    }
+  }
+
+  // Theo dõi scroll để hiển thị passage tương ứng
+  function setupScrollTracking() {
+    const questionsContainer = document.getElementById('questions-container');
+    const questionContainers = document.querySelectorAll('.question-container');
+    
+    if (!questionsContainer || questionContainers.length === 0) return;
+    
+    let currentPassageIndex = 0;
+    
+    function updatePassageDisplay() {
+      const containerRect = questionsContainer.getBoundingClientRect();
+      const containerTop = containerRect.top;
+      const containerHeight = containerRect.height;
+      const viewportCenter = containerTop + containerHeight / 2;
+      
+      let closestQuestion = null;
+      let closestDistance = Infinity;
+      
+      questionContainers.forEach(question => {
+        const questionRect = question.getBoundingClientRect();
+        const questionCenter = questionRect.top + questionRect.height / 2;
+        const distance = Math.abs(questionCenter - viewportCenter);
+        
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestQuestion = question;
+        }
+      });
+      
+      if (closestQuestion) {
+        const passageIndex = parseInt(closestQuestion.dataset.passageIndex);
+        if (passageIndex !== currentPassageIndex) {
+          currentPassageIndex = passageIndex;
+          showPassageForQuestion(passageIndex);
+        }
+      }
+    }
+    
+    // Lắng nghe sự kiện scroll
+    questionsContainer.addEventListener('scroll', updatePassageDisplay);
+    
+    // Hiển thị passage đầu tiên khi load
+    showPassageForQuestion(0);
+  }
+
+  // Hàm đếm từ
+  function countWords(text) {
+    if (!text || text.trim() === '') return 0;
+    return text.trim().split(/\\s+/).length;
+  }
+
+  // Hàm hiển thị cảnh báo
+  function showWordLimitWarning(input, limit, currentCount) {
+    let warningDiv = input.parentNode.querySelector('.word-limit-warning');
+    if (!warningDiv) {
+      warningDiv = document.createElement('div');
+      warningDiv.className = 'word-limit-warning';
+      input.parentNode.appendChild(warningDiv);
+    }
+    
+    if (currentCount > limit) {
+      warningDiv.innerHTML = ' You have entered ' + currentCount + ' words, exceeding the limit of ' + limit + ' words!';
+      warningDiv.classList.add('show');
+      input.classList.add('input-warning');
+    } else {
+      warningDiv.classList.remove('show');
+      input.classList.remove('input-warning');
+    }
+  }
+
+  // Hàm tìm element chứa text
+  function findElementContainingText(container, text) {
+    const elements = container.querySelectorAll('p');
+    for (let elem of elements) {
+      if (elem.textContent.includes(text)) {
+        return elem;
+      }
+    }
+    return null;
+  }
+
+  // Khởi tạo khi trang load
+  document.addEventListener('DOMContentLoaded', function() {
+    
+    // Thiết lập theo dõi scroll
+    setupScrollTracking();
+    
+    // Xử lý Short Answer
+    document.querySelectorAll('.short-answer-input').forEach(function(textarea) {
+      const questionContainer = textarea.closest('.question-container');
+      const wordCountSpan = questionContainer.querySelector('.word-count');
+      const limitText = findElementContainingText(questionContainer, 'Limit:');
+      
+      if (limitText) {
+        const limitMatch = limitText.textContent.match(/Limit: (\\d+) words/);
+        if (limitMatch) {
+          const wordLimit = parseInt(limitMatch[1]);
+          
+          function updateWordCount() {
+            const wordCount = countWords(textarea.value);
+            if (wordCountSpan) {
+              wordCountSpan.textContent = wordCount;
+            }
+            showWordLimitWarning(textarea, wordLimit, wordCount);
+          }
+          
+          textarea.addEventListener('input', updateWordCount);
+          textarea.addEventListener('paste', function() {
+            setTimeout(updateWordCount, 10);
+          });
+          
+          // Kiểm tra ngay khi load
+          updateWordCount();
+        }
+      }
+    });
+
+    // Xử lý Fill Blank Simple
+    document.querySelectorAll('.fill-blank-input').forEach(function(input) {
+      const questionContainer = input.closest('.question-container');
+      const limitText = findElementContainingText(questionContainer, 'maximum');
+      
+      if (limitText) {
+        const limitMatch = limitText.textContent.match(/maximum (\\d+) words/);
+        if (limitMatch) {
+          const wordLimit = parseInt(limitMatch[1]);
+          
+          function checkWordLimit() {
+            const wordCount = countWords(input.value);
+            showWordLimitWarning(input, wordLimit, wordCount);
+          }
+          
+          input.addEventListener('input', checkWordLimit);
+          input.addEventListener('paste', function() {
+            setTimeout(checkWordLimit, 10);
+          });
+        }
+      }
+    });
+
+    // Xử lý One Word inputs
+    document.querySelectorAll('.one-word-input').forEach(function(input) {
+      let wordLimit = 1; // Mặc định là 1 từ
+      
+      // Lấy word limit từ data attribute hoặc placeholder
+      if (input.dataset.wordLimit) {
+        wordLimit = parseInt(input.dataset.wordLimit);
+      } else if (input.placeholder.includes('maximum')) {
+        const match = input.placeholder.match(/maximum (\\d+) words/);
+        if (match) {
+          wordLimit = parseInt(match[1]);
+        }
+      }
+      
+      function checkOneWordLimit() {
+        const wordCount = countWords(input.value);
+        showWordLimitWarning(input, wordLimit, wordCount);
+      }
+      
+      input.addEventListener('input', checkOneWordLimit);
+      input.addEventListener('paste', function() {
+        setTimeout(checkOneWordLimit, 10);
+      });
+    });
+
+  });
+</script>
+<script src="/js/user/test-attempt.js"></script>
+<style>
+  .question-container {
+    display: block !important;
+  }
+  .word-limit-warning {
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #dc2626;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    margin-top: 8px;
+    display: none;
+  }
+  .word-limit-warning.show {
+    display: block;
+  }
+  .input-warning {
+    border-color: #dc2626 !important;
+    box-shadow: 0 0 0 1px #dc2626;
+  }
+  
+  /* Smooth transition cho passage */
+  .passage-content {
+    transition: opacity 0.3s ease-in-out;
+  }
+</style>
+`;
+%>

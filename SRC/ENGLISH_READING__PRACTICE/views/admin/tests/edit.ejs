@@ -1,0 +1,170 @@
+<div class="container mx-auto px-4 py-8">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold text-gray-800">Edit Reading Test</h1>
+    <a href="/admin/tests" class="text-blue-500 hover:text-blue-700 flex items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+      </svg>
+      Back to Tests
+    </a>
+  </div>
+
+  <div class="bg-white rounded-lg shadow-md overflow-hidden">
+    <form action="/admin/tests/<%= test._id %>/edit" method="POST" id="testForm" class="p-6">
+      <% if (locals.error) { %>
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4" role="alert">
+          <p><%= locals.error %></p>
+        </div>
+      <% } %>
+
+      <!-- Basic Test Information -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <div class="md:col-span-2">
+          <label for="title" class="block text-sm font-medium text-gray-700 mb-1">Test Title</label>
+          <input 
+            type="text" 
+            id="title" 
+            name="title" 
+            placeholder="Enter test title" 
+            value="<%= test.title %>"
+            class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            required
+          >
+        </div>
+        
+        <div>
+          <label for="timeLimit" class="block text-sm font-medium text-gray-700 mb-1">Time Limit (minutes)</label>
+          <input 
+            type="number" 
+            id="timeLimit" 
+            name="timeLimit" 
+            min="1" 
+            max="180" 
+            value="<%= test.timeLimit %>" 
+            class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            required
+          >
+          <p class="mt-1 text-sm text-gray-500">Maximum time allowed for the test</p>
+        </div>
+      </div>
+
+      <!-- Passage Selection -->
+      <div class="mb-8">
+        <h2 class="text-lg font-semibold text-gray-900 mb-3">Reading Passages</h2>
+        <p class="text-sm text-gray-500 mb-3">Select passages to include in this test. Each passage can have its own set of questions.</p>
+        
+        <div id="passagesContainer" class="space-y-6">
+          <% if (allPassages && allPassages.length > 0) { %>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+              <% 
+                // Create a map of passage IDs for easier checking
+                const selectedPassageIds = test.passages.map(p => p.passageId._id.toString());
+              %>
+              <% allPassages.forEach(passage => { %>
+                <div class="bg-gray-50 border rounded-md p-4">
+                  <div class="flex items-start">
+                    <div class="flex items-center h-5">
+                      <input 
+                        id="passage-<%= passage._id %>" 
+                        name="passageIds" 
+                        type="checkbox" 
+                        value="<%= passage._id %>" 
+                        class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 passage-checkbox"
+                        <%= selectedPassageIds.includes(passage._id.toString()) ? 'checked' : '' %>
+                      >
+                    </div>
+                    <div class="ml-3 text-sm">
+                      <label for="passage-<%= passage._id %>" class="font-medium text-gray-700">
+                        <%= passage.title %>
+                      </label>
+                      <p class="text-gray-500">
+                        <% if (passage.questionCount) { %>
+                          <span class="ml-2"><%= passage.questionCount %> questions</span>
+                        <% } else { %>
+                          <span class="ml-2">No questions</span>
+                        <% } %>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              <% }); %>
+            </div>
+          <% } else { %>
+            <div class="rounded-md bg-yellow-50 p-4">
+              <div class="flex">
+                <div class="flex-shrink-0">
+                  <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <div class="ml-3">
+                  <p class="text-sm text-yellow-700">
+                    No reading passages available. Please <a href="/admin/passages/create" class="font-medium text-yellow-700 underline hover:text-yellow-600">create some passages</a> first.
+                  </p>
+                </div>
+              </div>
+            </div>
+          <% } %>
+        </div>
+      </div>
+
+      <!-- Question Selection (Dynamic) -->
+      <div id="questionsContainer" class="mb-8 <%= test.passages && test.passages.length > 0 ? '' : 'hidden' %>">
+        <h2 class="text-lg font-semibold text-gray-900 mb-3">Select Questions</h2>
+        <p class="text-sm text-gray-500 mb-3">Choose which questions to include for each selected passage.</p>
+        
+        <div id="passageQuestionsAccordion" class="space-y-4">
+          <!-- Will be populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Test Summary -->
+      <div class="mb-8 p-4 bg-gray-50 rounded-md">
+        <h2 class="text-lg font-semibold text-gray-900 mb-2">Test Summary</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <p class="text-sm text-gray-500">Passages</p>
+            <p id="summary-passages" class="text-lg font-medium text-gray-900">0 selected</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-500">Questions</p>
+            <p id="summary-questions" class="text-lg font-medium text-gray-900">0 selected</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-500">Estimated Points</p>
+            <p id="summary-points" class="text-lg font-medium text-gray-900">0 points</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-end space-x-3">
+        <a href="/admin/tests/<%= test._id %>/detail" class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-6 py-2 rounded-md transition duration-200">
+          Cancel
+        </a>
+        <button 
+          type="submit" 
+          id="updateTestBtn"
+          class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-md transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          Update Test
+        </button>
+      </div>
+      
+      <!-- Hidden field to store selected questions -->
+      <input type="hidden" id="questionIds" name="questionIds" value="{}">
+    </form>
+  </div>
+</div>
+
+<% 
+// Set up scripts variable for layout
+scripts = `
+<script>
+  // Truyền dữ liệu test cho JavaScript
+  window.testData = {
+    passages: ${JSON.stringify(test.passages || [])}
+  };
+</script>
+<script src="/js/admin/test/edit.js"></script>
+`;
+%>
